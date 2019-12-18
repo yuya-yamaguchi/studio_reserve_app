@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_045026) do
+ActiveRecord::Schema.define(version: 2019_12_18_071917) do
 
   create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "studio_id", null: false
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 2019_12_18_045026) do
     t.string "keybords"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
+    t.date "reserve_date", null: false
+    t.integer "start_hour", null: false
+    t.integer "end_hour", null: false
+    t.integer "payment_fee", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_user_reserves_on_studio_id"
+    t.index ["user_id"], name: "index_user_reserves_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

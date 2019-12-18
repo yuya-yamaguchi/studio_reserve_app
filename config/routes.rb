@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'top#index'
 
   resources :studios, only: [:show] do
-    resources :reserves, only: [:show]
+    resources :reserves, only: [:show, :update]
   end
 end
