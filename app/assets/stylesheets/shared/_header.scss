@@ -1,0 +1,48 @@
+.header{
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  position: fixed;
+  z-index: 2;
+  &__title{
+    padding: 10px;
+    float: left;
+    a{
+      @include link_design_none;
+    }
+  }
+  .header-menus{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    line-height: 60px;
+    &__menu{
+      background-color: #ddd;
+      a{
+        display: block;
+        padding: 0 20px;
+        width: 80px;
+        text-align: center;
+        font-size: 12px;
+        border-left: 1px solid #eee;
+        @include link_design_none;
+      }
+      .sub-menus{
+        display: none;
+        position: absolute;
+        background-color: lightseagreen;
+        &__menu{
+          border-top: 1px solid #eee;
+        }
+        &:hover{
+          background-color: lightgreen;
+          transition: 0.2s ;
+        }
+      }
+      &:hover{
+        background-color: lightseagreen;
+        transition: 0.3s ;
+      }
+    }
+  }
+}
