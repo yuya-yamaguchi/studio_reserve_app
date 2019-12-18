@@ -10,7 +10,7 @@
       %ul.studio-list__studios
         - @studios.each do |studio|
           %li.studio
-            = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), root_path
+            = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), studio_path(studio)
             .studio__name.sub-title
               = studio.name
             .studio__details.default-string
