@@ -1,0 +1,30 @@
+.user-reserve-page{
+  .user-reserve{
+    &__title{
+      border-bottom: 2px solid #333333;
+    }
+    &__info{
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 20px;
+      tr{
+        border-bottom: 1px solid #333333;
+        line-height: 50px;
+      }
+      &__link{
+        padding-left: 10px;
+        .cancel-button{
+          display: block;
+          width: 40px;
+          line-height: 20px;
+          text-align: center;
+          border-radius: 3px;
+          background-color: red;
+          text-decoration: none;
+          font-size: 14px;
+          color: white;
+        }
+      }
+    }
+  }
+}

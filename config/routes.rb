@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     resources :reserves, only: [:show, :update]
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    collection do
+      get :reserve
+    end
+  end
 end
