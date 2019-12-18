@@ -44,7 +44,7 @@
                   = reserve.hour
               - if reserve.reserve_flg == 0
                 %td.reserve__table--possible
-                  = link_to "◎", "#"
+                  = link_to "◎", studio_reserve_path(params[:id], reserve.id)
               - else
                 %td.reserve__table--impossible
                   ×
