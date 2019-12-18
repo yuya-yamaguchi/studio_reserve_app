@@ -1,0 +1,24 @@
+.user-show-page
+  .main-container
+    .inner-container
+      .mypage
+        .mypage__profile
+          .mypage__profile__title.main-title
+            プロフィール
+          = image_tag("/user_img/#{@user.img}", class: "mypage__profile__image")
+          .mypage__profile__name
+            = @user.nickname
+          .mypage__profile__self-introduction
+            = @user.profile
+          .mypage__profile__links
+            - if user_signed_in?
+              - if current_user.id == @user.id
+                .mypage__profile__links__link
+                  = link_to "予約状況", "#"
+                .mypage__profile__links__link
+                  = link_to "メッセージ", "#"
+                .mypage__profile__links__link
+                  = link_to "プロフィール変更", "#"
+              - else
+                .mypage__profile__links__link
+                  = link_to "メッセージを送る", "#"
