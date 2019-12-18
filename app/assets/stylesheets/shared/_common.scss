@@ -5,6 +5,10 @@
   padding: 40px;
 }
 
+.inner-container{
+  width: 80%;
+}
+
 .main-title{
   @include string_set(32px, bold, #333333);
 }

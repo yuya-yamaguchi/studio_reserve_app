@@ -1,0 +1,28 @@
+.studio-show-page
+  .main-container
+    .studio.inner-container
+      .studio__name.main-title
+        = @studio.name
+      .studio__info
+        = image_tag("/studio_img/top_image.png", class: "studio__info__img")
+        .studio__info__explain
+          .studio__info__explain__intro
+            最新の設備を整えたスタジオです。
+            %br
+            動画撮影、レコーディングも可能です。
+          .studio__info__explain__inst
+            %b GuitarAmp:
+            = @studio.guitar_amp
+            %br
+            %b BassAmp:
+            = @studio.bass_amp
+            %br
+            %b Drums:
+            = @studio.drums
+            %br
+            %b Keybords:
+            = @studio.keybords
+          .studio__info__explain__fee
+            料金（1時間）：
+            = @studio.fee
+            円

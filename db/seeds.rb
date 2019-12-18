@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # studios初期データ
-# Studio.create!(name: "studio A", fee: 1000)
-# Studio.create!(name: "studio B", fee: 1000)
-# Studio.create!(name: "studio C", fee: 1000)
-# Studio.create!(name: "studio D", fee: 1000)
+Studio.create!(name: "studio A", fee: 1000)
+Studio.create!(name: "studio B", fee: 1000)
+Studio.create!(name: "studio C", fee: 1000)
+Studio.create!(name: "studio D", fee: 1000)
 
 # reserves初期データ(起動日から1年分を作成)
 require 'date'
