@@ -1,5 +1,8 @@
 class UserReserve < ApplicationRecord
 
+  belongs_to :user
+  belongs_to :studio
+
   def done_reserve(params, user_id, studio_fee)
     use_time = params[:end_hour].to_i - params[:start_hour].to_i
     payment_fee = studio_fee * use_time

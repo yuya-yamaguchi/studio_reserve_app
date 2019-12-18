@@ -1,0 +1,30 @@
+.user_reserve-index-page
+  .main-container
+    .inner-container
+      .user-reserve
+        .user-reserve__title.main-title
+          スタジオ予約状況
+        %table.user-reserve__info
+          %tr.user-reserve__info__head
+            %th.user-reserve__info__head__date
+              日時
+            %th.user-reserve__info__head__studio
+              スタジオ
+            %th.user-reserve__info__head__fee
+              料金
+            %th
+              予約取消
+          - @user_reserves.each do |user_reserve|
+            %tr
+              %td
+                = user_reserve.reserve_date.strftime("%m月%d日")
+                = user_reserve.start_hour.to_s + "時 〜"
+                = user_reserve.end_hour.to_s + "時"
+              %td
+                = user_reserve.studio.name + " st"
+              %td
+                = user_reserve.payment_fee.to_s + " 円"
+              %td
+                - if Date.today < user_reserve.reserve_date
+                  .user-reserve__info__link
+                    = link_to "取消", user_reserve_path(user_reserve), method: :delete, class: "cancel-button"
