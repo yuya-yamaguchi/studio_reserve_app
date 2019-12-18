@@ -1,7 +1,7 @@
 class TopController < ApplicationController
 
-  def idnex
-    
+  def index
+    @studios = Studio.all
   end
 
 end
