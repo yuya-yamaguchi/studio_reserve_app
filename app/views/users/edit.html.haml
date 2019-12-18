@@ -1,0 +1,38 @@
+.user-edit-page
+  .main-container
+    .inner-container
+      = form_with(model: @user, data: { remote: false }) do |f|
+        .user-edit
+          .user-edit__title.main-title
+            ユーザ情報編集
+          %table.user-edit__form
+            %tr
+              %th
+                アカウント名
+              %td
+                = f.text_field :nickname, value: @user.nickname
+            %tr
+              %th
+                プロフィール
+              %td
+                = f.text_area :profile, value: @user.profile
+            %tr
+              %th
+                氏名
+              %td
+                姓
+                = f.text_field :last_name, value: @user.last_name
+                名
+                = f.text_field :first_name, value: @user.first_name
+            %tr
+              %th
+                電話番号
+              %td
+                = f.text_field :tel_no, value: @user.tel_no
+            %tr
+              %th
+                Email
+              %td
+                = f.text_field :email, value: @user.email
+          .user-edit__button
+            = f.submit "変更"
