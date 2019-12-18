@@ -8,24 +8,24 @@
       .studio-list__title.main-title
         スタジオ一覧
       %ul.studio-list__studios
-        - 4.times do |i|
+        - @studios.each do |studio|
           %li.studio
             = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), root_path
             .studio__name.sub-title
-              = "studioA#{i}"
+              = studio.name
             .studio__details.default-string
               .studio__details__size
                 10畳
               .studio__details__inst
                 %div
                   %b GuitarAmp:
-                  仮置き
+                  = studio.guitar_amp
                 %div
                   %b BassAmp:
-                  仮置き
+                  = studio.bass_amp
                 %div
                   %b Drums:
-                  仮置き
+                  = studio.drums
                 %div
                   %b Keybords:
-                  仮置き
+                  = studio.keybords
