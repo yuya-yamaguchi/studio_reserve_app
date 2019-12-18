@@ -1,0 +1,10 @@
+@mixin string_set($font_size, $font_weight, $color){
+  font-size: $font_size;
+  font-weight: $font_weight;
+  color: $color;
+}
+
+@mixin link_design_none{
+  text-decoration: none;
+  color: #333333;
+}
