@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :studios, only: [:show] do
     resources :reserves, only: [:show, :update]
   end
+
+  resources :users, only: [:show, :edit, :update]
 end

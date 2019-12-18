@@ -1,0 +1,26 @@
+.user-edit-page{
+  .user-edit{
+    &__title{
+      border-bottom: 2px solid #333333;
+    }
+    .user-edit__form{
+      width: 90%;
+      margin: 30px auto;
+      tr{
+        display: block;
+        padding-top: 20px;
+        border-bottom: 1px solid #333333;
+        display: flex;
+        justify-content: space-between;
+        th{
+          display: block;
+          width: 30%;
+        }
+        td{
+          display: block;
+          width: 70%;
+        }
+      }
+    }
+  }
+}
