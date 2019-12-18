@@ -1,0 +1,50 @@
+.studio-show-page
+  .main-container
+    .studio.inner-container
+      .studio__name.main-title
+        = @studio.name
+      .studio__info
+        = image_tag("/studio_img/top_image.png", class: "studio__info__img")
+        .studio__info__explain
+          .studio__info__explain__intro
+            最新の設備を整えたスタジオです。
+            %br
+            動画撮影、レコーディングも可能です。
+          .studio__info__explain__inst
+            %b GuitarAmp:
+            = @studio.guitar_amp
+            %br
+            %b BassAmp:
+            = @studio.bass_amp
+            %br
+            %b Drums:
+            = @studio.drums
+            %br
+            %b Keybords:
+            = @studio.keybords
+          .studio__info__explain__fee
+            料金（1時間）：
+            = @studio.fee
+            円
+    .reserve.inner-container
+      .reserve__title.sub-title
+        予約表
+      %table.reserve__table
+        %tr.reserve__table--date
+          %th
+            時間
+          - @one_week.each do |day|
+            %th
+              = day.strftime("%m月%d日")
+        - @studio_reserves.each do |studio_reserve|
+          %tr
+            - studio_reserve.each_with_index do |reserve, cnt|
+              - if cnt == 0
+                %td.reserve__table--time
+                  = reserve.hour
+              - if reserve.reserve_flg == 0
+                %td.reserve__table--possible
+                  = link_to "◎", "#"
+              - else
+                %td.reserve__table--impossible
+                  ×

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_021357) do
+ActiveRecord::Schema.define(version: 2019_12_18_025258) do
+
+  create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "studio_id", null: false
+    t.date "date", null: false
+    t.integer "hour", null: false
+    t.integer "reserve_flg", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_reserves_on_studio_id"
+  end
 
   create_table "studios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
