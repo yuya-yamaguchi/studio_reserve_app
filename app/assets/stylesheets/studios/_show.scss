@@ -25,4 +25,47 @@
       }
     }
   }
+  .reserve{
+    margin: 50px auto;
+    
+    &__title{
+      border-bottom: 2px solid;
+      padding-bottom: 10px;
+    }
+  
+    &__table{
+      margin: 20px auto;
+      width: 80%;
+      
+      &--date{
+        background-color: mediumaquamarine;
+      }
+      &--time{
+        background-color: mediumaquamarine;
+        text-align: right;
+        padding-right: 5px;
+      }
+      &--possible{
+        background-color: white;
+        text-align: center;
+      }
+      &--impossible{
+        background-color: lightgray;
+        text-align: center;
+      }
+    }
+    table{
+      border: solid 1px black;
+    }
+    th{
+      text-align: center;
+      border: solid 1px black;
+    }
+    tr{
+      border: solid 1px black;
+    }
+    td{
+      border: solid 1px black;
+    }
+  }
 }

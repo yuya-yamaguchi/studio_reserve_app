@@ -26,3 +26,25 @@
             料金（1時間）：
             = @studio.fee
             円
+    .reserve.inner-container
+      .reserve__title.sub-title
+        予約表
+      %table.reserve__table
+        %tr.reserve__table--date
+          %th
+            時間
+          - @one_week.each do |day|
+            %th
+              = day.strftime("%m月%d日")
+        - @studio_reserves.each do |studio_reserve|
+          %tr
+            - studio_reserve.each_with_index do |reserve, cnt|
+              - if cnt == 0
+                %td.reserve__table--time
+                  = reserve.hour
+              - if reserve.reserve_flg == 0
+                %td.reserve__table--possible
+                  = link_to "◎", "#"
+              - else
+                %td.reserve__table--impossible
+                  ×
