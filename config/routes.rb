@@ -12,4 +12,7 @@ Rails.application.routes.draw do
       get :reserve
     end
   end
+
+  resources :user_reserves, only: [:index, :destroy]
+
 end

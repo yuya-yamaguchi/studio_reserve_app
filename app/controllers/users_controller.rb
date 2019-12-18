@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :reserve]
+  before_action :set_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -15,10 +15,6 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def reserve
-    @user_reserves = @user.user_reserves.order('reserve_date DESC').order('start_hour DESC')
   end
 
   private

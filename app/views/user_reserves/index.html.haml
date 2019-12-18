@@ -1,4 +1,4 @@
-.user-reserve-page
+.user_reserve-index-page
   .main-container
     .inner-container
       .user-reserve
@@ -27,4 +27,4 @@
               %td
                 - if Date.today < user_reserve.reserve_date
                   .user-reserve__info__link
-                    = link_to "取消", "#", method: :post, class: "cancel-button"
+                    = link_to "取消", user_reserve_path(user_reserve), method: :delete, class: "cancel-button"
