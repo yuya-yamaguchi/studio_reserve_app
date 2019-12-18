@@ -13,4 +13,15 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+$(function() {
+  var menus = $('.header-menus');
+  $('.header-menus__menu', menus).mouseover(function(e) {
+    $('ul', this).stop().slideDown('fast');
+  })
+  .mouseout(function(e) {
+    $('ul', this).stop().slideUp('fast');
+  });
+});

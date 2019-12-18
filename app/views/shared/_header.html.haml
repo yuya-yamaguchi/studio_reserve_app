@@ -6,19 +6,19 @@
       = link_to "スタジオ", root_path
     %li.header-menus__menu
       = link_to "掲示板", "#"
-    - if 1 == 1
+    - if user_signed_in?
       %li.header-menus__menu
-        = link_to "ユーザ名", "#"
+        = link_to current_user.nickname, "#"
         %ul.sub-menus
           %li.sub-menus__menu
             = link_to "トップ", "#"
           %li.sub_menu__menu
             = link_to "予約一覧", "#"
           %li.sub_menu__menu
-            = link_to "ログアウト", "#"
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
       %li.header-menus__menu
-        = link_to "新規会員登録", "#"
+        = link_to "新規会員登録", new_user_registration_path
       %li.header-menus__menu
-        = link_to "ログイン", "#"
+        = link_to "ログイン", new_user_session_path
     
