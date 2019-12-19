@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :user_reserves, only: [:index, :destroy]
 
+  resources :posts
 end
