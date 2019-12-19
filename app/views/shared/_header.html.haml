@@ -5,7 +5,7 @@
     %li.header-menus__menu
       = link_to "スタジオ", root_path
     %li.header-menus__menu
-      = link_to "掲示板", "#"
+      = link_to "掲示板", posts_path
     - if user_signed_in?
       %li.header-menus__menu
         = link_to current_user.nickname, user_path(current_user)

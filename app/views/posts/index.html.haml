@@ -1,0 +1,9 @@
+.posts-index-page
+  .main-container
+    .inner-container
+      .board
+        .board__title.main-title
+          投稿一覧
+        = render @posts
+        .board__new-post
+          = link_to "新規投稿", new_post_path
