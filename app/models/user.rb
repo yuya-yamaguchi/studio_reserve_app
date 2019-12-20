@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   has_many :user_reserves
   has_many :posts
+  has_many :entry_rooms
   has_many :chatrooms, through: :entry_rooms
 end

@@ -1,5 +1,21 @@
 class ChatroomsController < ApplicationController
 
+  def index
+    @chatrooms = current_user.chatrooms.order("updated_at DESC")
+    
+    @chatrooms.each do |chatroom|
+      
+      if chatroom.messages.present?
+        resever = chatroom.get_receiver(current_user)
+        chatroom.resever = resever.nickname
+
+        unread_cnt = chatroom.messages.where(user_id: resever.id)
+                                      .where(read_flg: 0).count
+        chatroom.unread_cnt = unread_cnt
+      end
+    end
+  end
+
   def show
     @chatroom = Chatroom.find(params[:id])
     # 空のメッセージを作成

@@ -3,8 +3,8 @@ class MessagesController < ApplicationController
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = @chatroom.messages.new(message_params)
-        
-    if @message.save
+    
+    if @message.save && @chatroom.update(updated_at: DateTime.now)
       respond_to do |format|
         format.html { redirect_to chatroom_path(@chatroom) }
         format.json { render json: { text: @message.text }}

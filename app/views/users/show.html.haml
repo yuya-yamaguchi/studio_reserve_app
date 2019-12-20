@@ -16,7 +16,7 @@
                 .mypage__profile__links__link
                   = link_to "予約状況", user_reserves_path
                 .mypage__profile__links__link
-                  = link_to "メッセージ", "#"
+                  = link_to "メッセージ一覧", user_chatrooms_path(current_user)
                 .mypage__profile__links__link
                   = link_to "ユーザ情報編集", edit_user_path(current_user)
               - else
