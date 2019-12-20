@@ -1,7 +1,6 @@
 class ChatroomsController < ApplicationController
 
   def show
-    @user = User.find(current_user.id)
     @chatroom = Chatroom.find(params[:id])
     # 空のメッセージを作成
     @message = Message.new
