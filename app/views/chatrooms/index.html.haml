@@ -1,0 +1,21 @@
+.main-container
+  .inner-container
+    .chatrooms
+      .chatrooms__title
+        メッセージ一覧
+      .chatrooms__messages
+        - @chatrooms.each do |chatroom|
+          - if chatroom
+            = link_to chatroom_path(chatroom.id), class: "link_to" do
+              .message
+                .left-content
+                  .left-content__name
+                    = chatroom.resever
+                  .left-content__text
+                    = chatroom.messages.last.text
+                .right-content
+                  .right-content__date
+                    = chatroom.messages.last.created_at.strftime("%m/%d %H:%M")
+                  .right-content__notice
+                    - if chatroom.unread_cnt > 0
+                      = chatroom.unread_cnt

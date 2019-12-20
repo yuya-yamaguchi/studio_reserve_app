@@ -1,12 +1,13 @@
 .main-container{
   margin: 0 auto;
-  width: 1020px;
+  // width: 1020px;
+  height: calc(100vh - 200px);
   background: #cec9c9;
   padding: 100px 40px;
 }
 
 .inner-container{
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 

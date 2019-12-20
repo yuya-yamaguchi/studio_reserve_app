@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update] do
+    resources :chatrooms, only: [:index] do
+      collection do
+        get :room_judge
+      end
+    end
+    
     collection do
       get :reserve
     end
@@ -16,4 +22,8 @@ Rails.application.routes.draw do
   resources :user_reserves, only: [:index, :destroy]
 
   resources :posts
+
+  resources :chatrooms, only: [:show] do
+    resources :messages, only: [:create]
+  end
 end

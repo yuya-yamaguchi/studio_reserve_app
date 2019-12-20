@@ -1,0 +1,44 @@
+.chatrooms{
+  &__title{
+    font-size: 30px;
+    border-bottom: 2px solid;
+  }
+  &__messages {
+    .message {
+      height: 80px;
+      padding-bottom: 19px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: solid 1px rgb(168, 168, 168);
+      .left-content {
+        margin: 20px 0 0 20px;
+        &__name {
+          margin-bottom: 10px;
+          font-size: 1.2rem;
+          a {text-decoration: none};
+        }
+        &__text {
+          color: rgb(104, 104, 104);
+        }
+      }
+      .right-content {
+        margin: 20px 20px 0 0;
+        &__date {
+          margin-bottom: 10px;
+          color: rgb(104, 104, 104);
+        }
+        &__notice {
+          width: 30px;
+          line-height: 30px;
+          border-radius: 100%;
+          background-color: lightseagreen;
+          color: white;
+          text-align: center;
+        }
+      }
+    }
+    .link_to{
+      text-decoration: none;
+    }
+  }
+}
