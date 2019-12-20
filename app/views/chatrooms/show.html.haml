@@ -1,0 +1,23 @@
+.main-container
+  .inner-container
+    .chatroom-show
+      .chatroom-show__title.main-title
+        = @receiver.nickname + " とのメッセージ"
+      .chatroom-show__messages#message_scroll
+        - @messages.each do |message|
+          .message
+            - if message.user_id == current_user.id
+              .message__own
+                = message.text
+              - if message.read_flg = 1
+                .message__already-read
+                  既読
+            - else
+              .message__other
+                = image_tag("/user_img/#{message.user.img}", class: "message__other__user-img")
+                .message__other__text
+                  = message.text
+      .chatroom-show__form
+        = form_with(model: [@chatroom, @message], data: { remote: false }, id: "message_form") do |f|
+          = f.text_field :text, class: "chatroom-show__form--message"
+          = f.submit "送信", class: "chatroom-show__form--send", id: "new_message"

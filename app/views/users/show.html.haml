@@ -21,4 +21,4 @@
                   = link_to "ユーザ情報編集", edit_user_path(current_user)
               - else
                 .mypage__profile__links__link
-                  = link_to "メッセージを送る", "#"
+                  = link_to "メッセージを送る", room_judge_user_chatrooms_path(@user)
