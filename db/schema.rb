@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_083947) do
+ActiveRecord::Schema.define(version: 2019_12_21_063615) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -54,6 +54,22 @@ ActiveRecord::Schema.define(version: 2019_12_19_083947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studio_id"], name: "index_reserves_on_studio_id"
+  end
+
+  create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "user_reserve_id", null: false
+    t.string "title", null: false
+    t.text "explain", null: false
+    t.date "hold_date", null: false
+    t.integer "start_hour", null: false
+    t.integer "end_hour", null: false
+    t.integer "max_music", null: false
+    t.string "entry_fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+    t.index ["user_reserve_id"], name: "index_sessions_on_user_reserve_id"
   end
 
   create_table "studios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

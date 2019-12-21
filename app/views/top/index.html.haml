@@ -4,28 +4,29 @@
     .top-image-container__studio-name
       XXXXstudio
   .main-container
-    .studio-list
-      .studio-list__title.main-title
-        スタジオ一覧
-      %ul.studio-list__studios
-        - @studios.each do |studio|
-          %li.studio
-            = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), studio_path(studio)
-            .studio__name.sub-title
-              = studio.name
-            .studio__details.default-string
-              .studio__details__size
-                10畳
-              .studio__details__inst
-                %div
-                  %b GuitarAmp:
-                  = studio.guitar_amp
-                %div
-                  %b BassAmp:
-                  = studio.bass_amp
-                %div
-                  %b Drums:
-                  = studio.drums
-                %div
-                  %b Keybords:
-                  = studio.keybords
+    .inner-container
+      .studio-list
+        .studio-list__title.main-title
+          スタジオ一覧
+        %ul.studio-list__studios
+          - @studios.each do |studio|
+            %li.studio
+              = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), studio_path(studio)
+              .studio__name.sub-title
+                = studio.name
+              .studio__details.default-string
+                .studio__details__size
+                  10畳
+                .studio__details__inst
+                  %div
+                    %b GuitarAmp:
+                    = studio.guitar_amp
+                  %div
+                    %b BassAmp:
+                    = studio.bass_amp
+                  %div
+                    %b Drums:
+                    = studio.drums
+                  %div
+                    %b Keybords:
+                    = studio.keybords
