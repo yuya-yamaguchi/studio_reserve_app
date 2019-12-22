@@ -1,0 +1,25 @@
+.sessions-new{
+  &__title{
+    border-bottom: 2px solid #333333;
+  }
+  &__form{
+    padding: 40px 100px;
+    margin: 0 auto;
+    .session-hold-date__value{
+      .year{
+        border: 1px solid;
+        height: 40px;
+        width: 80px;
+        margin-right: 5px;
+        cursor: pointer;
+       }
+       .month,.day{
+        border: 1px solid;
+        height: 40px;
+        width: 60px;
+        margin: 0 5px ;
+        cursor: pointer;
+       }
+    }
+  }
+}

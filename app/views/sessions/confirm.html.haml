@@ -1,0 +1,39 @@
+.main-container
+  .inner-container
+    .sessions-confirm
+      .sessions-confirm__title
+        セッションを開く
+      .sessions-confirm__value
+        .session-name
+          .session-name__title
+            セッション名
+          .session-name__value
+            = session[:title]
+        .session-explain
+          .session-explain__title
+            説明
+          .session-explain__value
+            = session[:explain]
+        .session-studio
+          .session-studio__title
+            利用スタジオ
+          .session-studio__value
+            = session[:studio]
+        .session-hold-date
+          .session-hold-date__title
+            開催日時
+          .session-hold-date__value
+            = session[:date].strftime("%Y年%m月%d日")
+            = session[:start_hour] + "時 〜 "
+            = session[:end_hour] + "時"
+        .session-max-music
+          .session-max-music__title
+            最大曲数
+          .session-max-music__value
+            = session[:max_music] + "曲"
+        .session-entry-fee
+          .session-entry-fee__title
+            参加費
+          .session-entry-fee__value
+            = session[:entry_fee]
+        = link_to "登録する", sessions_path, method: :post

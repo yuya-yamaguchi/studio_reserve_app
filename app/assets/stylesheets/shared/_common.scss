@@ -1,13 +1,13 @@
 .main-container{
   margin: 0 auto;
-  // width: 1020px;
-  height: calc(100vh - 200px);
-  background: #cec9c9;
+  height: 100%;
+  min-height: calc(100vh - 200px);
+  background: #f7f1ec;
   padding: 100px 40px;
 }
 
 .inner-container{
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -21,4 +21,55 @@
 
 .default-string{
   @include string_set(16px, normal, #333333);
+}
+
+// テキストフィールド（デフォルト）
+.text-field-default{
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.text-field-short{
+  padding: 5px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.text-area-default{
+  padding: 5px;
+  min-width: 100%;
+  min-height: 200px;
+}
+
+.number-field-short{
+  padding: 5px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.select-box-short{
+  width: 60px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #333333;
+  z-index: 2;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.select-box-default{
+  width: 120px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #333333;
+  z-index: 2;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
