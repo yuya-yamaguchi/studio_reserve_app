@@ -73,3 +73,7 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.decoration-none{
+  @include link_design_none;
+}
