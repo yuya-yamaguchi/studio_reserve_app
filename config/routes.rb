@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-  resources :sessions, only: [:index, :new, :create] do
+  resources :sessions, only: [:index, :show, :new, :create] do
+    resources :entry_musics, only: [:create]
+    
     collection do
       post :confirm
     end

@@ -1,0 +1,51 @@
+.sessions-show{
+  &__title{
+
+  }
+  &__info{
+    display: flex;
+    justify-content: flex-start;
+    &__left{
+      
+    }
+    &__right{
+      display: block;
+      padding-left: 50px;
+
+    }
+  }
+  &__music{
+    &__form{
+      
+      .part-select{
+        width: 60px;
+        background: lightgrey;
+        text-align: center;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        
+        &:hover{
+          // background: lightseagreen;
+          opacity: 0.7;
+        }
+      }
+      table{
+      }
+      th{
+        // border-right: 1px solid;
+        text-align: center;
+      }
+      td{
+        input{
+          display: none;
+        }
+      }
+      .part-selected{
+        background: lightskyblue;
+        border: 1px solid lightseagreen;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

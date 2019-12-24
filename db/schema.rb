@@ -10,11 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_063615) do
+ActiveRecord::Schema.define(version: 2019_12_22_143052) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "entry_musics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "session_id", null: false
+    t.string "music_name", null: false
+    t.string "artist_name", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_entry_musics_on_session_id"
+    t.index ["user_id"], name: "index_entry_musics_on_user_id"
+  end
+
+  create_table "entry_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "entry_music_id", null: false
+    t.bigint "user_id"
+    t.integer "part_no", null: false
+    t.string "part_name", null: false
+    t.integer "apply_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_music_id"], name: "index_entry_parts_on_entry_music_id"
+    t.index ["user_id"], name: "index_entry_parts_on_user_id"
   end
 
   create_table "entry_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
