@@ -2,6 +2,7 @@ class Session < ApplicationRecord
 
   belongs_to :user
   belongs_to :user_reserve
+  has_many   :entry_musics
 
   def done_session(session, user_id, user_reserve_id)
     self.user_id          = user_id

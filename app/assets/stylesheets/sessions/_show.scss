@@ -48,4 +48,53 @@
       }
     }
   }
+  &__music-list{
+    margin-top: 20px;
+    &__title{
+      border-bottom: 2px solid #333333;
+    }
+    .session-musics{
+      margin-top: 20px;
+      &__header{
+        @include string_set(14px, bold, #333333);
+        td{
+          width: 80px;
+          border: 1px solid;
+        }
+      }
+      &__value{
+        background: #FFFFFF;
+        @include string_set(12px, normal, #333333);
+        border: 1px solid;
+        word-break : break-all;
+        td{
+          height: 40px;
+          border: 1px solid #333333;
+          text-align: center;
+          .entry_need{
+            line-height: 40px;
+            background: lightsalmon;
+            text-decoration: none;
+            display: block;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          .entry_whichever{
+            line-height: 40px;
+            background: lightskyblue;
+            text-decoration: none;
+            display: block;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          .entry_needless{
+            line-height: 40px;
+            background: lightgray;
+          }
+        }
+      }
+    }
+  }
 }

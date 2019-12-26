@@ -141,5 +141,37 @@
       .sessions-show__music-list
         .sessions-show__music-list__title.sub-title
           セッション曲一覧
-        .sessions-show__music-list__musics
-          
+        %table.session-musics
+          %tr.session-musics__header
+            %td 曲名
+            %td アーティスト名
+            %td 成立状況
+            %td Vo
+            %td Cho
+            %td Gt1
+            %td Gt2
+            %td Ba
+            %td Dr
+            %td key
+          - @entry_musics.each do |entry_music|
+            %tr.session-musics__value
+              %td
+                = entry_music.music_name
+              %td
+                = entry_music.artist_name
+              %td
+                - if entry_music.status == 0
+                  未成立
+                - else
+                  成立
+                - entry_music.entry_parts.each do |entry_part|
+                  - if entry_part.apply_status == 1
+                    %td
+                      = link_to "エントリー", "#", class: "entry_need"
+                  - elsif entry_part.apply_status == 2
+                    %td
+                      = link_to "(エントリー)", "#", class: "entry_whichever"
+                  - elsif entry_part.apply_status == 3
+                    %td
+                      .entry_needless
+                        ー

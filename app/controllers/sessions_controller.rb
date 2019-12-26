@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   def show
     @session = Session.find(params[:id])
     @entry_music = EntryMusic.new
+    @entry_musics = @session.entry_musics
     @part_select = [{name: "○", value: 1}, {name: "△", value: 2}, {name: "ー", value: 3}]
   end
 

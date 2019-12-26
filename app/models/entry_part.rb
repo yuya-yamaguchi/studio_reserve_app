@@ -1,5 +1,7 @@
 class EntryPart < ApplicationRecord
 
+  belongs_to :entry_music
+
   def set_db(entry_music_id, param, cnt)
     
     self.entry_music_id = entry_music_id
