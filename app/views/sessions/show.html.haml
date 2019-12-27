@@ -20,8 +20,51 @@
               = @session.max_music
       .sessions-show__explain
         = @session.explain
-      .sessions-show__music#add_music
-        曲を追加する
+      .sessions-show__music-list
+        .sessions-show__music-list__title.sub-title
+          セッション曲一覧
+        %table.session-musics
+          %tr.session-musics__header
+            %td 曲名
+            %td アーティスト名
+            %td 成立状況
+            %td Vo
+            %td Cho
+            %td Gt1
+            %td Gt2
+            %td Ba
+            %td Dr
+            %td key
+          - @entry_musics.each do |entry_music|
+            %tr.session-musics__value
+              %td
+                = entry_music.music_name
+              %td
+                = entry_music.artist_name
+              %td
+                - if entry_music.status == 0
+                  未成立
+                - else
+                  成立
+                - entry_music.entry_parts.order('part_no').each do |entry_part|
+                  - if entry_part.user_id.present?
+                    %td
+                      = link_to entry_part.user.nickname, user_path(entry_part.user_id)
+                  - else
+                    - if entry_part.apply_status == 1
+                      %td
+                        = link_to "エントリー", session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_need part-entry-link"
+                    - elsif entry_part.apply_status == 2
+                      %td
+                        = link_to "(エントリー)", session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_whichever part-entry-link"
+                    - elsif entry_part.apply_status == 3
+                      %td
+                        .entry_needless
+                          ー
+      .sessions-show__music
+        %span.sessions-show__music__add#add_music
+          = icon 'fas', 'plus-circle'
+          曲を追加する
         .sessions-show__music__form
           = form_with(model: [@session, @entry_music], data: { remote: false }) do |f|
             曲名
@@ -138,40 +181,3 @@
                     .part-key.part-select#key-needless
                       ー
             = f.submit "登録する"
-      .sessions-show__music-list
-        .sessions-show__music-list__title.sub-title
-          セッション曲一覧
-        %table.session-musics
-          %tr.session-musics__header
-            %td 曲名
-            %td アーティスト名
-            %td 成立状況
-            %td Vo
-            %td Cho
-            %td Gt1
-            %td Gt2
-            %td Ba
-            %td Dr
-            %td key
-          - @entry_musics.each do |entry_music|
-            %tr.session-musics__value
-              %td
-                = entry_music.music_name
-              %td
-                = entry_music.artist_name
-              %td
-                - if entry_music.status == 0
-                  未成立
-                - else
-                  成立
-                - entry_music.entry_parts.each do |entry_part|
-                  - if entry_part.apply_status == 1
-                    %td
-                      = link_to "エントリー", "#", class: "entry_need"
-                  - elsif entry_part.apply_status == 2
-                    %td
-                      = link_to "(エントリー)", "#", class: "entry_whichever"
-                  - elsif entry_part.apply_status == 3
-                    %td
-                      .entry_needless
-                        ー

@@ -1,10 +1,14 @@
 $(function(){
+  
+  $('#add_music').on('click', function(e){
+    $(".sessions-show__music__form").slideDown('fast');
+  });
+
   function partSelect(select_part, select_this){
-    // 前回選択していたclassを削除
     $(select_part).removeClass('part-selected');
-    // 選択した評価にclassを設定
     $(select_this).addClass('part-selected');
   }
+
   $(document).on('click', '.part-vo', function(){
     var select_part = $(".part-vo");
     partSelect(select_part, this);
@@ -33,4 +37,32 @@ $(function(){
     var select_part = $(".part-key");
     partSelect(select_part, this);
   });
+
+  /* パートエントリー非同期 */
+  $('.part-entry-link').on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var selected = this;
+    var this_parent = $(selected).parent();
+    path = $(selected).attr('href');
+    $.ajax({
+      url: path,
+      type: "PATCH",
+      data: {},
+      dataType: 'json'
+    })
+    // 非同期通信成功時
+    .done(function(data){
+      selected.remove();
+      html = `<a href="/users/${data.user_id}">${data.user_name}</a>`
+      $(this_parent).append(html);
+    })
+    // 非同期通信失敗時
+    .fail(function(){
+      alert('通信に失敗しました');
+    })
+  });
+
+
+
 });

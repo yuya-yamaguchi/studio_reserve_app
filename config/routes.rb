@@ -28,8 +28,10 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:index, :show, :new, :create] do
-    resources :entry_musics, only: [:create]
-    
+    resources :entry_musics, only: [:create] do
+      resources :entry_parts, only: [:update]
+    end
+
     collection do
       post :confirm
     end

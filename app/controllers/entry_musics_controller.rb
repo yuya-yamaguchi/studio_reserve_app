@@ -3,7 +3,7 @@ class EntryMusicsController < ApplicationController
   def create
     entry_music = EntryMusic.new(entry_music_params)
     entry_music.save
-
+    
     entry_part_params_array = entry_part_params.to_h.to_a
     entry_part_params_array.each_with_index do |param, cnt|
       entry_part = EntryPart.new

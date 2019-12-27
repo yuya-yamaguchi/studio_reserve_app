@@ -1,6 +1,7 @@
 class EntryPart < ApplicationRecord
 
   belongs_to :entry_music
+  belongs_to :user, optional: true
 
   def set_db(entry_music_id, param, cnt)
     
