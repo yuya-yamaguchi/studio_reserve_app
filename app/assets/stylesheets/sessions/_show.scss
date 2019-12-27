@@ -60,6 +60,10 @@
             line-height: 40px;
             background: lightgray;
           }
+          .part-entry-cansel{
+            color: lightgray;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -80,14 +84,10 @@
         cursor: pointer;
         
         &:hover{
-          // background: lightseagreen;
           opacity: 0.7;
         }
       }
-      table{
-      }
       th{
-        // border-right: 1px solid;
         text-align: center;
       }
       td{

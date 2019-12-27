@@ -29,7 +29,11 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :show, :new, :create] do
     resources :entry_musics, only: [:create] do
-      resources :entry_parts, only: [:update]
+      resources :entry_parts, only: [:update] do
+        member do
+          get 'cancel'
+        end
+      end
     end
 
     collection do

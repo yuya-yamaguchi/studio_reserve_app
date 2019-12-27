@@ -50,6 +50,9 @@
                   - if entry_part.user_id.present?
                     %td
                       = link_to entry_part.user.nickname, user_path(entry_part.user_id)
+                      - if user_signed_in? && current_user&.id && entry_part.user_id
+                        = link_to cancel_session_entry_music_entry_part_path(@session, entry_music, entry_part) do
+                          = icon 'fas', 'times-circle', class: "part-entry-cansel"
                   - else
                     - if entry_part.apply_status == 1
                       %td

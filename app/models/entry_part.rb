@@ -18,4 +18,14 @@ class EntryPart < ApplicationRecord
       self.apply_status = 3
     end
   end
+
+  def entry_music_establish
+    part_cnt = entry_music.entry_parts.where(apply_status: 1)
+                                      .where(user_id: nil).count
+    if part_cnt == 0
+      entry_music.update(status: 1)
+    else
+      entry_music.update(status: 0)
+    end
+  end
 end

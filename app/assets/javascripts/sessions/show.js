@@ -38,7 +38,9 @@ $(function(){
     partSelect(select_part, this);
   });
 
+  /***********************/
   /* パートエントリー非同期 */
+  /***********************/
   $('.part-entry-link').on('click', function(e){
     e.preventDefault();
     e.stopPropagation();
@@ -54,7 +56,12 @@ $(function(){
     // 非同期通信成功時
     .done(function(data){
       selected.remove();
-      html = `<a href="/users/${data.user_id}">${data.user_name}</a>`
+      html = `<a href="/users/${data.user_id}">${data.user_name}</a>
+              <a href="/sessions/${data.session_id}/entry_musics/${data.entry_music_id}/entry_parts/${data.id}/cancel">
+                <i class="fas fa-times-circle part-entry-cansel">
+                </i>
+              </a>
+              `
       $(this_parent).append(html);
     })
     // 非同期通信失敗時
@@ -63,6 +70,40 @@ $(function(){
     })
   });
 
-
-
+  /*******************************/
+  /* パートエントリーキャンセル非同期 */
+  /*******************************/
+  $('.part-entry-cansel').on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var canceled = $(this).parent();
+    var romove_elements = $(this).parents('td').children();
+    var cancel_parent = $(canceled).parent();
+    path = $(canceled).attr('href');
+    $.ajax({
+      url: path,
+      type: "GET",
+      data: {},
+      dataType: 'json'
+    })
+    // 非同期通信成功時
+    .done(function(data){
+      romove_elements.remove();
+        
+      if (data.apply_status == 1){
+        class_name = "entry_need"
+        set_string = "エントリー"
+      }
+      else if(data.apply_status == 2){
+        class_name = "entry_whichever"
+        set_string = "(エントリー)"
+      }
+      html = `<a class="${class_name} part-entry-link" rel="nofollow" data-method="patch" href="/sessions/${data.session_id}/entry_musics/${data.entry_music_id}/entry_parts/${data.id}">${set_string}</a>`
+      $(cancel_parent).append(html);
+    })
+    // 非同期通信失敗時
+    .fail(function(){
+      alert('通信に失敗しました');
+    })
+  });
 });
