@@ -67,6 +67,21 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @session = Session.find(params[:id])
+    user_reserve_rm = @session.user_reserve
+    # スタジオ予約取消
+    # reserveのupdate(1 → 0)
+    reserves_rm = Reserve.new
+    reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
+    reserves_rm.update(reserve_flg: 0)
+    # user_reserveのdestroy
+    user_reserve_rm.destroy
+    if @session.destroy
+      redirect_to sessions_path
+    end
+  end
+
   private
   def set_session_params
     params.require(:session)

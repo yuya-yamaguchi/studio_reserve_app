@@ -7,7 +7,7 @@ class EntryMusicsController < ApplicationController
     entry_part_params_array = entry_part_params.to_h.to_a
     entry_part_params_array.each_with_index do |param, cnt|
       entry_part = EntryPart.new
-      entry_part.set_db(entry_music.id, param, cnt)
+      entry_part.set_db(params[:session_id], entry_music.id, param, cnt)
       entry_part.save
     end
 

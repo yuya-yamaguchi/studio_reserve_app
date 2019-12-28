@@ -39,6 +39,7 @@ class Reserve < ApplicationRecord
   end
 
   def reserve_cancel(user_reserve)
+    
     reserve = Reserve.where(studio_id: user_reserve.studio_id)
                      .where(date:      user_reserve.reserve_date)
                      .where('? <= hour and hour < ?', user_reserve.start_hour, user_reserve.end_hour)

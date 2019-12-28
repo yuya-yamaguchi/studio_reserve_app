@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_143052) do
+ActiveRecord::Schema.define(version: 2019_12_28_062334) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 2019_12_22_143052) do
     t.integer "apply_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "session_id"
     t.index ["entry_music_id"], name: "index_entry_parts_on_entry_music_id"
+    t.index ["session_id"], name: "index_entry_parts_on_session_id"
     t.index ["user_id"], name: "index_entry_parts_on_user_id"
   end
 
@@ -140,4 +142,5 @@ ActiveRecord::Schema.define(version: 2019_12_22_143052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entry_parts", "sessions"
 end

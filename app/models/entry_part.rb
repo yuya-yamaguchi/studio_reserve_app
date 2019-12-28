@@ -3,8 +3,9 @@ class EntryPart < ApplicationRecord
   belongs_to :entry_music
   belongs_to :user, optional: true
 
-  def set_db(entry_music_id, param, cnt)
+  def set_db(session_id, entry_music_id, param, cnt)
     
+    self.session_id     = session_id
     self.entry_music_id = entry_music_id
     self.part_no = cnt + 1
     self.part_name = param[0]
