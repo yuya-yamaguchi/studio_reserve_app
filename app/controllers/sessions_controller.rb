@@ -8,31 +8,59 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     @entry_music = EntryMusic.new
     @entry_musics = @session.entry_musics
-    @part_select = [{name: "○", value: 1}, {name: "△", value: 2}, {name: "ー", value: 3}]
   end
 
   def new
     @session = Session.new
   end
 
-  def confirm
+  def edit
+    @session = Session.find(params[:id])
+  end
+
+  def update
+    @session = Session.find(params[:id])
+    user_reserve_rm = @session.user_reserve
+    # スタジオ予約取消
+    # reserveのupdate(1 → 0)
+    reserves_rm = Reserve.new
+    reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
+    reserves_rm.update(reserve_flg: 0)
+    # user_reserveのdestroy
+    user_reserve_rm.destroy
+    
+    # スタジオ再予約
     session_params = set_session_params
-    set_session(session_params)
+    # reserveのupdate(0 → 1)
+    reserves_up = Reserve.new
+    reserves_up = reserves_up.reserve_registar(session_params)
+    reserves_up.update(reserve_flg: 1)
+    # user_reserveのcreate
+    user_reserve_up = UserReserve.new
+    user_reserve_up.done_reserve(session_params)
+    user_reserve_up.save
+
+    session_params = session_params.merge(user_reserve_id: user_reserve_up.id)
+    # sessionsのuser_reserve_idを変更
+    if @session.update(session_params)
+      redirect_to session_path(@session)
+    end
   end
 
   def create
-    studio = Studio.find(session[:studio_id])
+    session_params = set_session_params
+    
     # reserveの設定
-    reserves = Reserve.where(studio_id: session[:studio_id])
-                      .where(date: session[:date])
-                      .where('? <= hour and hour < ?', session[:start_hour], session[:end_hour])
+    reserves = Reserve.new
+    reserves = reserves.reserve_registar(set_session_params)
+
     # user_reserveの設定
-    user_reserve = UserReserve.new
-    user_reserve.done_reserve(session, current_user.id, studio.fee)
-    user_reserve.save
+    @user_reserve = UserReserve.new
+    @user_reserve.done_reserve(session_params)
+    @user_reserve.save
     # sessionの設定
-    session_m = Session.new
-    session_m.done_session(session, current_user.id, user_reserve.id)
+    session_params = session_params.merge(user_reserve_id: @user_reserve.id)
+    session_m = Session.new(session_params)
     
     if reserves.update(reserve_flg: 1) && session_m.save
       redirect_to sessions_path
@@ -52,21 +80,6 @@ class SessionsController < ApplicationController
                   :end_hour,
                   :max_music,
                   :entry_fee)
-  end
-
-  def set_session(session_params)
-    date = Date.new(
-      session_params[:"date(1i)"].to_i,
-      session_params[:"date(2i)"].to_i,
-      session_params[:"date(3i)"].to_i
-    )
-    session[:title]      = session_params[:title]
-    session[:explain]    = session_params[:explain]
-    session[:studio_id]  = session_params[:studio_id]
-    session[:date]       = date
-    session[:start_hour] = session_params[:start_hour]
-    session[:end_hour]   = session_params[:end_hour]
-    session[:max_music]  = session_params[:max_music]
-    session[:entry_fee]  = session_params[:entry_fee]
+           .merge(user_id: current_user.id)
   end
 end

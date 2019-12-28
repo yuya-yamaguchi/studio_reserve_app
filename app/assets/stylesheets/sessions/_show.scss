@@ -1,6 +1,41 @@
 .sessions-show{
   &__title{
-
+    border-bottom: 2px solid #333333;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      display: flex;
+      justify-content: flex-end;
+      height: 30px;
+      margin-top: 10px;
+      a{
+        @include string_set(14px, normal, #FFFFFF);
+        text-decoration: none;
+      }
+      .session-edit{
+        background: rgb(65, 176, 245);
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+      .session-destroy{
+        background: red;
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+        cursor: pointer;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+    }
   }
   &__info{
     display: flex;
@@ -11,8 +46,8 @@
     &__right{
       display: block;
       padding-left: 50px;
-
     }
+    
   }
   
   &__music-list{
@@ -102,26 +137,4 @@
       }
     }
   }
-}
-.modal{
-  display: none;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-.modal__bg{
-  background: rgba(0,0,0,0.8);
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-}
-.modal__content{
-  background: #fff;
-  left: 50%;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 60%;
 }
