@@ -66,3 +66,5 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
 gem 'jquery-rails'
+gem 'active_decorator'
+gem "font-awesome-sass"

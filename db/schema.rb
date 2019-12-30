@@ -10,11 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_083947) do
+ActiveRecord::Schema.define(version: 2019_12_28_062334) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "entry_musics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "session_id", null: false
+    t.string "music_name", null: false
+    t.string "artist_name", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_entry_musics_on_session_id"
+    t.index ["user_id"], name: "index_entry_musics_on_user_id"
+  end
+
+  create_table "entry_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "entry_music_id", null: false
+    t.bigint "user_id"
+    t.integer "part_no", null: false
+    t.string "part_name", null: false
+    t.integer "apply_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "session_id"
+    t.index ["entry_music_id"], name: "index_entry_parts_on_entry_music_id"
+    t.index ["session_id"], name: "index_entry_parts_on_session_id"
+    t.index ["user_id"], name: "index_entry_parts_on_user_id"
   end
 
   create_table "entry_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,6 +80,24 @@ ActiveRecord::Schema.define(version: 2019_12_19_083947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studio_id"], name: "index_reserves_on_studio_id"
+  end
+
+  create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
+    t.bigint "user_reserve_id", null: false
+    t.string "title", null: false
+    t.text "explain", null: false
+    t.date "date", null: false
+    t.integer "start_hour", null: false
+    t.integer "end_hour", null: false
+    t.integer "max_music", null: false
+    t.string "entry_fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_sessions_on_studio_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+    t.index ["user_reserve_id"], name: "index_sessions_on_user_reserve_id"
   end
 
   create_table "studios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,4 +142,5 @@ ActiveRecord::Schema.define(version: 2019_12_19_083947) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entry_parts", "sessions"
 end

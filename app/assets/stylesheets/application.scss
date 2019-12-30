@@ -1,4 +1,6 @@
 @import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "modules/mixin";
 @import "modules/variable";
@@ -16,6 +18,7 @@
 @import "users/edit";
 
 @import "user_reserve/index";
+@import "user_reserve/cancel_modal";
 
 @import "posts/index";
 @import "posts/show";
@@ -24,3 +27,9 @@
 
 @import "chatrooms/index";
 @import "chatrooms/show";
+
+@import "sessions/index";
+@import "sessions/show";
+@import "sessions/new";
+@import "sessions/confirm_modal";
+@import "sessions/cancel_modal";

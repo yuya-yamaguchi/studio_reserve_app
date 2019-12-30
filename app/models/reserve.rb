@@ -38,6 +38,26 @@ class Reserve < ApplicationRecord
     @end_range = [*@min_hour+1..@max_hour+1]
   end
 
+  def reserve_cancel(user_reserve)
+    
+    reserve = Reserve.where(studio_id: user_reserve.studio_id)
+                     .where(date:      user_reserve.reserve_date)
+                     .where('? <= hour and hour < ?', user_reserve.start_hour, user_reserve.end_hour)
+    return reserve
+  end
+
+  def reserve_registar(params)
+    hold_date = Date.new(
+      params["date(1i)"].to_i,
+      params["date(2i)"].to_i,
+      params["date(3i)"].to_i
+    )
+    reserves = Reserve.where(studio_id: params[:studio_id])
+                      .where(date: hold_date)
+                      .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
+    return reserves
+  end
+
   private
   def set_max_min_hour(studio_id)
     # 時間の最大値を取得

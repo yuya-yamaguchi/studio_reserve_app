@@ -1,0 +1,22 @@
+.main-container
+  .inner-container
+    .sessions-index
+      .sessions-index__title.main-title
+        開催セッション一覧
+      = link_to "セッションを開く", new_session_path
+      .sessions-index__list
+        - @sessions.each do |session|
+          = link_to session_path(session), class: "decoration-none" do
+            .session-container
+              .session-container__left
+                = image_tag("/user_img/#{session.user.img}", class: "session-container__left__img")
+                .session-container__left__main-info
+                  .session-container__left__main-info__title.sub-title
+                    = session.title
+                  .session-container__left__main-info__user-name
+                    主催者：
+                    = session.user.nickname
+              .session-container__right
+                .session-container__right__hold-date
+                  開催日：
+                  = session.hold_datetime

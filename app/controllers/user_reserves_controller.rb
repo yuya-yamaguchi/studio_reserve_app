@@ -7,9 +7,8 @@ class UserReservesController < ApplicationController
 
   def destroy
     user_reserve = UserReserve.find(params[:id])
-    reserve = Reserve.where(studio_id: user_reserve.studio_id)
-                     .where(date:      user_reserve.reserve_date)
-                     .where('? <= hour and hour < ?', user_reserve.start_hour, user_reserve.end_hour)
+    reserve = Reserve.new
+    reserve = reserve.reserve_cancel(user_reserve)
     if reserve.update(reserve_flg: 0) && user_reserve.destroy
       redirect_to user_reserves_path
     else

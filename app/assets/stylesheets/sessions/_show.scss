@@ -1,0 +1,140 @@
+.sessions-show{
+  &__title{
+    border-bottom: 2px solid #333333;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      display: flex;
+      justify-content: flex-end;
+      height: 30px;
+      margin-top: 10px;
+      a{
+        @include string_set(14px, normal, #FFFFFF);
+        text-decoration: none;
+      }
+      .session-edit{
+        background: rgb(65, 176, 245);
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+      .session-destroy{
+        background: red;
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+        cursor: pointer;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  &__info{
+    display: flex;
+    justify-content: flex-start;
+    &__left{
+      
+    }
+    &__right{
+      display: block;
+      padding-left: 50px;
+    }
+    
+  }
+  
+  &__music-list{
+    margin-top: 20px;
+    &__title{
+      border-bottom: 2px solid #333333;
+    }
+    .session-musics{
+      margin-top: 20px;
+      &__header{
+        @include string_set(14px, bold, #333333);
+        td{
+          width: 80px;
+          border: 1px solid;
+        }
+      }
+      &__value{
+        background: #FFFFFF;
+        @include string_set(12px, normal, #333333);
+        border: 1px solid;
+        word-break : break-all;
+        td{
+          height: 40px;
+          border: 1px solid #333333;
+          text-align: center;
+          .entry_need{
+            line-height: 40px;
+            background: lightsalmon;
+            text-decoration: none;
+            display: block;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          .entry_whichever{
+            line-height: 40px;
+            background: lightskyblue;
+            text-decoration: none;
+            display: block;
+            &:hover{
+              opacity: 0.8;
+            }
+          }
+          .entry_needless{
+            line-height: 40px;
+            background: lightgray;
+          }
+          .part-entry-cansel{
+            color: lightgray;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &__music{
+    margin-top: 30px;
+    &__add{
+      cursor: pointer;
+    }
+    &__form{
+      display: none;
+      .part-select{
+        width: 60px;
+        background: lightgrey;
+        text-align: center;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+      th{
+        text-align: center;
+      }
+      td{
+        input{
+          display: none;
+        }
+      }
+      .part-selected{
+        background: lightskyblue;
+        border: 1px solid lightseagreen;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

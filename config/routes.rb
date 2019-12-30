@@ -26,4 +26,18 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:show] do
     resources :messages, only: [:create]
   end
+
+  resources :sessions do
+    resources :entry_musics, only: [:create] do
+      resources :entry_parts, only: [:update] do
+        member do
+          get 'cancel'
+        end
+      end
+    end
+
+    collection do
+      post :confirm
+    end
+  end
 end
