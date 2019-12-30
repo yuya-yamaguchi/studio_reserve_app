@@ -9,9 +9,7 @@
             .reserve__form__datetime
               .reserve__form__datetime__title
                 日時：
-              = f.select :date, @one_week.map{|w| [w]},
-                  {selected: @reserve.date},
-                  {class: "reserve__form__datetime--date"}
+              != sprintf(f.date_select(:date, with_css_classes: "select-box-default", prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:Time.now.year + 1, selected: @reserve.date, date_separator:'%s'),'年','月')+'日'
               = f.select :start_hour, @reserve.start_hour_range(@studio.id).map{|h| [h]},
                   {selected: @reserve.hour},
                   {class: "reserve__form__datetime--time", id: "start_time"}

@@ -106,4 +106,38 @@ $(function(){
       alert('通信に失敗しました');
     })
   });
+
+  /*******************************/
+  /* セッション中止確認モーダル      */
+  /*******************************/
+  $('.session-destroy').on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    var cancel_main_msg = '.session-cancel-modal__msg__main';
+    var cancel_sub_msg = '.session-cancel-modal__msg__sub';
+    var cancel_move_btn = '.session-cancel-modal__btn__move';
+    var move_url = $(this).attr('href');
+    var main_msg = 'セッションを中止します';
+    var sub_msg = `中止した場合、現在ご登録したセッション内容は戻すことができません。<br>
+                   なお、予約したスタジオは自動キャンセルとなります。`;
+    var move_html = `<a href="${move_url}" data-method="delete">セッションを中止する</a>`;
+
+    // 前回設定内容のリセット
+    $(cancel_main_msg).empty();
+    $(cancel_sub_msg).empty();
+    $(cancel_move_btn).empty();
+    // メッセージ、ボタンの設定
+    $(cancel_main_msg).append(main_msg);
+    $(cancel_sub_msg).append(sub_msg);
+    $(cancel_move_btn).append(move_html);
+
+    $('.js-session-modal').fadeIn();
+    return false;
+  });
+
+  $('.session-cancel-back').on('click',function(){
+    $('.js-session-modal').fadeOut();
+    return false;
+  });
 });

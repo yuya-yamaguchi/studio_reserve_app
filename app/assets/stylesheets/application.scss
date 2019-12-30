@@ -18,6 +18,7 @@
 @import "users/edit";
 
 @import "user_reserve/index";
+@import "user_reserve/cancel_modal";
 
 @import "posts/index";
 @import "posts/show";
@@ -31,3 +32,4 @@
 @import "sessions/show";
 @import "sessions/new";
 @import "sessions/confirm_modal";
+@import "sessions/cancel_modal";

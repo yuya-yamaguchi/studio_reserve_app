@@ -2,7 +2,7 @@ class UserReserve < ApplicationRecord
 
   belongs_to :user
   belongs_to :studio
-  has_one    :sessions
+  has_one    :session
 
   def done_reserve(params)
     # 料金計算
