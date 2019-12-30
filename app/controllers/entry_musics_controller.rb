@@ -1,5 +1,9 @@
 class EntryMusicsController < ApplicationController
 
+  def show
+    @entry_music = EntryMusic.find(params[:id])
+  end
+
   def create
     entry_music = EntryMusic.new(entry_music_params)
     entry_music.save
