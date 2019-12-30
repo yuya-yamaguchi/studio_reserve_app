@@ -106,3 +106,33 @@
   position: absolute;
   width: 100%;
 }
+
+.edit-btn-default{
+    display: block;
+    width: 200px;
+    padding: 10px;
+    background: rgb(53, 169, 241);
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+    @include string_set(18px, normal, #FFFFFF);
+    &:hover{
+      opacity: 0.8;
+    }
+}
+
+.del-btn-default{
+  display: block;
+  width: 200px;
+  padding: 10px;
+  background: red;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+  @include string_set(18px, normal, #FFFFFF);
+  &:hover{
+    opacity: 0.8;
+  }
+}

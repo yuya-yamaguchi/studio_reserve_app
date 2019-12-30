@@ -1,5 +1,5 @@
 .sessions-new__form
-  = form_with(model: @session, data: { remote: false }) do |f|
+  = form_with(model: @session, url: @session_url, data: { remote: false }) do |f|
     .session-name
       .session-name__title
         セッション名

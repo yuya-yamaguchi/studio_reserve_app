@@ -12,10 +12,12 @@ class SessionsController < ApplicationController
 
   def new
     @session = Session.new
+    @session_url = "/sessions"
   end
 
   def edit
     @session = Session.find(params[:id])
+    @session_url = "/sessions/#{@session.id}"
   end
 
   def update
@@ -43,7 +45,7 @@ class SessionsController < ApplicationController
     session_params = session_params.merge(user_reserve_id: user_reserve_up.id)
     # sessionsのuser_reserve_idを変更
     if @session.update(session_params)
-      redirect_to session_path(@session)
+      redirect_to music_session_path(@session)
     end
   end
 
@@ -63,7 +65,7 @@ class SessionsController < ApplicationController
     session_m = Session.new(session_params)
     
     if reserves.update(reserve_flg: 1) && session_m.save
-      redirect_to sessions_path
+      redirect_to music_sessions_path
     end
   end
 
@@ -78,7 +80,7 @@ class SessionsController < ApplicationController
     # user_reserveのdestroy
     user_reserve_rm.destroy
     if @session.destroy
-      redirect_to sessions_path
+      redirect_to music_sessions_path
     end
   end
 

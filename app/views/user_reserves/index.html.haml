@@ -28,7 +28,7 @@
                 - if Date.today < user_reserve.reserve_date
                   .user-reserve__info__link
                     - if user_reserve.session.present?
-                      = link_to "取消", session_path(user_reserve.session), class: "cancel-button session-st-cancel"
+                      = link_to "取消", music_session_path(user_reserve.session), class: "cancel-button session-st-cancel"
                     - else
                       = link_to "取消", user_reserve_path(user_reserve), method: :delete, class: "cancel-button normal-st-cancel"
 = render partial: "cancel_modal"

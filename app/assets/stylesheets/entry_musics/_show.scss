@@ -1,0 +1,21 @@
+.entry_musics-show{
+
+  &__info{
+    width: 100%;
+    th{
+      width: 30%;
+      border: 1px solid;
+      padding: 5px;
+    }
+    td{
+      width: 70%;
+      border: 1px solid;
+      padding: 5px;
+    }
+  }
+  &__btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+}

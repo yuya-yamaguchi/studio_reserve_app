@@ -7,7 +7,7 @@
     %li.header-menus__menu
       = link_to "掲示板", posts_path
     %li.header-menus__menu
-      = link_to "セッション", sessions_path
+      = link_to "セッション", music_sessions_path
     - if user_signed_in?
       %li.header-menus__menu
         = link_to current_user.nickname, user_path(current_user)
@@ -15,7 +15,7 @@
           %li.sub-menus__menu
             = link_to "トップ", "#"
           %li.sub_menu__menu
-            = link_to "予約一覧", "#"
+            = link_to "スタジオ予約状況", "#"
           %li.sub_menu__menu
             = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
