@@ -21,4 +21,4 @@
       - if user_signed_in? && (current_user&.id == @entry_music.user_id)
         .entry_musics-show__btn
           = link_to "編集する", "#", class: "edit-btn-default"
-          = link_to "削除する", "#", class: "del-btn-default"
+          = link_to "削除する", music_session_entry_music_path, method: :delete, class: "del-btn-default"

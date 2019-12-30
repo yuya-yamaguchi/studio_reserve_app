@@ -18,6 +18,12 @@ class EntryMusicsController < ApplicationController
     redirect_to music_session_path(params[:music_session_id])
   end
 
+  def destroy
+    if EntryMusic.destroy(params[:id])
+      redirect_to music_session_path(params[:music_session_id])
+    end
+  end
+
   private
   def entry_music_params
     params.require(:entry_music).permit(:music_name, :artist_name).merge(user_id: current_user.id, session_id: params[:music_session_id])
