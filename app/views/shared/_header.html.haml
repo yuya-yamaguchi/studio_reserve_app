@@ -4,6 +4,10 @@
   %ul.header-menus
     %li.header-menus__menu
       = link_to "スタジオ", root_path
+      %ul.sub-menus
+        - @studio_lists.each do |studio_list|
+          %li.sub-menus__menu
+            = link_to studio_list.name, studio_path(studio_list.id)
     %li.header-menus__menu
       = link_to "掲示板", posts_path
     %li.header-menus__menu
@@ -13,10 +17,10 @@
         = link_to current_user.nickname, user_path(current_user)
         %ul.sub-menus
           %li.sub-menus__menu
-            = link_to "トップ", "#"
-          %li.sub_menu__menu
-            = link_to "スタジオ予約状況", "#"
-          %li.sub_menu__menu
+            = link_to "トップ", user_path(current_user)
+          %li.sub-menus__menu
+            = link_to "スタジオ予約状況", user_reserves_path
+          %li.sub-menus__menu
             = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
       %li.header-menus__menu
