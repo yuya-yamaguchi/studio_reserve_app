@@ -3,10 +3,10 @@
     .sessions-index
       .sessions-index__title.main-title
         開催セッション一覧
-      = link_to "セッションを開く", new_session_path
+      = link_to "セッションを開く", new_music_session_path
       .sessions-index__list
         - @sessions.each do |session|
-          = link_to session_path(session), class: "decoration-none" do
+          = link_to music_session_path(session), class: "decoration-none" do
             .session-container
               .session-container__left
                 = image_tag("/user_img/#{session.user.img}", class: "session-container__left__img")
