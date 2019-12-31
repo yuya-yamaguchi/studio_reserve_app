@@ -10,29 +10,29 @@
               %th
                 アカウント名
               %td
-                = f.text_field :nickname, value: @user.nickname
+                = f.text_field :nickname, value: @user.nickname, class: "text-field-default"
             %tr
               %th
                 プロフィール
               %td
-                = f.text_area :profile, value: @user.profile
+                = f.text_area :profile, value: @user.profile, class: "text-area-default"
             %tr
               %th
                 氏名
               %td
                 姓
-                = f.text_field :last_name, value: @user.last_name
+                = f.text_field :last_name, value: @user.last_name, class: "text-field-short"
                 名
-                = f.text_field :first_name, value: @user.first_name
+                = f.text_field :first_name, value: @user.first_name, class: "text-field-short"
             %tr
               %th
                 電話番号
               %td
-                = f.text_field :tel_no, value: @user.tel_no
+                = f.text_field :tel_no, value: @user.tel_no, class: "text-field-short"
             %tr
               %th
                 Email
               %td
-                = f.text_field :email, value: @user.email
+                = f.text_field :email, value: @user.email, class: "text-field-short"
           .user-edit__button
-            = f.submit "変更"
+            = f.submit "変更する", class: "edit-btn-default"

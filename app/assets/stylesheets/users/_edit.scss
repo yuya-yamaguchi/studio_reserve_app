@@ -4,7 +4,7 @@
       border-bottom: 2px solid #333333;
     }
     .user-edit__form{
-      width: 90%;
+      width: 80%;
       margin: 30px auto;
       tr{
         display: block;
@@ -19,8 +19,13 @@
         td{
           display: block;
           width: 70%;
+          margin-bottom: 5px;
         }
       }
+    }
+    &__button{
+      display: flex;
+      justify-content: space-around;
     }
   }
 }
