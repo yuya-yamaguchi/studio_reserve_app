@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root 'top#index'
 
   resources :studios, only: [:show] do
-    resources :reserves, only: [:show, :update]
+    resources :reserves, only: [:show, :update] do
+      collection do
+        get :duplicate
+      end
+    end
   end
 
   resources :users, only: [:show, :edit, :update] do

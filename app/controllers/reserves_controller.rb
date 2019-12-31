@@ -8,17 +8,24 @@ class ReservesController < ApplicationController
 
   def update
     
-    reserves = Reserve.where(studio_id: params[:studio_id])
-                      .where(date: params[:date])
-                      .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
+    reserves = Reserve.new
+    reserves = reserves.reserve_registar(set_reserve_params)
     
     user_reserve = UserReserve.new
     user_reserve.done_reserve(set_reserve_params)
-
+    
     if reserves.update(reserve_flg: 1) && user_reserve.save
-      redirect_to root_path
+      redirect_to user_reserves_path
     else
       render :new
+    end
+  end
+
+  def duplicate
+    reserves = Reserve.new
+    reserved_result = reserves.duplicate_chk(params)
+    respond_to do |format|
+      format.json {render json: { reserved_result: reserved_result }}
     end
   end
 
