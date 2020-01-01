@@ -14,7 +14,7 @@
             - if user_signed_in?
               - if current_user.id == @user.id
                 .mypage__profile__links__link
-                  = link_to "予約状況", user_reserves_path
+                  = link_to "スタジオ予約状況", user_reserves_path
                 .mypage__profile__links__link
                   = link_to "メッセージ一覧", user_chatrooms_path(current_user)
                 .mypage__profile__links__link

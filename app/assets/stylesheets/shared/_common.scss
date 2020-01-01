@@ -11,6 +11,11 @@
   margin: 0 auto;
 }
 
+.short-inner-container{
+  width: 40%;
+  margin: 0 auto;
+}
+
 .main-title{
   @include string_set(32px, bold, #333333);
 }
@@ -28,9 +33,11 @@
   padding: 5px;
   width: 100%;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .text-field-short{
+  display: block;
   padding: 5px;
   width: 200px;
   border-radius: 5px;
@@ -40,6 +47,7 @@
   padding: 5px;
   min-width: 100%;
   min-height: 200px;
+  box-sizing: border-box;
 }
 
 .number-field-short{

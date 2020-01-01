@@ -58,6 +58,24 @@ class Reserve < ApplicationRecord
     return reserves
   end
 
+  def duplicate_chk(params)
+    date = Date.new(
+      params[:date_y].to_i,
+      params[:date_m].to_i,
+      params[:date_d].to_i
+    )
+    reserved_cnt = Reserve.where(studio_id: params[:studio_id])
+                          .where(date: date)
+                          .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
+                          .where(reserve_flg: 1)
+                          .count
+    if (reserved_cnt > 0)
+      return true
+    else
+      return false
+    end
+  end
+
   private
   def set_max_min_hour(studio_id)
     # 時間の最大値を取得
