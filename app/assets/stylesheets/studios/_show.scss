@@ -48,6 +48,16 @@
       &--possible{
         background-color: white;
         text-align: center;
+        cursor: pointer;
+        a{
+          display: inline-block;
+          width: 100%;
+        }
+        &:hover{
+          background: lightseagreen;
+          transition: 0.3s;
+          opacity: 0.8;
+        }
       }
       &--impossible{
         background-color: lightgray;
@@ -66,6 +76,7 @@
     }
     td{
       border: solid 1px black;
+
     }
   }
 }
