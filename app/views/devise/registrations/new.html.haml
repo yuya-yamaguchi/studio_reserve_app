@@ -1,38 +1,34 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname, autofocus: true
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name, autofocus: true
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :tel_no
-    %br/
-    = f.text_field :tel_no, autofocus: true
-  = f.hidden_field :img, value: "images.jpeg"
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.main-container
+  .short-inner-container
+    %h2 新規会員登録
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        アカウント名
+        = f.text_field :nickname, autofocus: true, class: "text-field-default"
+      .field
+        名前（姓）
+        = f.text_field :last_name, autofocus: true, class: "text-field-default"
+      .field
+        名前（名）
+        = f.text_field :first_name, autofocus: true, class: "text-field-default"
+      .field
+        電話番号
+        = f.text_field :tel_no, autofocus: true, class: "text-field-default"
+      = f.hidden_field :img, value: "images.jpeg"
+      .field
+        Email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field-default"
+      .field
+        パスワード
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length}文字以上)
+        %br/
+        = f.password_field :password, autocomplete: "new-password", class: "text-field-short"
+      .field
+        パスワード(確認)
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field-short"
+      .actions
+        = f.submit "会員登録する", class: "edit-btn-default"
+    = render "devise/shared/links"

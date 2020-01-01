@@ -11,6 +11,11 @@
   margin: 0 auto;
 }
 
+.short-inner-container{
+  width: 40%;
+  margin: 0 auto;
+}
+
 .main-title{
   @include string_set(32px, bold, #333333);
 }
@@ -32,6 +37,7 @@
 }
 
 .text-field-short{
+  display: block;
   padding: 5px;
   width: 200px;
   border-radius: 5px;

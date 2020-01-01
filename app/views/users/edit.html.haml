@@ -10,20 +10,18 @@
               %th
                 アカウント名
               %td
-                = f.text_field :nickname, value: @user.nickname, class: "text-field-default"
+                = f.text_field :nickname, value: @user.nickname, placeholder: '20字以内', class: "text-field-default"
             %tr
               %th
                 プロフィール
               %td
-                = f.text_area :profile, value: @user.profile, class: "text-area-default"
+                = f.text_area :profile, value: @user.profile, placeholder: '1000字以内', class: "text-area-default"
             %tr
               %th
                 氏名
               %td
-                姓
-                = f.text_field :last_name, value: @user.last_name, class: "text-field-short"
-                名
-                = f.text_field :first_name, value: @user.first_name, class: "text-field-short"
+                = f.text_field :last_name, value: @user.last_name, placeholder: '性', class: "text-field-short"
+                = f.text_field :first_name, value: @user.first_name, placeholder: '名', class: "text-field-short"
             %tr
               %th
                 電話番号
