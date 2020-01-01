@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     @entry_music = EntryMusic.new
     @entry_musics = @session.entry_musics
+    @current_user_entry = @session.entry_sessions.find_by(user_id: current_user.id)
   end
 
   def new
