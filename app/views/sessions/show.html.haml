@@ -5,8 +5,14 @@
         .sessions-show__title__name.main-title
           = @session.title
         .sessions-show__title__operate
-          = link_to "セッション情報を変更", edit_music_session_path(@session), class: "session-edit"
-          = link_to "セッションを中止", music_session_path(@session), method: :delete, class: "session-destroy"
+          - if current_user&.id == @session.user_id
+            = link_to "セッション情報を変更", edit_music_session_path(@session), class: "oparate-btn-blue"
+            = link_to "セッションを中止", music_session_path(@session), method: :delete, class: "oparate-btn-red"
+          - else
+            - if @current_user_entry.present?
+              参加中
+            - else
+              = link_to "このセッションに参加", music_session_entry_sessions_path(@session), method: :post, class: "session-edit"
       .sessions-show__info
         .sessions-show__info__left
           .sessions-show__info__left__img
@@ -26,12 +32,18 @@
             %th
               主催者：
             %td
-              = @session.user.nickname
+              = link_to @session.user.nickname, user_path(@session.user_id)
+          %tr
+            %th
+              参加者：
+            %td
+              - @entry_sessions.each do |entry_session|
+                = link_to entry_session.user.nickname, user_path(entry_session.user_id)
       .sessions-show__explain
         = @session.explain
       .sessions-show__music-list
         .sessions-show__music-list__title.sub-title
-          セッション曲一覧
+          = "セッション曲一覧 (あと #{@session.another_music_cnt} 曲)"
         %table.session-musics
           %tr.session-musics__header
             %td 曲名

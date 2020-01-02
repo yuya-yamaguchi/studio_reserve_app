@@ -8,33 +8,6 @@
       justify-content: flex-end;
       height: 30px;
       margin-top: 10px;
-      a{
-        @include string_set(14px, normal, #FFFFFF);
-        text-decoration: none;
-      }
-      .session-edit{
-        background: rgb(65, 176, 245);
-        line-height: 30px;
-        padding: 0 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
-        &:hover{
-          opacity: 0.7;
-        }
-      }
-      .session-destroy{
-        background: red;
-        line-height: 30px;
-        padding: 0 10px;
-        border-radius: 5px;
-        margin-left: 10px;
-        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
-        cursor: pointer;
-        &:hover{
-          opacity: 0.7;
-        }
-      }
     }
   }
   &__info{

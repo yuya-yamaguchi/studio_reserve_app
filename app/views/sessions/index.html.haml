@@ -1,9 +1,11 @@
 .main-container
   .inner-container
     .sessions-index
-      .sessions-index__title.main-title
-        開催セッション一覧
-      = link_to "セッションを開く", new_music_session_path
+      .sessions-index__title
+        .sessions-index__title__name.main-title
+          開催セッション一覧
+        .sessions-index__title__operate
+          = link_to "セッションを開く", new_music_session_path, class: "oparate-btn-blue"
       .sessions-index__list
         - @sessions.each do |session|
           = link_to music_session_path(session), class: "decoration-none" do
