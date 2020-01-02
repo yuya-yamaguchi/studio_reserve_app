@@ -1,6 +1,11 @@
 .sessions-index{
   &__title{
     border-bottom: 2px solid #333333;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      margin-top: 10px;
+    }
   }
   &__list{
     padding: 30px;

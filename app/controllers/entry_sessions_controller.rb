@@ -9,5 +9,4 @@ class EntrySessionsController < ApplicationController
       render music_session_path(params[:music_session_id])
     end
   end
-  
 end

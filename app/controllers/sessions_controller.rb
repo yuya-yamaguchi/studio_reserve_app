@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     @entry_music = EntryMusic.new
     @entry_musics = @session.entry_musics
     @current_user_entry = @session.entry_sessions.find_by(user_id: current_user.id)
+    @entry_sessions = @session.entry_sessions
   end
 
   def new
@@ -65,7 +66,9 @@ class SessionsController < ApplicationController
     session_params = session_params.merge(user_reserve_id: @user_reserve.id)
     session_m = Session.new(session_params)
     
-    if reserves.update(reserve_flg: 1) && session_m.save
+    entry_sessions = session_m.entry_sessions.build(user_id: current_user.id)
+
+    if reserves.update(reserve_flg: 1) && session_m.save && entry_sessions.save
       redirect_to music_sessions_path
     end
   end
