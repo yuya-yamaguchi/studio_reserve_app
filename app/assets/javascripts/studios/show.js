@@ -87,7 +87,7 @@ $(function(){
     var start_hour = $('#start_hour').val();
     var end_hour   = $('#end_hour').val();
     var href = window.location.href;
-    var error = false;
+    
     $.ajax({
       url: href + "/reserves/duplicate",
       type: "GET",
