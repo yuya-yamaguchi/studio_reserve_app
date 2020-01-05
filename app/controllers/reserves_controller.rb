@@ -1,4 +1,6 @@
 class ReservesController < ApplicationController
+  
+  before_action :sign_in_check, only: [:update]
 
   def show
     @studio = Studio.find(params[:studio_id])
@@ -38,5 +40,11 @@ class ReservesController < ApplicationController
                   :start_hour,
                   :end_hour)
            .merge(user_id: current_user.id)
+  end
+
+  def sign_in_check
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end

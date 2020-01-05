@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order("updated_at DESC")
   end
 
   def new
@@ -17,15 +17,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    if Post.create(post_params)
+    @post = Post.new(post_params)
+    if @post.save
       redirect_to posts_path
     else
-      render :new
+      render action: :new
     end
   end
 
   def update
-    if Post.update(post_params)
+    post = Post.find(params[:id])
+    if post.update(post_params)
       redirect_to posts_path
     else
       render :edit

@@ -47,15 +47,17 @@ class Reserve < ApplicationRecord
   end
 
   def reserve_registar(params)
-    hold_date = Date.new(
-      params["date(1i)"].to_i,
-      params["date(2i)"].to_i,
-      params["date(3i)"].to_i
-    )
-    reserves = Reserve.where(studio_id: params[:studio_id])
-                      .where(date: hold_date)
-                      .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
-    return reserves
+    if params["date(1i)"].present? && params["date(2i)"].present? && params["date(3i)"].present?
+      hold_date = Date.new(
+        params["date(1i)"].to_i,
+        params["date(2i)"].to_i,
+        params["date(3i)"].to_i
+      )
+      reserves = Reserve.where(studio_id: params[:studio_id])
+                        .where(date: hold_date)
+                        .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
+      return reserves
+    end
   end
 
   def duplicate_chk(params)

@@ -176,3 +176,7 @@
     opacity: 0.8;
   }
 }
+
+.error-messages{
+  @include string_set(14px, normal, red);
+}

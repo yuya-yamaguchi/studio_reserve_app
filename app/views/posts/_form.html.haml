@@ -1,9 +1,15 @@
-= form_with(model: post, data: { remote: false }) do |f|
-  タイトル
-  %br
-  = f.text_field :title, value: post.title
-  %br
-  内容
-  %br
-  = f.text_area :contents, value: post.contents
-  = f.submit "変更"
+.posts-new__form
+  = form_with(model: post, data: { remote: false }) do |f|
+    .sub-title
+      タイトル
+    = f.text_field :title, value: post.title, class: "text-field-default"
+    - post.errors.full_messages_for(:title).each do |err_msg|
+      .error-messages
+        = err_msg
+    .sub-title
+      内容
+    = f.text_area :contents, value: post.contents, class: "text-area-default"
+    - post.errors.full_messages_for(:contents).each do |err_msg|
+      .error-messages
+        = err_msg
+    = f.submit "登録する", class: "edit-btn-default posts-new__form__btn"
