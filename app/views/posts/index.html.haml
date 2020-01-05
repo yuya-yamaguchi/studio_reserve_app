@@ -2,8 +2,10 @@
   .main-container
     .inner-container
       .board
-        .board__title.main-title
-          投稿一覧
-        = render @posts
-        .board__new-post
-          = link_to "新規投稿", new_post_path
+        .board__title
+          .board__title__name.main-title
+            投稿一覧
+          .board__title__operate
+            = link_to "新規投稿", new_post_path, class: "oparate-btn-blue"
+        .board__posts
+          = render @posts
