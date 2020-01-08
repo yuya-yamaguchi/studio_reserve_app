@@ -13,7 +13,10 @@
                 既読
           - else
             .message__other
-              = image_tag("/user_img/#{message.user.img}", class: "message__other__user-img")
+              - if message.user.img.present?
+                = image_tag(message.user.img.to_s, class: "message__other__user-img")
+              - else
+                = image_tag("default_user.png", class: "message__other__user-img")
               .message__other__text
                 = message.text
     .chatroom-show__form

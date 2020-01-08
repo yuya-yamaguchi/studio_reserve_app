@@ -8,6 +8,11 @@
           %table.user-edit__form
             %tr
               %th
+                プロフィール画像
+              %td
+                = f.file_field :img
+            %tr
+              %th
                 アカウント名
               %td
                 = f.text_field :nickname, value: @user.nickname, placeholder: '20字以内', class: "text-field-default"

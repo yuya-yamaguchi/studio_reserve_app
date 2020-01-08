@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_042117) do
+ActiveRecord::Schema.define(version: 2020_01_05_114912) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_042117) do
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "tel_no", default: "", null: false
-    t.string "img", default: "", null: false
+    t.string "img", default: ""
     t.text "profile"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

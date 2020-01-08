@@ -1,6 +1,9 @@
 .post-container
   .post-container__top
-    = image_tag("/user_img/#{post.user.img}", class: "post-container__top__userimg")
+    - if post.user.img.present?
+      = image_tag(post.user.img.to_s, class: "post-container__top__userimg")
+    - else
+      = image_tag("default_user.png", class: "post-container__top__userimg")
     .post-container__top__right__title
       = link_to post.title, post_path(post.id)
       .post-container__top__right__name
