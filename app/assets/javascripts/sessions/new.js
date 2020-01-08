@@ -1,5 +1,4 @@
 $(function(){
-  var chk = true;
 
   function paramsCheck(title, exlpain, studio, year, month, day, start_h, end_h, max_music, entry_fee){
     var check_result = true;

@@ -14,10 +14,8 @@
       = link_to "セッション", music_sessions_path
     - if user_signed_in?
       %li.header-menus__menu
-        = link_to current_user.nickname, user_path(current_user)
+        = link_to "マイページ", user_path(current_user)
         %ul.sub-menus
-          %li.sub-menus__menu
-            = link_to "マイページ", user_path(current_user)
           %li.sub-menus__menu
             = link_to "スタジオ予約状況", user_reserves_path
           %li.sub-menus__menu
