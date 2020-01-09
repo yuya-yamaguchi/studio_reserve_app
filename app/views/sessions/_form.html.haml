@@ -12,6 +12,16 @@
       .session-explain__value
         = f.text_area :explain, value: @session.explain, class: "text-area-default"
       .error-messages#explain-error
+    .session-img
+      .session-img__title
+        イメージ画像
+      .session-img__value
+        - if @session.img.present?
+          = image_tag(@session.img.url, class: "user-img-default")
+        = f.label :img, for: "session-image" do
+          = f.file_field :img, id: "session-image", class: "session-image"
+          .img-select-btn
+            画像を選択する
     .session-studio
       .session-studio__title
         利用スタジオ

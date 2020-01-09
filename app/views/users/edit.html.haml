@@ -8,6 +8,18 @@
           %table.user-edit__form
             %tr
               %th
+                プロフィール画像
+              %td.profile-img
+                - if @user.img.present?
+                  = image_tag(@user.img.url, class: "user-img-default")
+                - else
+                  = image_tag("default_user.png", class: "user-img-default")
+                = f.label :img, for: "set-image" do
+                  = f.file_field :img, id: "set-image", class: "set-image"
+                  .img-change-btn
+                    変更する
+            %tr
+              %th
                 アカウント名
               %td
                 = f.text_field :nickname, value: @user.nickname, placeholder: '20字以内', class: "text-field-default"

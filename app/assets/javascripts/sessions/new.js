@@ -1,5 +1,4 @@
 $(function(){
-  var chk = true;
 
   function paramsCheck(title, exlpain, studio, year, month, day, start_h, end_h, max_music, entry_fee){
     var check_result = true;
@@ -130,5 +129,23 @@ $(function(){
 
   $('#session-done').on('click',function(){
     $('form').submit();
+  });
+
+  $(document).on('change', '.session-image',function() {
+    var file = $(this).prop('files')[0];
+    var reader = new FileReader();
+    var img = $(`<img class="user-img-default">`);
+    
+    // ファイルが選択されている場合
+    if (file != undefined){
+      // 現在のプレビュー画像の削除
+      $('.user-img-default').remove();
+      // 画像プレビュー
+      reader.onload = function(e) {
+        img.attr('src', e.target.result)
+      }
+      reader.readAsDataURL(file);
+      $('.session-img__value').prepend(img);
+    }
   });
 });

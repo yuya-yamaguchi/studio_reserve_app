@@ -5,7 +5,10 @@
         .mypage__profile
           .mypage__profile__title.main-title
             プロフィール
-          = image_tag("/user_img/#{@user.img}", class: "mypage__profile__image")
+          - if @user.img.present?
+            = image_tag(@user.img.url, class: "mypage__profile__image")
+          - else
+            = image_tag("default_user.png", class: "mypage__profile__image")
           .mypage__profile__name
             = @user.nickname
           .mypage__profile__self-introduction

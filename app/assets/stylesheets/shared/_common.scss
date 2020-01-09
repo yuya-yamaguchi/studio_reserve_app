@@ -180,3 +180,9 @@
 .error-messages{
   @include string_set(14px, normal, red);
 }
+
+.user-img-default{
+  width: 150px;
+  border-radius: 3px;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+}
