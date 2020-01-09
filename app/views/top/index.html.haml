@@ -2,18 +2,54 @@
   .top-image-container
     = image_tag("/studio_img/top_image.png", class: "top-image")
     .top-image-container__studio-name
-      XXXXstudio
+      Studio XXXX
   .main-container
     .inner-container
+      .app-explain
+        .app-explain__title.main-title
+          このアプリでできること
+        %ul.app-explain__contents
+          %li.app-explain__contents__reserve
+            .sub-title
+              = icon 'far', 'clock'
+              スタジオのWeb予約
+            .function-explain
+              本日〜半年先まで、各スタジオの予約が可能です。
+              %br
+              スタジオ一覧から予約したいスタジオを選択し、表示されたページの予約表からご予約いただけます。
+              %br
+              前日までは予約の取消も可能です。
+          %li.app-explain__contents__session
+            .sub-title
+              = icon 'fas', 'music'
+              セッションの開催・参加
+            .function-explain
+              セッションの開催、参加を行うことができる機能です。
+              %br
+              セッションを開催する場合、セッション一覧ページの「セッションを開く」からご登録いただけます。
+              スタジオも同時に予約されます。
+              %br
+              セッションに参加する場合、セッション一覧ページから参加したいセッションを選択し、「参加する」から
+              セッションの参加登録が可能です。
+              参加後、セッション曲の追加や各パートのエントリーが可能です。
+          %li.app-explain__contents__board
+            .sub-title
+              = icon 'fas', 'clipboard-list'
+              掲示板
+            .function-explain
+              会員同士のコミュニケーションを目的とした掲示板です。
+              %br
+              バンドメンバーの募集や参加希望など、自由に書き込んでください。
       .studio-list
         .studio-list__title.main-title
           スタジオ一覧
         %ul.studio-list__studios
           - @studios.each do |studio|
             %li.studio
-              = link_to image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'}), studio_path(studio)
-              .studio__name.sub-title
-                = studio.name
-              .studio__details.default-string
-                .studio__details__size
-                  10畳
+              = link_to studio_path(studio) do
+                = image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'})
+                .studio__bg
+                  .studio__bg__name.sub-title
+                    = studio.name
+                  .studio__bg__size.default-string
+                    10畳

@@ -1,5 +1,6 @@
 class EntryPartsController < ApplicationController
   protect_from_forgery :except => [:update]
+
   def update
     entry_music = EntryMusic.find(params[:entry_music_id])
     entry_part = EntryPart.find(params[:id])

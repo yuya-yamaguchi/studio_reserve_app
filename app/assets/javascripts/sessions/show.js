@@ -46,6 +46,13 @@ $(function(){
     e.stopPropagation();
     var selected = this;
     var this_parent = $(selected).parent();
+
+    // セッションエントリー有無チェック
+    var current_user_entry = $('#current_user_entry').val();
+    if (current_user_entry == false){
+      alert('ログイン後（または会員登録後）、エントリーしてください');
+      return
+    }
     path = $(selected).attr('href');
     $.ajax({
       url: path,
