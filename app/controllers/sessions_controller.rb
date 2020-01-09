@@ -100,7 +100,8 @@ class SessionsController < ApplicationController
                   :start_hour,
                   :end_hour,
                   :max_music,
-                  :entry_fee)
+                  :entry_fee,
+                  :img)
            .merge(user_id: current_user.id)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_114912) do
+ActiveRecord::Schema.define(version: 2020_01_08_111536) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_114912) do
     t.string "entry_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img"
     t.index ["studio_id"], name: "index_sessions_on_studio_id"
     t.index ["user_id"], name: "index_sessions_on_user_id"
     t.index ["user_reserve_id"], name: "index_sessions_on_user_reserve_id"

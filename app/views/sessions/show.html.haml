@@ -16,7 +16,10 @@
       .sessions-show__info
         .sessions-show__info__left
           .sessions-show__info__left__img
-            = image_tag("/user_img/#{@session.user.img}")
+            - if @session.img.present?
+              = image_tag(@session.img.url, class: "session-container__left__img")
+            - else
+              = image_tag("/session_img/session_no_image.jpg", class: "session-container__left__img")
         %table.sessions-show__info__right
           %tr
             %th

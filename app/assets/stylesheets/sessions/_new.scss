@@ -5,21 +5,45 @@
   &__form{
     padding: 40px 100px;
     margin: 0 auto;
-    .session-hold-date__value{
-      .year{
-        border: 1px solid;
-        height: 40px;
-        width: 80px;
-        margin-right: 5px;
-        cursor: pointer;
-       }
-       .month,.day{
-        border: 1px solid;
-        height: 40px;
-        width: 60px;
-        margin: 0 5px ;
-        cursor: pointer;
-       }
+
+    .session-img{
+      &__value{
+        input{
+          display: none;
+        }
+        .img-select-btn{
+          display: block;
+          line-height: 30px;
+          padding: 0 10px;
+          border-radius: 5px;
+          margin-left: 10px;
+          cursor: pointer;
+          filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+          @include string_set(14px, normal, #333333);
+          text-decoration: none;
+          &:hover{
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+    .session-hold-date{
+      &__value{
+        .year{
+          border: 1px solid;
+          height: 40px;
+          width: 80px;
+          margin-right: 5px;
+          cursor: pointer;
+         }
+         .month,.day{
+          border: 1px solid;
+          height: 40px;
+          width: 60px;
+          margin: 0 5px ;
+          cursor: pointer;
+         }
+      }
     }
   }
 }

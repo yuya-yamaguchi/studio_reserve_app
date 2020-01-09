@@ -1,5 +1,7 @@
 class Session < ApplicationRecord
 
+  mount_uploader :img, ImageUploader
+
   belongs_to :user
   belongs_to :user_reserve
   has_many   :entry_sessions, dependent: :destroy

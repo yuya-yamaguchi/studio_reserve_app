@@ -11,7 +11,10 @@
           = link_to music_session_path(session), class: "decoration-none" do
             .session-container
               .session-container__left
-                = image_tag("/user_img/#{session.user.img}", class: "session-container__left__img")
+                - if session.img.present?
+                  = image_tag(session.img.url, class: "session-container__left__img")
+                - else
+                  = image_tag("/session_img/session_no_image.jpg", class: "session-container__left__img")
                 .session-container__left__main-info
                   .session-container__left__main-info__title.sub-title
                     = session.title
