@@ -4,7 +4,7 @@ class Reserve < ApplicationRecord
     # 本日から1週間分の日付を算出
     today = Date.today
     @one_week = []
-    7.times { |i| @one_week << today + i.day}
+    10.times { |i| @one_week << today + i.day}
     return @one_week
   end
 
@@ -19,7 +19,7 @@ class Reserve < ApplicationRecord
       # 各日の時間単位で配列に設定
       studio_reserves.push(Reserve.where(studio_id: studio_id)
                                   .where(hour: hour)
-                                  .where('date between ? and ?', @one_week[0], @one_week[6])
+                                  .where('date between ? and ?', @one_week[0], @one_week[9])
                                   .order(:date))
       hour += 1
     end

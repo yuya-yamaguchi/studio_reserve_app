@@ -32,16 +32,17 @@
       %table.reserve__table
         %tr.reserve__table--date
           %th
-            時間
           - @one_week.each do |day|
             %th
-              = day.strftime("%m月%d日")
+              = day.strftime("%-d日")
+              %br
+              = "(#{day_of_week(day.wday)})"
         - @studio_reserves.each do |studio_reserve|
           %tr
             - studio_reserve.each_with_index do |reserve, cnt|
               - if cnt == 0
                 %td.reserve__table--time
-                  = reserve.hour
+                  = reserve.hour.to_s + ":00"
               - if reserve.reserve_flg == 0
                 %td.reserve__table--possible
                   = link_to "", studio_reserve_path(params[:id], reserve.id)

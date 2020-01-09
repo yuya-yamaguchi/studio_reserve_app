@@ -36,14 +36,16 @@
     &__table{
       margin: 20px auto;
       width: 80%;
-      
+      color: white;
+      font-size: 14px;
       &--date{
-        background-color: mediumaquamarine;
+        background-color: #333333;
       }
       &--time{
-        background-color: mediumaquamarine;
+        background-color: #333333;
         text-align: right;
         padding-right: 5px;
+        width: 60px;
       }
       &--possible{
         background-color: white;
@@ -54,7 +56,7 @@
           width: 100%;
         }
         &:hover{
-          background: lightseagreen;
+          background: #333333;
           transition: 0.3s;
           opacity: 0.8;
         }
@@ -65,18 +67,20 @@
       }
     }
     table{
-      border: solid 1px black;
+      border: solid 1px #333333;
+      width: 80%;
     }
     th{
       text-align: center;
-      border: solid 1px black;
+      border: solid 1px #333333;
     }
     tr{
-      border: solid 1px black;
+      border: dotted 1px #333333;
     }
     td{
-      border: solid 1px black;
-
+      border: dotted 1px #333333;
+      width: 40px;
+      height: 30px;
     }
   }
 }
