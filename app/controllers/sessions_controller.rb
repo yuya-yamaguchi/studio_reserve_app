@@ -47,6 +47,7 @@ class SessionsController < ApplicationController
     session_params = session_params.merge(user_reserve_id: user_reserve_up.id)
     # sessionsのuser_reserve_idを変更
     if @session.update(session_params)
+      flash[:notice] = 'セッションの変更が完了しました'
       redirect_to music_session_path(@session)
     end
   end
@@ -69,7 +70,8 @@ class SessionsController < ApplicationController
     entry_sessions = session_m.entry_sessions.build(user_id: current_user.id)
 
     if reserves.update(reserve_flg: 1) && session_m.save && entry_sessions.save
-      redirect_to music_sessions_path
+      flash[:notice] = 'セッションの登録が完了しました'
+      redirect_to music_session_path(session_m)
     end
   end
 

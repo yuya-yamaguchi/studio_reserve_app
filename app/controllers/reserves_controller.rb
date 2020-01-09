@@ -17,6 +17,7 @@ class ReservesController < ApplicationController
     user_reserve.done_reserve(set_reserve_params)
     
     if reserves.update(reserve_flg: 1) && user_reserve.save
+      flash[:notice] = '予約が完了しました'
       redirect_to user_reserves_path
     else
       render :new

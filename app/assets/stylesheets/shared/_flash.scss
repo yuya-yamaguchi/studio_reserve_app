@@ -1,0 +1,18 @@
+.notification {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 50%;
+  z-index: 2;
+  opacity: 0.8;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  .notice {
+    background-color: #333333;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
