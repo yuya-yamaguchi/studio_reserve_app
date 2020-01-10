@@ -1,6 +1,6 @@
 .chatroom-show{
   padding-top: 70px;
-  width: 80%;
+  width: 1020px;
   margin: 0 auto;
   &__title{
     border-bottom: 2px solid;
@@ -59,9 +59,12 @@
     justify-content: space-between;
     padding: 20px;
     background: #888888;
+    box-sizing: border-box;
+    width: 1020px;
     &--message{
-      width: 687px;
+      width: 900px;
       input{
+        padding: 10px;
         display: block;
       }
     }
