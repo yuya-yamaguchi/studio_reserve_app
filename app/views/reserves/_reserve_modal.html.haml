@@ -21,9 +21,9 @@
             料金：
             %input#base_fee{type: "hidden", value: @studio.fee}/
           .reserve-modal__form__fee__value#payment_fee
-            = @studio.fee.to_s + " 円"
         .reserve-modal__form__btn
           .reserve-modal__form__btn__back.reserve-back
             戻る
           .reserve-modal__form__btn__move
             = f.submit "予約を確定する", id: "reserve-done"
+= hidden_field_tag :studio_fee, @studio.fee

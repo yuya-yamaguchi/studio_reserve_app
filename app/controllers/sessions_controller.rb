@@ -8,8 +8,12 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     @entry_music = EntryMusic.new
     @entry_musics = @session.entry_musics
-    @current_user_entry = @session.entry_sessions.find_by(user_id: current_user.id)
     @entry_sessions = @session.entry_sessions
+    if user_signed_in?
+      @current_user_entry = @session.entry_sessions.find_by(user_id: current_user.id)
+    else
+      @current_user_entry = false
+    end
   end
 
   def new
@@ -47,6 +51,7 @@ class SessionsController < ApplicationController
     session_params = session_params.merge(user_reserve_id: user_reserve_up.id)
     # sessionsのuser_reserve_idを変更
     if @session.update(session_params)
+      flash[:notice] = 'セッションの変更が完了しました'
       redirect_to music_session_path(@session)
     end
   end
@@ -69,7 +74,8 @@ class SessionsController < ApplicationController
     entry_sessions = session_m.entry_sessions.build(user_id: current_user.id)
 
     if reserves.update(reserve_flg: 1) && session_m.save && entry_sessions.save
-      redirect_to music_sessions_path
+      flash[:notice] = 'セッションの登録が完了しました'
+      redirect_to music_session_path(session_m)
     end
   end
 
@@ -84,6 +90,7 @@ class SessionsController < ApplicationController
     # user_reserveのdestroy
     user_reserve_rm.destroy
     if @session.destroy
+      flash[:notice] = 'セッションの取消が完了しました'
       redirect_to music_sessions_path
     end
   end

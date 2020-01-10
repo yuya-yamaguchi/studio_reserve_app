@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # studios初期データ
-Studio.create!(name: "studio A", fee: 1000)
-Studio.create!(name: "studio B", fee: 1000)
-Studio.create!(name: "studio C", fee: 1000)
-Studio.create!(name: "studio D", fee: 1000)
+Studio.create!(name: "studio A", fee: 1600, guitar_amp: "Marshall JCM900, Roland JC-120", bass_amp: "HARTKE HA2500", drums: "CANOPUS Japanese Sword", Keybords: "YAMAHA MO888", size: 24.0)
+Studio.create!(name: "studio B", fee: 1200, guitar_amp: "Marshall JCM900, Roland JC-120", bass_amp: "HARTKE HA2500", drums: "CANOPUS Japanese Sword", Keybords: "YAMAHA MO888", size: 12.0)
+Studio.create!(name: "studio C", fee: 1000, guitar_amp: "Marshall JCM900, Roland JC-120", bass_amp: "HARTKE HA2500", drums: "CANOPUS Japanese Sword", Keybords: "YAMAHA MO888", size: 10.0)
+Studio.create!(name: "studio D", fee: 800, guitar_amp: "Marshall JCM900, Roland JC-120", bass_amp: "HARTKE HA2500", drums: "CANOPUS Japanese Sword", Keybords: "YAMAHA MO888", size: 8.0)
 
 # reserves初期データ(起動日から1年分を作成)
 require 'date'

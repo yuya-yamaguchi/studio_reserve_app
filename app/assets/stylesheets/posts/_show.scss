@@ -1,11 +1,13 @@
-.posts-show-page{
-  .post-show{
-    &__title{
-      border-bottom: 2px solid #333333;
-    }
-    &__details{
-      width: 90%;
-      margin: 0 auto;
+.post-show{
+  &__title{
+    border-bottom: 2px solid #333333;
+  }
+  &__details{
+    width: 90%;
+    margin: 0 auto;
+    &__value{
+      @include string_set(16px, normal, #333333);
+      padding: 10px 40px;
     }
   }
 }

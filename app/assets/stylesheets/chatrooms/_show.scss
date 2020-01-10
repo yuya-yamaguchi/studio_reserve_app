@@ -1,18 +1,16 @@
 .chatroom-show{
-  // height: 100vh;
-  padding-top: 60px;
+  padding-top: 70px;
   width: 80%;
   margin: 0 auto;
   &__title{
     border-bottom: 2px solid;
-    background: lightskyblue;
   }
   &__messages{
     overflow: scroll;
-    background: lightgreen;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 190px);
     padding: 20px;
     box-sizing: border-box;
+    background: #888888;
     .message{
       width: 100%;
       height: 70px;
@@ -60,9 +58,9 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: lightsteelblue;
+    background: #888888;
     &--message{
-      width: 802px;
+      width: 687px;
       input{
         display: block;
       }

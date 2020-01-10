@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_111536) do
+ActiveRecord::Schema.define(version: 2020_01_10_001340) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_01_08_111536) do
     t.string "keybords"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "size"
+    t.text "explain"
   end
 
   create_table "user_reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

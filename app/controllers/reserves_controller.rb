@@ -17,6 +17,7 @@ class ReservesController < ApplicationController
     user_reserve.done_reserve(set_reserve_params)
     
     if reserves.update(reserve_flg: 1) && user_reserve.save
+      flash[:notice] = '予約が完了しました'
       redirect_to user_reserves_path
     else
       render :new
@@ -44,6 +45,7 @@ class ReservesController < ApplicationController
 
   def sign_in_check
     unless user_signed_in?
+      flash[:notice] = 'ログイン後（または会員登録）、予約してください'
       redirect_to new_user_session_path
     end
   end
