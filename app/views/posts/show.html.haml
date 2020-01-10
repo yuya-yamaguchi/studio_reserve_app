@@ -1,19 +1,19 @@
-.posts-show-page
-  .main-container
-    .inner-container
-      .post-show
-        .post-show__title.main-title
-          投稿の内容
-        .post-show__details
-          .post-show__details__name
-            投稿者：
-            = @post.user.nickname
-          .post-show__details__title
-            タイトル
-            %br
-            = @post.title
-          .post-show__details__contents
-            内容
-            %br
-            = @post.contents
-          = link_to "編集", edit_post_path(@post.id)
+.main-container
+  .inner-container
+    .post-show
+      .post-show__title.main-title
+        投稿の内容
+      .post-show__details
+        .sub-title
+          投稿者
+        .post-show__details__value
+          = @post.user.nickname
+        .sub-title
+          タイトル
+        .post-show__details__value
+          = @post.title
+        .sub-title
+          内容
+        .post-show__details__value
+          = @post.contents
+        = link_to "編集", edit_post_path(@post.id), class: "edit-btn-default"
