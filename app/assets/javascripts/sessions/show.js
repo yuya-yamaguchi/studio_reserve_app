@@ -1,7 +1,7 @@
 $(function(){
   
   $('#add_music').on('click', function(e){
-    $(".sessions-show__music__form").slideDown('fast');
+    $(".add-music__form").slideDown('fast');
   });
 
   function partSelect(select_part, select_this){

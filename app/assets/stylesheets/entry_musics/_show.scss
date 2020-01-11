@@ -1,5 +1,7 @@
 .entry_musics-show{
-
+  &__title{
+    border-bottom: 2px solid;
+  }
   &__info{
     width: 100%;
     th{

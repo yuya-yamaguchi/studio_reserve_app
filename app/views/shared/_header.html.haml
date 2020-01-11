@@ -17,6 +17,11 @@
           = link_to "投稿する", new_post_path
     %li.header-menus__menu
       = link_to "セッション", music_sessions_path
+      %ul.sub-menus
+        %li.sub-menus__menu
+          = link_to "セッション一覧", music_sessions_path
+        %li.sub-menus__menu
+          = link_to "セッションを開く", new_music_session_path
     - if user_signed_in?
       %li.header-menus__menu
         = link_to "マイページ", user_path(current_user)

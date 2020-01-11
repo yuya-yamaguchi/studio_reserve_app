@@ -1,6 +1,8 @@
 .main-container
   .inner-container
     .entry_musics-show
+      .entry_musics-show__title.main-title
+        = @entry_music.session.title
       %table.entry_musics-show__info
         %tr
           %th 曲名
