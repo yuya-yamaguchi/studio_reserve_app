@@ -8,12 +8,12 @@
       = link_to post.title, post_path(post.id)
       .post-container__top__right__name
         = link_to post.user.nickname, user_path(post.user.id)
-  .post-container__contents
-    = post.contents
   .post-container__bottom
+    .post-container__bottom__contents
+      = post.contents_cut
     .post-container__bottom__date
       投稿日時：
-      = post.created_at.strftime("%m/%d %H:%M")
+      = post.created_at.strftime("%Y/%m/%d %H:%M")
       %br
       更新日時：
-      = post.updated_at.strftime("%m/%d %H:%M")
+      = post.updated_at.strftime("%Y/%m/%d %H:%M")

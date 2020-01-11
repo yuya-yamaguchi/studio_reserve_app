@@ -1,6 +1,14 @@
 .post-show{
   &__title{
     border-bottom: 2px solid #333333;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      display: flex;
+      justify-content: flex-end;
+      height: 30px;
+      margin-top: 10px;
+    }
   }
   &__details{
     width: 90%;
@@ -8,6 +16,8 @@
     &__value{
       @include string_set(16px, normal, #333333);
       padding: 10px 40px;
+      display: flex;
+      justify-content: flex-start;
     }
   }
 }

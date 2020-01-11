@@ -10,6 +10,11 @@
             = link_to studio_list.name, studio_path(studio_list.id)
     %li.header-menus__menu
       = link_to "掲示板", posts_path
+      %ul.sub-menus
+        %li.sub-menus__menu
+          = link_to "投稿一覧", posts_path
+        %li.sub-menus__menu
+          = link_to "投稿する", new_post_path
     %li.header-menus__menu
       = link_to "セッション", music_sessions_path
     - if user_signed_in?
