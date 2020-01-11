@@ -1,19 +1,20 @@
-.post-container
-  .post-container__top
-    - if post.user.img.present?
-      = image_tag(post.user.img.to_s, class: "post-container__top__userimg")
-    - else
-      = image_tag("default_user.png", class: "post-container__top__userimg")
-    .post-container__top__right__title
-      = link_to post.title, post_path(post.id)
-      .post-container__top__right__name
-        = link_to post.user.nickname, user_path(post.user.id)
-  .post-container__bottom
-    .post-container__bottom__contents
-      = post.contents_cut
-    .post-container__bottom__date
-      投稿日時：
-      = post.created_at.strftime("%Y/%m/%d %H:%M")
-      %br
-      更新日時：
-      = post.updated_at.strftime("%Y/%m/%d %H:%M")
+- posts.each do |post|
+  .post-container
+    .post-container__top
+      - if post.user.img.present?
+        = image_tag(post.user.img.to_s, class: "post-container__top__userimg")
+      - else
+        = image_tag("default_user.png", class: "post-container__top__userimg")
+      .post-container__top__right__title
+        = link_to post.title, post_path(post.id)
+        .post-container__top__right__name
+          = link_to post.user.nickname, user_path(post.user.id)
+    .post-container__bottom
+      .post-container__bottom__contents
+        = post.contents_cut
+      .post-container__bottom__date
+        投稿日時：
+        = post.created_at.strftime("%Y/%m/%d %H:%M")
+        %br
+        更新日時：
+        = post.updated_at.strftime("%Y/%m/%d %H:%M")

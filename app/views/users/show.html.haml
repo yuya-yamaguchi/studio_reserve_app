@@ -1,27 +1,44 @@
-.user-show-page
-  .main-container
-    .inner-container
-      .mypage
-        .mypage__profile
-          .mypage__profile__title.main-title
-            プロフィール
-          - if @user.img.present?
-            = image_tag(@user.img.url, class: "mypage__profile__image")
-          - else
-            = image_tag("default_user.png", class: "mypage__profile__image")
-          .mypage__profile__name
-            = @user.nickname
-          .mypage__profile__self-introduction
-            = @user.profile
-          .mypage__profile__links
-            - if user_signed_in?
-              - if current_user.id == @user.id
-                .mypage__profile__links__link
-                  = link_to "スタジオ予約状況", user_reserves_path
-                .mypage__profile__links__link
-                  = link_to "メッセージ一覧", user_chatrooms_path(current_user)
-                .mypage__profile__links__link
-                  = link_to "ユーザ情報編集", edit_user_path(current_user)
-              - else
-                .mypage__profile__links__link
-                  = link_to "メッセージを送る", room_judge_user_chatrooms_path(@user)
+.main-container
+  .inner-container
+    .mypage
+      .mypage__profile
+        .mypage__profile__title.main-title
+          プロフィール
+        - if @user.img.present?
+          = image_tag(@user.img.url, class: "mypage__profile__image")
+        - else
+          = image_tag("default_user.png", class: "mypage__profile__image")
+        .mypage__profile__name
+          = @user.nickname
+        .mypage__profile__self-introduction
+          = simple_format(@user.profile)
+        .mypage__profile__links
+          - if user_signed_in?
+            - if current_user.id == @user.id
+              .mypage__profile__links__link
+                = link_to "スタジオ予約状況", user_reserves_path
+              .mypage__profile__links__link
+                = link_to "メッセージ一覧", user_chatrooms_path(current_user)
+              .mypage__profile__links__link
+                = link_to "ユーザ情報編集", edit_user_path(current_user)
+            - else
+              .mypage__profile__links__link
+                = link_to "メッセージを送る", room_judge_user_chatrooms_path(@user)
+      - if current_user&.id == @user.id
+        .mypage__reserves
+          .mypage__reserves__title.main-title
+            スタジオ予約
+          = render partial: "user_reserves/user_reserves", locals: { user_reserves: @user_reserves }
+          = link_to  user_reserves_path, class: "mypage__reserves__more-reserves" do
+            すべての予約を見る
+            = icon 'fas', 'angle-right'
+      .mypage__sessions
+        .mypage__sessions__title.main-title
+          参加セッション
+        = render partial: "sessions/sessions", locals: { sessions: @sessions }
+      .mypage__posts
+        .mypage__posts__title.main-title
+          投稿した記事
+        = render partial: "posts/post", locals: { posts: @posts }
+        
+= render partial: "user_reserves/cancel_modal"
