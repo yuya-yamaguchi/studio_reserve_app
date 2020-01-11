@@ -8,9 +8,9 @@
   width: 50%;
   &__title{
     text-align: center;
-    background: rgb(247, 247, 172);
+    background: #333333;
     padding: 10px;
-    @include string_set(18px, bold, #333333);
+    @include string_set(18px, bold, #FFFFFF);
   }
   &__form{
     width: 80%;
@@ -61,7 +61,7 @@
       &__back{
         width: 200px;
         text-align: center;
-        background: lightseagreen;
+        background: #FFFFFF;
         color: #333333;
         padding: 5px 0;
         border-radius: 5px;
@@ -75,10 +75,10 @@
         input{
           display: block;
           text-decoration: none;
-          color: #333333;
+          color: #FFFFFF;
           width: 200px;
           text-align: center;
-          background: lightsalmon;
+          background: red;
           padding: 5px 0;
           border-radius: 5px;
           cursor: pointer;
