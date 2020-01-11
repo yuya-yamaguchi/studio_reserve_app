@@ -120,7 +120,7 @@ $(function(){
   /****************************************/
   function reservePossible(){
     $("#reserve-done").removeAttr("disabled");
-    $('.reserve-modal__form__btn__move input').css('background','lightsalmon');
+    $('.reserve-modal__form__btn__move input').css('background','red');
     $('.reserve-modal__form__btn__move input').css('cursor','pointer');
     $(".reserve-date-error-msg").empty();
   }

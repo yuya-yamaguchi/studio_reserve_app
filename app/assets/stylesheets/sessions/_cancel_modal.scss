@@ -8,7 +8,6 @@
   width: 50%;
   &__msg{
     text-align: center;
-    background: rgb(247, 247, 172);
     padding: 10px;
     &__main{
       @include string_set(18px, bold, #333333);
@@ -24,7 +23,7 @@
     &__back{
       width: 200px;
       text-align: center;
-      background: lightseagreen;
+      background: #FFFFFF;
       color: #333333;
       padding: 5px 0;
       border-radius: 5px;
@@ -38,10 +37,10 @@
       a{
         display: block;
         text-decoration: none;
-        color: #333333;
+        color: #FFFFFF;
         width: 200px;
         text-align: center;
-        background: lightsalmon;
+        background:  #333333;
         padding: 5px 0;
         border-radius: 5px;
         filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
