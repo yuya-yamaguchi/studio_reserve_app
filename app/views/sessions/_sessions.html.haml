@@ -1,0 +1,19 @@
+.session-list
+  - sessions.each do |session|
+    = link_to music_session_path(session), class: "decoration-none" do
+      .session-container
+        .session-container__left
+          - if session.img.present?
+            = image_tag(session.img.url, class: "session-container__left__img")
+          - else
+            = image_tag("/session_img/session_no_image.jpg", class: "session-container__left__img")
+          .session-container__left__main-info
+            .session-container__left__main-info__title.sub-title
+              = session.title
+            .session-container__left__main-info__user-name
+              主催者：
+              = session.user.nickname
+        .session-container__right
+          .session-container__right__hold-date
+            開催日：
+            = session.hold_datetime

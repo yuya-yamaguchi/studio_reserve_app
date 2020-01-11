@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     if @user.id == current_user&.id
       @user_reserves = @user.user_reserves.where('reserve_date >= ?', Date.today).order('reserve_date').order('start_hour').limit(3)
     end
+    # 参加セッション一覧の取得
+    @sessions = @user.sessions
     # 投稿一覧の取得
     @posts = @user.posts
   end

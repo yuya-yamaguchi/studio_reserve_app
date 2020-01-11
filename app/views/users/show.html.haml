@@ -11,7 +11,7 @@
         .mypage__profile__name
           = @user.nickname
         .mypage__profile__self-introduction
-          = @user.profile
+          = simple_format(@user.profile)
         .mypage__profile__links
           - if user_signed_in?
             - if current_user.id == @user.id
@@ -32,9 +32,13 @@
           = link_to  user_reserves_path, class: "mypage__reserves__more-reserves" do
             すべての予約を見る
             = icon 'fas', 'angle-right'
+      .mypage__sessions
+        .mypage__sessions__title.main-title
+          参加セッション
+        = render partial: "sessions/sessions", locals: { sessions: @sessions }
       .mypage__posts
         .mypage__posts__title.main-title
           投稿した記事
         = render partial: "posts/post", locals: { posts: @posts }
-
+        
 = render partial: "user_reserves/cancel_modal"
