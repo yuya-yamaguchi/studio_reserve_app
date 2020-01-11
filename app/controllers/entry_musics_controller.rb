@@ -6,12 +6,13 @@ class EntryMusicsController < ApplicationController
 
   def create
     entry_music = EntryMusic.new(entry_music_params)
+    entry_music.edit_youtube_url
     entry_music.save
     
     entry_part_params_array = entry_part_params.to_h.to_a
     entry_part_params_array.each_with_index do |param, cnt|
       entry_part = EntryPart.new
-      entry_part.set_db(params[:music_session_id], entry_music.id, param, cnt)
+      entry_part.set_default_part(params[:music_session_id], entry_music.id, param, cnt)
       entry_part.save
     end
 
@@ -26,7 +27,7 @@ class EntryMusicsController < ApplicationController
 
   private
   def entry_music_params
-    params.require(:entry_music).permit(:music_name, :artist_name).merge(user_id: current_user.id, session_id: params[:music_session_id])
+    params.require(:entry_music).permit(:music_name, :artist_name, :youtube_url).merge(user_id: current_user.id, session_id: params[:music_session_id])
   end
 
   def entry_part_params

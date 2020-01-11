@@ -20,6 +20,10 @@
           %th 成立状況
           %td
             = @entry_music.complete_status
+        %tr
+          %th 参考動画
+          %td
+            %iframe#player{frameborder: "0", height: "390", src: @entry_music.youtube_url_embed, type: "text/html", width: "640"}
       - if user_signed_in? && (current_user&.id == @entry_music.user_id)
         .entry_musics-show__btn
           = link_to "編集する", "#", class: "edit-btn-default"

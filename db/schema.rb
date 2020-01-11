@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_001340) do
+ActiveRecord::Schema.define(version: 2020_01_11_093550) do
 
   create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_01_10_001340) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "youtube_url"
+    t.text "youtube_url_embed"
     t.index ["session_id"], name: "index_entry_musics_on_session_id"
     t.index ["user_id"], name: "index_entry_musics_on_user_id"
   end
