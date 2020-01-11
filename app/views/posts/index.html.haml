@@ -8,4 +8,4 @@
           .board__title__operate
             = link_to "新規投稿", new_post_path, class: "oparate-btn-blue"
         .board__posts
-          = render @posts
+          = render partial: "post", locals: { posts: @posts }

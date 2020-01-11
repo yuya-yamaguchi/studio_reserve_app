@@ -32,4 +32,9 @@
           = link_to  user_reserves_path, class: "mypage__reserves__more-reserves" do
             すべての予約を見る
             = icon 'fas', 'angle-right'
+      .mypage__posts
+        .mypage__posts__title.main-title
+          投稿した記事
+        = render partial: "posts/post", locals: { posts: @posts }
+
 = render partial: "user_reserves/cancel_modal"

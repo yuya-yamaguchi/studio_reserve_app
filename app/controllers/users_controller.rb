@@ -3,9 +3,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # スタジオ予約状況の取得
     if @user.id == current_user&.id
       @user_reserves = @user.user_reserves.where('reserve_date >= ?', Date.today).order('reserve_date').order('start_hour').limit(3)
     end
+    # 投稿一覧の取得
+    @posts = @user.posts
   end
 
   def edit
