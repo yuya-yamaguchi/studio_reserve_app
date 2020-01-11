@@ -1,19 +1,22 @@
 .main-container
   .inner-container
     .post-show
-      .post-show__title.main-title
-        投稿の内容
+      .post-show__title
+        .post-show__title__name.main-title
+          = @post.title
+        .post-show__title__operate
+          - if user_signed_in?
+            - if @post.user.id == current_user&.id
+              = link_to "編集する", edit_post_path(@post.id), class: "oparate-btn-blue"
+              = link_to "削除する", post_path(@post.id), method: :delete, class: "oparate-btn-red"
       .post-show__details
         .sub-title
           投稿者
         .post-show__details__value
-          = @post.user.nickname
-        .sub-title
-          タイトル
-        .post-show__details__value
-          = @post.title
+          = link_to @post.user.nickname, user_path(@post.user)
+          - if @post.user.id != current_user&.id
+            = link_to "メッセージを送る", room_judge_user_chatrooms_path(@post.user), class: "oparate-btn-blue"
         .sub-title
           内容
         .post-show__details__value
           = @post.contents
-        = link_to "編集", edit_post_path(@post.id), class: "edit-btn-default"

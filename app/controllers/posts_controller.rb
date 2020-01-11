@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all.order("updated_at DESC")
   end
@@ -9,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    
   end
 
   def edit
-    @post = Post.find(params[:id])
+    
   end
 
   def create
@@ -27,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    
     if @post.update(post_params)
       flash[:notice] = '編集が完了しました'
       redirect_to post_path(@post)
@@ -36,8 +38,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    
+    if @post.destroy
+      flash[:notice] = '投稿を削除しました'
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :contents).merge(user_id: current_user.id)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
