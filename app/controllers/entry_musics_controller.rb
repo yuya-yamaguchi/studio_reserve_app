@@ -1,6 +1,8 @@
 class EntryMusicsController < ApplicationController
 
   def show
+    @session = Session.find(params[:music_session_id])
+    @current_user_entry = @session.current_user_entry_judge(current_user)
     @entry_music = EntryMusic.find(params[:id])
   end
 

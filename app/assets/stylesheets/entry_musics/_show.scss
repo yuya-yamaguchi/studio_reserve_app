@@ -1,17 +1,27 @@
 .entry_musics-show{
-  &__title{
+  &__sub-title{
+    width: 90%;
     border-bottom: 2px solid;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      display: flex;
+      justify-content: flex-end;
+      height: 30px;
+    }
   }
   &__info{
-    width: 100%;
+    width: 90%;
+    margin: 20px auto;
     th{
       width: 30%;
-      border: 1px solid;
+      border-bottom: 1px solid;
       padding: 5px;
     }
     td{
       width: 70%;
-      border: 1px solid;
+      border-bottom: 1px solid;
       padding: 5px;
     }
   }

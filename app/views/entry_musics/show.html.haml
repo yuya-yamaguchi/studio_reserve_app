@@ -1,8 +1,13 @@
 .main-container
   .inner-container
     .entry_musics-show
-      .entry_musics-show__title.main-title
-        = @entry_music.session.title
+      = render partial: "sessions/title", locals: { session: @session, current_user_entry: @current_user_entry }
+      .entry_musics-show__sub-title
+        .entry_musics-show__sub-title__name.sub-title
+          = @entry_music.music_name
+        .entry_musics-show__sub-title__operate
+          = link_to "編集する", "#", class: "oparate-btn-blue"
+          = link_to "削除する", music_session_entry_music_path, method: :delete, class: "oparate-btn-red"
       %table.entry_musics-show__info
         %tr
           %th 曲名
@@ -17,14 +22,21 @@
           %td
             = @entry_music.user.nickname
         %tr
+          %th 追加日時
+          %td
+            = @entry_music.created_at.strftime("%Y/%m/%d %H:%M")
+        %tr
           %th 成立状況
           %td
             = @entry_music.complete_status
         %tr
-          %th 参考動画
+          %th 参考音源
           %td
-            %iframe#player{frameborder: "0", height: "390", src: @entry_music.youtube_url_embed, type: "text/html", width: "640"}
+            - if @entry_music.youtube_url.present?
+              = link_to @entry_music.youtube_url
+              %iframe{frameborder: "0", height: "390", src: @entry_music.youtube_url_embed, type: "text/html", width: "640"}
+            -else
+              ー
       - if user_signed_in? && (current_user&.id == @entry_music.user_id)
         .entry_musics-show__btn
-          = link_to "編集する", "#", class: "edit-btn-default"
-          = link_to "削除する", music_session_entry_music_path, method: :delete, class: "del-btn-default"
+          

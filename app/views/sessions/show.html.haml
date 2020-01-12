@@ -1,19 +1,7 @@
 .main-container
   .inner-container
     .sessions-show
-      .sessions-show__title
-        .sessions-show__title__name.main-title
-          = @session.title
-        .sessions-show__title__operate
-          - if current_user&.id == @session.user_id
-            = link_to "セッション情報を変更", edit_music_session_path(@session), class: "oparate-btn-blue"
-            = link_to "セッションを中止", music_session_path(@session), method: :delete, class: "oparate-btn-red"
-          - else
-            - if user_signed_in?
-              - if @current_user_entry.present?
-                参加中
-              - else
-                = link_to "このセッションに参加", music_session_entry_sessions_path(@session), method: :post, class: "session-edit"
+      = render partial: "title", locals: { session: @session, current_user_entry: @current_user_entry }
       .sessions-show__info
         .sessions-show__info__left
           .sessions-show__info__left__img
