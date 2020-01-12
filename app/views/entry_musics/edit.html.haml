@@ -1,0 +1,54 @@
+.main-container
+  .inner-container
+    .entry_musics-show
+      = render partial: "sessions/title", locals: { session: @session, current_user_entry: @current_user_entry }
+      .entry_musics-show__sub-title
+        .entry_musics-show__sub-title__name.sub-title
+          = @entry_music.music_name
+        .entry_musics-show__sub-title__operate
+          = link_to "編集をやめる", music_session_entry_music_path(@session, @entry_music), class: "oparate-btn-red"
+      = form_with(model: [@session, @entry_music], url: music_session_entry_music_path(@session, @entry_music), data: { remote: false }) do |f|
+        %table.entry_musics-show__info
+          %tr
+            %th 曲名
+            %td
+              = f.text_field :music_name, value: @entry_music.music_name, class: "text-field-short"
+              - @entry_music.errors.full_messages_for(:music_name).each do |err_msg|
+                .error-messages
+                  = err_msg
+          %tr
+            %th アーティスト名
+            %td
+              = f.text_field :artist_name, value: @entry_music.artist_name, class: "text-field-short"
+              - @entry_music.errors.full_messages_for(:artist_name).each do |err_msg|
+                .error-messages
+                  = err_msg
+          %tr
+            %th 必須パート
+            %td
+              - @entry_parts.each do |entry_part|
+                - if entry_part.apply_status == 1
+                  = entry_part.part_name
+          %tr
+            %th 任意パート
+            %td
+              - @entry_parts.each do |entry_part|
+                - if entry_part.apply_status == 2
+                  = entry_part.part_name
+          %tr
+            %th 追加者
+            %td
+              = @entry_music.user.nickname
+          %tr
+            %th 追加日時
+            %td
+              = @entry_music.created_at.strftime("%Y/%m/%d %H:%M")
+          %tr
+            %th 成立状況
+            %td
+              = @entry_music.complete_status
+          %tr
+            %th 参考音源
+            %td
+              = f.text_field :youtube_url, value: @entry_music.youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
+        = f.submit "変更する", class: "edit-btn-default entry_musics-show__btn"

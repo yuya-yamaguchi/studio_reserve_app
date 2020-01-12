@@ -4,6 +4,9 @@ ja:
       post:
         title:         タイトル
         contents:      内容
+      entry_music:
+        music_name:    曲名
+        artist_name:   アーティスト名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

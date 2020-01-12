@@ -1,3 +1,4 @@
+// entry_musics/show,edit 共用
 .entry_musics-show{
   &__sub-title{
     width: 90%;
@@ -15,19 +16,18 @@
     width: 90%;
     margin: 20px auto;
     th{
-      width: 30%;
+      width: 24%;
+      height: 40px;
       border-bottom: 1px solid;
       padding: 5px;
     }
     td{
-      width: 70%;
+      width: 76%;
       border-bottom: 1px solid;
       padding: 5px;
     }
   }
   &__btn{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    margin: 20px auto;
   }
 }

@@ -6,7 +6,7 @@
         .entry_musics-show__sub-title__name.sub-title
           = @entry_music.music_name
         .entry_musics-show__sub-title__operate
-          = link_to "編集する", "#", class: "oparate-btn-blue"
+          = link_to "編集する", edit_music_session_entry_music_path, class: "oparate-btn-blue"
           = link_to "削除する", music_session_entry_music_path, method: :delete, class: "oparate-btn-red"
       %table.entry_musics-show__info
         %tr
@@ -16,7 +16,19 @@
         %tr
           %th アーティスト名
           %td
-            = @entry_music. artist_name
+            = @entry_music.artist_name
+        %tr
+          %th 必須パート
+          %td
+            - @entry_parts.each do |entry_part|
+              - if entry_part.apply_status == 1
+                = entry_part.part_name
+        %tr
+          %th 任意パート
+          %td
+            - @entry_parts.each do |entry_part|
+              - if entry_part.apply_status == 2
+                = entry_part.part_name
         %tr
           %th 追加者
           %td
@@ -37,6 +49,3 @@
               %iframe{frameborder: "0", height: "390", src: @entry_music.youtube_url_embed, type: "text/html", width: "640"}
             -else
               ー
-      - if user_signed_in? && (current_user&.id == @entry_music.user_id)
-        .entry_musics-show__btn
-          

@@ -6,8 +6,10 @@
     = form_with(model: [@session, @entry_music], url: music_session_entry_musics_path(@session), data: { remote: false }) do |f|
       曲名
       = f.text_field :music_name, class: "text-field-short"
+      .error-messages#music_name-error
       アーティスト名
       = f.text_field :artist_name, class: "text-field-short"
+      .error-messages#artist_name-error
       参考音源（Youtube）
       = f.text_field :youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
       %table
@@ -119,4 +121,4 @@
             = f.label :key_needless do
               .part-key.part-select#key-needless
                 ー
-      = f.submit "登録する"
+      = f.submit "追加する", id: "add-music-btn"

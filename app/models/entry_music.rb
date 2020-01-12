@@ -4,6 +4,9 @@ class EntryMusic < ApplicationRecord
   has_many   :entry_parts, dependent: :destroy
   belongs_to :user
 
+  validates :music_name, presence: true
+  validates :artist_name, presence: true
+
   def edit_youtube_url
     edit_url = nil
 
