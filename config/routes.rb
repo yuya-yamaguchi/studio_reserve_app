@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :sessions, as: :music_sessions do
     resources :entry_sessions, only: [:create, :destroy]
 
-    resources :entry_musics, only: [:create, :show, :destroy] do
+    resources :entry_musics, only: [:create, :show, :edit, :update, :destroy] do
       resources :entry_parts, only: [:update] do
         member do
           get 'cancel'

@@ -1,21 +1,33 @@
+// entry_musics/show,edit 共用
 .entry_musics-show{
-
+  &__sub-title{
+    width: 90%;
+    border-bottom: 2px solid;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    &__operate{
+      display: flex;
+      justify-content: flex-end;
+      height: 30px;
+    }
+  }
   &__info{
-    width: 100%;
+    width: 90%;
+    margin: 20px auto;
     th{
-      width: 30%;
-      border: 1px solid;
+      width: 24%;
+      height: 40px;
+      border-bottom: 1px solid;
       padding: 5px;
     }
     td{
-      width: 70%;
-      border: 1px solid;
+      width: 76%;
+      border-bottom: 1px solid;
       padding: 5px;
     }
   }
   &__btn{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    margin: 20px auto;
   }
 }

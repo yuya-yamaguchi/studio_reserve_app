@@ -1,15 +1,4 @@
 .sessions-show{
-  &__title{
-    border-bottom: 2px solid #333333;
-    display: flex;
-    justify-content: space-between;
-    &__operate{
-      display: flex;
-      justify-content: flex-end;
-      height: 30px;
-      margin-top: 10px;
-    }
-  }
   &__info{
     display: flex;
     justify-content: flex-start;
@@ -29,7 +18,6 @@
       border-bottom: 2px solid #333333;
     }
     .session-musics{
-      margin-top: 20px;
       &__header{
         @include string_set(14px, bold, #333333);
         td{
@@ -73,40 +61,6 @@
             cursor: pointer;
           }
         }
-      }
-    }
-  }
-  &__music{
-    margin-top: 30px;
-    &__add{
-      cursor: pointer;
-    }
-    &__form{
-      display: none;
-      .part-select{
-        width: 60px;
-        background: lightgrey;
-        text-align: center;
-        border-radius: 20px;
-        margin: 5px;
-        cursor: pointer;
-        
-        &:hover{
-          opacity: 0.7;
-        }
-      }
-      th{
-        text-align: center;
-      }
-      td{
-        input{
-          display: none;
-        }
-      }
-      .part-selected{
-        background: lightskyblue;
-        border: 1px solid lightseagreen;
-        box-sizing: border-box;
       }
     }
   }

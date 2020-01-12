@@ -9,11 +9,7 @@ class SessionsController < ApplicationController
     @entry_music = EntryMusic.new
     @entry_musics = @session.entry_musics
     @entry_sessions = @session.entry_sessions
-    if user_signed_in?
-      @current_user_entry = @session.entry_sessions.find_by(user_id: current_user.id)
-    else
-      @current_user_entry = false
-    end
+    @current_user_entry = @session.current_user_entry_judge(current_user)
   end
 
   def new
