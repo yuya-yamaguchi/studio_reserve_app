@@ -23,13 +23,24 @@
         %li.sub-menus__menu
           = link_to "セッションを開く", new_music_session_path
     - if user_signed_in?
-      %li.header-menus__menu
+      %li.header-menus__menu.unread-mark
         = link_to "マイページ", user_path(current_user)
+        - if @unread_message_cnt + @unread_notice_cnt > 0
+          .unread-mark__cnt
+            = @unread_message_cnt + @unread_notice_cnt
         %ul.sub-menus
           %li.sub-menus__menu
             = link_to "スタジオ予約状況", user_reserves_path
-          %li.sub-menus__menu
+          %li.sub-menus__menu.unread-mark
+            = link_to "メッセージ", user_chatrooms_path(current_user)
+            - if @unread_message_cnt > 0
+              .unread-mark__cnt
+                = @unread_message_cnt
+          %li.sub-menus__menu.unread-mark
             = link_to "お知らせ", notice_users_path
+            - if @unread_notice_cnt > 0
+              .unread-mark__cnt
+                = @unread_notice_cnt
           %li.sub-menus__menu
             = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
