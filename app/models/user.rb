@@ -17,4 +17,5 @@ class User < ApplicationRecord
   has_many :entry_sessions
   has_many :sessions, through: :entry_sessions
   has_many :entry_parts
+  has_many :notices
 end

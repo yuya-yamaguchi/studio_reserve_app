@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     
     collection do
       get :reserve
+      get :notice
     end
   end
 

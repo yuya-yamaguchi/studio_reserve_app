@@ -83,6 +83,13 @@ class SessionsController < ApplicationController
     reserves_rm = Reserve.new
     reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
     reserves_rm.update(reserve_flg: 0)
+
+    # セッション参加者にお知らせを作成
+    @session.users.each do |entry_user|
+      notice = Notice.new
+      notice.session_cancel_notice(@session, entry_user.id)
+      notice.save
+    end
     # user_reserveのdestroy
     user_reserve_rm.destroy
     if @session.destroy

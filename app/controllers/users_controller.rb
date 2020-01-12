@@ -25,6 +25,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def notice
+    @notices = current_user.notices.order("created_at DESC")
+    @notices.each do |notice|
+      notice.before_read_flg = notice.read_flg
+    end
+
+    update_notices = current_user.notices.where(read_flg: 0)
+    update_notices.update(read_flg: 1)
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname, :first_name, :last_name, :tel_no, :email, :profile, :img)

@@ -1,0 +1,13 @@
+- notices.each do |notice|
+  .users-notice-list
+    - if notice.before_read_flg == 0
+      .users-notice-list__new-mark
+        新着
+    .users-notice-list__title
+      = notice.title
+    .users-notice-list__contents
+      = notice.contents
+    .users-notice-list__datetime
+      通知日時：
+      = notice.created_at.strftime("%Y/%m/%d %H:%M")
+    
