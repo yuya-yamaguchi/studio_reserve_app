@@ -24,12 +24,12 @@
           = link_to "セッションを開く", new_music_session_path
     - if user_signed_in?
       %li.header-menus__menu
-        = link_to "お知らせ", "#"
-      %li.header-menus__menu
         = link_to "マイページ", user_path(current_user)
         %ul.sub-menus
           %li.sub-menus__menu
             = link_to "スタジオ予約状況", user_reserves_path
+          %li.sub-menus__menu
+            = link_to "お知らせ", notice_users_path
           %li.sub-menus__menu
             = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
