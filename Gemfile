@@ -70,3 +70,4 @@ gem 'active_decorator'
 gem "font-awesome-sass"
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'activeadmin'

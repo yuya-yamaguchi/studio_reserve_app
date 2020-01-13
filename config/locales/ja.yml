@@ -1,5 +1,10 @@
 ja:
   activerecord:
+    models:
+      comment: コメント
+      name: 名前
+      user: ユーザ
+      studio: スタジオ
     attributes:
       post:
         title:         タイトル
@@ -7,6 +12,18 @@ ja:
       entry_music:
         music_name:    曲名
         artist_name:   アーティスト名
+      user:
+        first_name: 名
+        last_name: 姓
+        tel_no: 電話番号
+        email: メールアドレス
+      studio:
+        name: スタジオ名
+        fee: 料金（1時間）
+        guitar_amp: ギターアンプ
+        bass_amp: ベースアンプ
+        drums: ドラム
+        keybords: キーボード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

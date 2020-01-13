@@ -17,5 +17,8 @@ module App
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+
+    config.assets.paths << config.root.join("vendor/assets/javascripts")
+    config.assets.paths << config.root.join("vendor/assets/stylesheets")
   end
 end
