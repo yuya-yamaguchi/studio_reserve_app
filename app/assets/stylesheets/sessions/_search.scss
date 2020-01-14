@@ -1,31 +1,11 @@
-.search-box{
-  background: #FFFFFF;
-  padding: 20px;
-  box-sizing: border-box;
-  &__form{
-    &__title{
-      @include string_set(16px, bold, #333333);
-      margin-top: 20px;
-    }
-    &__hold-date{
-      .hold-date-calendar{
-        display: none;
-      }
-    }
-    &__btn{
-      display: block;
-      width: 100%;
-      background:  #333333;
-      line-height: 30px;
-      border-radius: 5px;
-      cursor: pointer;
-      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
-      @include string_set(14px, normal, #FFFFFF);
-      text-decoration: none;
-      margin-top: 20px;
-      &:hover{
-        opacity: 0.8;
-      }
+.session-search-form{
+  &__title{
+    @include string_set(16px, bold, #333333);
+    margin-top: 20px;
+  }
+  &__hold-date{
+    .hold-date-calendar{
+      display: none;
     }
   }
 }

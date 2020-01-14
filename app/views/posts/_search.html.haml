@@ -1,0 +1,10 @@
+.search-box
+  .sub-title
+    投稿検索
+  .post-search-form
+    = form_with(url: search_posts_path, local: true, method: :get, data: { remote: false }) do |f|
+      .post-search-form__title
+        キーワード
+      .post-search-form__keyword
+        = f.text_field :keyword, value: params[:keyword]
+      = f.submit "検索する", class: "side-search-btn"
