@@ -98,6 +98,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def search
+    @sessions = Session.search(search_params)
+    render template: 'sessions/index'
+  
+  end
+
   private
   def set_session_params
     params.require(:session)
@@ -113,5 +119,9 @@ class SessionsController < ApplicationController
                   :entry_fee,
                   :img)
            .merge(user_id: current_user.id)
+  end
+
+  def search_params
+    params.permit(:date_select, :start_date, :end_date, :keyword)
   end
 end

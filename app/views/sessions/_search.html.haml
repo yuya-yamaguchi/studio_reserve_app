@@ -1,0 +1,22 @@
+.search-box
+  .sub-title
+    セッション検索
+  .search-box__form
+    = form_with(url: search_music_sessions_path, local: true, method: :get, data: { remote: false }) do |f|
+      .search-box__form__title
+        開催日
+      .search-box__form__hold-date
+        = f.radio_button :date_select, 0, class: "hold-date_select", checked: true
+        すべての日付
+        = f.radio_button :date_select, 1, class: "hold-date_select", checked: ( true if params[:date_select] == "1" )
+        日付を指定
+        .hold-date-calendar
+          = f.date_field :start_date, value: ( params[:start_date] || Date.today )
+          から
+          = f.date_field :end_date, value: ( params[:end_date] || Date.today + 7)
+          まで
+      .search-box__form__title
+        キーワード
+      .search-box__form__keyword
+        = f.text_field :keyword, value: params[:keyword]
+      = f.submit "検索する", class: "search-box__form__btn"
