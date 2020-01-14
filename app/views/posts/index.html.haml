@@ -1,11 +1,12 @@
-.posts-index-page
-  .main-container
-    .inner-container
-      .board
-        .board__title
-          .board__title__name.main-title
-            投稿一覧
-          .board__title__operate
-            = link_to "新規投稿", new_post_path, class: "oparate-btn-blue"
-        .board__posts
-          = render partial: "post", locals: { posts: @posts }
+.main-container
+  .inner-container-wide
+    .posts-index
+      .posts-index__title
+        .posts-index__title__name.main-title
+          投稿一覧
+        .posts-index__title__operate
+          = link_to "新規投稿", new_post_path, class: "oparate-btn-blue"
+      .posts-index__posts
+        = render partial: "post", locals: { posts: @posts }
+    .side-bar
+      = render partial: "search"

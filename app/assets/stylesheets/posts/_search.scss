@@ -1,0 +1,6 @@
+.post-search-form{
+  &__title{
+    @include string_set(16px, bold, #333333);
+    margin-top: 20px;
+  }
+}

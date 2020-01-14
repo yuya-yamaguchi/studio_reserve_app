@@ -8,3 +8,12 @@
   text-decoration: none;
   color: #333333;
 }
+
+@mixin post_type_icon($background_color){
+  border-radius: 100%;
+  padding: 10px;
+  height: 15px;
+  line-height: 15px;
+  @include string_set(14px, bold, #FFFFFF);
+  background: $background_color;
+}

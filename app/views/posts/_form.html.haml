@@ -1,6 +1,9 @@
 .posts-new__form
   = form_with(model: post, data: { remote: false }) do |f|
     .sub-title
+      記事の種類
+    = f.select :post_type, options_for_select(Post.post_types.keys, selected: post.post_type), {}, {class: 'select-box-default'}
+    .sub-title
       タイトル
     = f.text_field :title, value: post.title, class: "text-field-default"
     - post.errors.full_messages_for(:title).each do |err_msg|

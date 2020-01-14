@@ -48,12 +48,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @posts = Post.search(search_params)
+    render template: 'posts/index'
+  end
+
   private
   def post_params
-    params.require(:post).permit(:title, :contents).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :contents, :post_type).merge(user_id: current_user.id)
   end
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:post_type, :keyword)
   end
 end

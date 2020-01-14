@@ -11,6 +11,10 @@
               = link_to "削除する", post_path(@post.id), method: :delete, class: "oparate-btn-red"
       .post-show__details
         .sub-title
+          投稿の種類
+        .post-show__details__value
+          = @post.post_type
+        .sub-title
           投稿者
         .post-show__details__value
           = link_to @post.user.nickname, user_path(@post.user)

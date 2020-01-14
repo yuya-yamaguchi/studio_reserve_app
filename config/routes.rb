@@ -27,7 +27,11 @@ Rails.application.routes.draw do
 
   resources :user_reserves, only: [:index, :destroy]
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :search
+    end
+  end
 
   resources :chatrooms, only: [:show] do
     resources :messages, only: [:create]
