@@ -10,4 +10,15 @@ module PostDecorator
     end
   end
 
+  def post_type_icon
+    case post_type
+    when "バンドメンバー募集"
+      return "募"
+    when "バンド参加希望"
+      return "参"
+    else
+      return "他"
+    end
+  end
+
 end
