@@ -4,6 +4,10 @@
   .post-search-form
     = form_with(url: search_posts_path, local: true, method: :get, data: { remote: false }) do |f|
       .post-search-form__title
+        記事の種類
+      .post-search-form__keyword
+        = f.select :post_type, options_for_select(Post.post_types.keys, selected: params[:post_type]), {}, {class: 'select-box-default'}
+      .post-search-form__title
         キーワード
       .post-search-form__keyword
         = f.text_field :keyword, value: params[:keyword]

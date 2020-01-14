@@ -63,6 +63,6 @@ class PostsController < ApplicationController
   end
 
   def search_params
-    params.permit(:keyword)
+    params.permit(:post_type, :keyword)
   end
 end
