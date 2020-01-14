@@ -1,30 +1,39 @@
 .mypage{
+  width: 70%;
   &__profile{
-    height: 250px;
     margin: 0 auto;
-    position: relative;
     &__title{
       border-bottom: 2px solid;
     }
-    &__image{
-      width: 150px;
-
+    &__top{
+      display: flex;
+      justify-content: space-between;
       margin: 30px;
-      float:left;
-      border-radius: 3px;
-      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
-    }
-    &__name{
-      font-size: 24px;
-      padding-top: 50px;
-      float:left;
+      &__left{
+        &__image{
+          width: 200px;
+          border-radius: 3px;
+          filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+        }
+        &__name{
+          margin-left: 20px;
+          font-size: 24px;
+        }
+    
+      }
+      &__right{
+        position: relative;
+        &__entry-part-cnt{
+          position: absolute;
+          left: calc(50% - 18px);
+          top: 95px;
+          @include string_set(50px, bold, #333333);
+        }
+      }
     }
     &__self-introduction{
-      width: 400px;
+      margin: 0 60px;
       font-size: 12px;
-      position: absolute;
-      top: 140px;
-      left: 250px;
     }
     &__links{
       position: absolute;

@@ -71,3 +71,5 @@ gem "font-awesome-sass"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'activeadmin'
+gem 'chart-js-rails'
+gem 'gon'
