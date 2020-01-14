@@ -1,5 +1,5 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .sessions-index
       .sessions-index__title
         .sessions-index__title__name.main-title
@@ -8,3 +8,5 @@
           - if user_signed_in?
             = link_to "セッションを開く", new_music_session_path, class: "oparate-btn-blue"
       = render partial: "sessions", locals: { sessions: @sessions }
+    .side-bar
+      = render partial: "search"

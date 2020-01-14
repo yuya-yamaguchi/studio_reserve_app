@@ -11,6 +11,17 @@
   margin: 0 auto;
 }
 
+.inner-container-wide{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.side-bar{
+  width: 25%;
+}
+
 .short-inner-container{
   width: 40%;
   margin: 0 auto;
