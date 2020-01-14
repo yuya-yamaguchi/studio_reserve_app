@@ -18,4 +18,14 @@ class User < ApplicationRecord
   has_many :sessions, through: :entry_sessions
   has_many :entry_parts
   has_many :notices
+
+  def entry_part_praph
+    praph_data = []
+    praph_data << self.entry_parts.where(part_no: 1).count
+    praph_data << self.entry_parts.where(part_no: 2).count
+    praph_data << self.entry_parts.where(part_no: [3, 4]).count
+    praph_data << self.entry_parts.where(part_no: 5).count
+    praph_data << self.entry_parts.where(part_no: 6).count
+    praph_data << self.entry_parts.where(part_no: 7).count
+  end
 end

@@ -10,12 +10,14 @@
               = image_tag(@user.img.url, class: "mypage__profile__top__left__image")
             - else
               = image_tag("default_user.png", class: "mypage__profile__top__left__image")
+            .mypage__profile__top__left__name
+              = @user.nickname
           .mypage__profile__top__right
+            .mypage__profile__top__right__entry-part-cnt
+              = @user.entry_parts.count
             %canvas(id="myChart" width="500" height="250")
             %script
               draw_graph();
-        .mypage__profile__name
-          = @user.nickname
         .mypage__profile__self-introduction
           = simple_format(@user.profile)
       - if current_user&.id == @user.id

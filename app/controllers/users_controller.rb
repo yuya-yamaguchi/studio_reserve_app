@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @sessions = @user.sessions
     # 投稿一覧の取得
     @posts = @user.posts
+    # エントリー数のグラフデータを取得
+    gon.data = @user.entry_part_praph
   end
 
   def edit

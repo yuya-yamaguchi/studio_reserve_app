@@ -15,14 +15,21 @@
           border-radius: 3px;
           filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
         }
+        &__name{
+          margin-left: 20px;
+          font-size: 24px;
+        }
+    
       }
       &__right{
-
+        position: relative;
+        &__entry-part-cnt{
+          position: absolute;
+          left: calc(50% - 18px);
+          top: 95px;
+          @include string_set(50px, bold, #333333);
+        }
       }
-    }
-    &__name{
-      margin: 0 30px;
-      font-size: 24px;
     }
     &__self-introduction{
       margin: 0 60px;
