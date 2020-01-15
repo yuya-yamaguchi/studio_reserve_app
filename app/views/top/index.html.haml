@@ -1,6 +1,20 @@
 .top-page
   .top-image-container
-    = image_tag("/studio_img/top_image.png", class: "top-image")
+    %ul.image-slider
+      %li
+        = image_tag("/studio_img/studio1.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio2.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio3.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio4.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio5.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio6.jpg", class: "top-image")
+      %li
+        = image_tag("/studio_img/studio7.jpg", class: "top-image")
     .top-image-container__studio-name
       Studio XXXX
   .main-container
@@ -47,7 +61,14 @@
           - @studios.each do |studio|
             %li.studio
               = link_to studio_path(studio) do
-                = image_tag("/studio_img/top_image.png", { border: '0', class: 'studio__image'})
+                - if studio.id == 1
+                  = image_tag("/studio_img/studio1.jpg", { border: '0', class: 'studio__image'})
+                - if studio.id == 2
+                  = image_tag("/studio_img/studio2.jpg", { border: '0', class: 'studio__image'})
+                - if studio.id == 3
+                  = image_tag("/studio_img/studio3.jpg", { border: '0', class: 'studio__image'})
+                - if studio.id == 4
+                  = image_tag("/studio_img/studio7.jpg", { border: '0', class: 'studio__image'})
                 .studio__bg
                   .studio__bg__name.sub-title
                     = studio.name
