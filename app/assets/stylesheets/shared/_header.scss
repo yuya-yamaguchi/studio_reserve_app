@@ -1,9 +1,8 @@
 .header{
-  opacity: 0.85;
+  opacity: 0.9;
   width: 100%;
   height: 70px;
-  background-color: white;
-  color: #333333;
+  background-color: $main_color;
   position: fixed;
   z-index: 99;
   &__title{
@@ -12,6 +11,7 @@
     float: left;
     a{
       @include link_design_none;
+      color: $base_color;
     }
   }
   .header-menus{
@@ -27,27 +27,28 @@
         text-align: center;
         font-size: 12px;
         @include link_design_none;
+        color: $base_color;
       }
       .sub-menus{
         display: none;
         position: absolute;
-        background-color: #333333;
+        background-color: $main_color;
         &__menu{
-          border-top: 1px solid #FFFFFF;
+          border-top: 1px solid $base_color;
         }
         &__menu:hover{
           background-color: #888888;
           transition: 0.2s;
           a{
-            color: #FFFFFF;
+            color: $base_color;
           }
         }
       }
       &:hover{
-        background-color: #333333;
+        background-color: #888888;
         transition: 0.2s;
         a{
-          color: #FFFFFF;
+          color: $base_color;
         }
       }
     }
@@ -59,7 +60,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #FFFFFF;
+    color: $base_color;
     width: 25px;
     line-height: 25px;
     text-align: center;

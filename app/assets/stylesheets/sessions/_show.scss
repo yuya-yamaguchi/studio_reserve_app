@@ -1,25 +1,56 @@
 .sessions-show{
+  width: 70%;
   &__info{
     display: flex;
     justify-content: flex-start;
+    padding: 20px;
+    width: 100%;
     &__left{
-      
+      width: 40%;
+      &__img{
+        box-shadow: 2px 2px 4px gray;
+        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+      }
     }
     &__right{
       display: block;
-      padding-left: 50px;
+      margin-left: 30px;
+      width: 50%;
+      tr{
+        height: 30px;
+        th{
+          width: 100px;
+        }
+        td{
+          width: 70%;
+          .entry_user{
+            background: #333333;
+            @include link_design_none;
+            @include string_set(12px, bold, #FFFFFF);
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-right: 5px;
+          }
+        }
+      }
     }
-    
   }
-  
+  &__explain{
+    padding: 0 50px;
+  }
   &__music-list{
+    padding: 20px;
     margin-top: 20px;
     &__title{
       border-bottom: 2px solid #333333;
     }
     .session-musics{
+      margin: 30px 0;
+      box-shadow: 2px 2px 4px gray;
       &__header{
-        @include string_set(14px, bold, #333333);
+        @include string_set(14px, bold, #FFFFFF);
+        background: #333333;
+        text-align: center;
         td{
           width: 80px;
           border: 1px solid;
@@ -61,6 +92,11 @@
             cursor: pointer;
           }
         }
+      }
+      &__none{
+        text-align: center;
+        @include string_set(30px, bold, #888888);
+        margin: 30px;
       }
     }
   }

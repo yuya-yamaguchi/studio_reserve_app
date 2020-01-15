@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save && @chatroom.update(updated_at: DateTime.now)
       respond_to do |format|
         format.html { redirect_to chatroom_path(@chatroom) }
-        format.json { render json: { text: @message.text }}
+        format.json { render json: { text: @message.text, created_at: @message.created_at.strftime("%Y/%m/%d %H:%M") }}
       end
     end
   end

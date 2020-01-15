@@ -39,6 +39,7 @@ class Session < ApplicationRecord
     results = Session.all
     results = results.where('date between ? and ?', search_params[:start_date], search_params[:end_date]) if search_params[:date_select] == "1"
     results = results.where('title LIKE(?)', "%#{search_params[:keyword]}%")
+    results = results.order('date DESC')
     results
   end
 

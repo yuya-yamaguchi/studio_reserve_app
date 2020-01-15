@@ -5,29 +5,38 @@
   }
   &__form{
     display: none;
-    .part-select{
-      width: 60px;
-      background: lightgrey;
-      text-align: center;
-      border-radius: 20px;
-      margin: 5px;
-      cursor: pointer;
-      &:hover{
-        opacity: 0.7;
+    padding: 10px;
+    box-shadow: 2px 2px 4px gray;
+    &__container{
+      display: flex;
+      justify-content: space-between;
+      .part-select{
+        width: 60px;
+        background: lightgrey;
+        text-align: center;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+      th{
+        text-align: center;
+      }
+      td{
+        input{
+          display: none;
+        }
+      }
+      .part-selected{
+        background: #FFFFFF;
+        border: 1px solid lightseagreen;
+        box-sizing: border-box;
       }
     }
-    th{
-      text-align: center;
-    }
-    td{
-      input{
-        display: none;
-      }
-    }
-    .part-selected{
-      background: #FFFFFF;
-      border: 1px solid lightseagreen;
-      box-sizing: border-box;
+    #add-music-btn{
+      margin: 0 auto;
     }
   }
 }

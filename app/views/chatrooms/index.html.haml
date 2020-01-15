@@ -1,5 +1,5 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .chatrooms
       .chatrooms__title
         メッセージ一覧
@@ -19,3 +19,5 @@
                   .right-content__notice
                     - if chatroom.unread_cnt > 0
                       = chatroom.unread_cnt
+    .side-bar
+      = render partial: "users/side_menu"

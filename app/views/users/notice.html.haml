@@ -1,8 +1,10 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .users-notice
       .users-notice__title.main-title
         お知らせ
       .users-notice__info
         .users-notice__info__lists
           = render partial: "notice_list", locals: { notices: @notices }
+    .side-bar
+      = render partial: "users/side_menu"

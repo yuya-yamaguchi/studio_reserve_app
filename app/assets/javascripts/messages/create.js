@@ -6,7 +6,14 @@ $(function(){
   function buildMessage(message){
     var html = `<div class="message">
                   <div class="message__own">
-                  ${message.text}
+                    <div class="message__own__top">
+                      <div class="message__own__top__text">
+                        ${message.text}
+                      </div>
+                    </div>
+                    <div class="message__own__bottom">
+                      ${message.created_at}
+                    </div>
                   </div>
                 </div>
                `

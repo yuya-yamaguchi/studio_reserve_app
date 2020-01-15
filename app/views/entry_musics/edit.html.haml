@@ -1,7 +1,8 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .entry_musics-show
       = render partial: "sessions/title", locals: { session: @session, current_user_entry: @current_user_entry }
+      = link_to "「#{@session.title}」トップへ戻る", music_session_path(@session)
       .entry_musics-show__sub-title
         .entry_musics-show__sub-title__name.sub-title
           = @entry_music.music_name
@@ -52,3 +53,5 @@
             %td
               = f.text_field :youtube_url, value: @entry_music.youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
         = f.submit "変更する", class: "edit-btn-default entry_musics-show__btn"
+    .side-bar
+      = render partial: "sessions/search"

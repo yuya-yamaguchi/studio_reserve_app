@@ -13,6 +13,7 @@
   border-radius: 100%;
   padding: 10px;
   height: 15px;
+  width: 15px;
   line-height: 15px;
   @include string_set(14px, bold, #FFFFFF);
   background: $background_color;

@@ -1,9 +1,11 @@
 .chatrooms{
+  width: 70%;
   &__title{
     font-size: 30px;
     border-bottom: 2px solid;
   }
-  &__messages {
+  &__messages{
+    padding: 20px;
     .message {
       height: 80px;
       padding-bottom: 19px;

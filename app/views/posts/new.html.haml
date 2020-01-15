@@ -1,8 +1,7 @@
-.posts-new-page
-  .main-container
-    .inner-container
-      .posts-new
-        .posts-new__title.main-title
-          新規投稿 
-        .posts-new__form
-          = render partial: 'form', locals: { post: @post }
+.main-container
+  .inner-container
+    .posts-new
+      .posts-new__title.main-title
+        新規投稿 
+      .posts-new__form
+        = render partial: 'form', locals: { post: @post }

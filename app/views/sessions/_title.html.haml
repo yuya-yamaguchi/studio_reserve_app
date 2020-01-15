@@ -4,10 +4,10 @@
   .sessions-title__operate
     - if current_user&.id == session.user_id
       = link_to "セッション情報を変更", edit_music_session_path(session), class: "oparate-btn-blue"
-      = link_to "セッションを中止", music_session_path(session), method: :delete, class: "oparate-btn-red"
+      = link_to "セッションを中止", music_session_path(session), method: :delete, class: "oparate-btn-red session-destroy"
     - else
       - if user_signed_in?
         - if @current_user_entry.present?
-          参加中
+          = link_to "参加をやめる", music_session_entry_session_path(session), method: :delete, class: "oparate-btn-red session-entry-cancel"
         - else
-          = link_to "このセッションに参加", music_session_entry_sessions_path(session), method: :post, class: "session-edit"
+          = link_to "このセッションに参加", music_session_entry_sessions_path(session), method: :post, class: "oparate-btn-blue"

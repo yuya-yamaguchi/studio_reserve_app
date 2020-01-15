@@ -2,6 +2,8 @@
   width: 70%;
   &__profile{
     margin: 0 auto;
+    box-shadow: 2px 2px 4px gray;
+    padding: 10px 10px 30px 10px;
     &__title{
       border-bottom: 2px solid;
     }
@@ -35,60 +37,44 @@
       margin: 0 60px;
       font-size: 12px;
     }
-    &__links{
-      position: absolute;
-      bottom: 30px;
-      right: 50px;
-      width: 140px;
-      height: 140px;
-      font-size: 14px;
-      &__link{
-        height: 30px;
-        width: 140px;
-        line-height: 30px;
-        text-align: center;
-        background-color: white;
-        border: 1px solid gray;
-        border-radius: 3px;
-        a{
-          display: block;
-          @include link_design_none;
-        }
-        :hover{
-          background-color: lightseagreen;
-          opacity: 0.8;
-          transition: 0.2s ;
-        }
-      }
-    }
   }
-  &__reserves{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
-    }
-    &__more-reserves{
-      display: block;
-      width: 90%;
-      padding: 10px 0;
-      margin: 0 auto;
-      @include string_set(20px, bold, #888888);
+  &__tabs{
+    margin: 10px 0 100px 0;
+    &__header{
+      display: flex;
       text-align: center;
-      &:hover{
-        opacity: 0.8;
+      cursor: pointer;
+      &__tab{
+        display: block;
+        width: 50%;
+        line-height: 40px;
+        background-color: #dddcdc;
+        @include string-set(16ox, bold, #333333);
+        box-shadow: 2px 2px 4px gray;
+        &:hover{
+          opacity: 0.8;
+        }
       }
     }
-  }
-  &__sessions{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
+    &__contents{
+      display: none;
     }
   }
-  &__posts{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
-    }
+}
+.more-reserves-link{
+  display: block;
+  width: 90%;
+  padding: 10px 0;
+  margin: 0 auto;
+  @include string_set(20px, bold, #888888);
+  text-align: center;
+  &:hover{
+    opacity: 0.8;
   }
+}
+.active{
+  background-color: $base-color;
+}
+.active-contents{
+  display: block;
 }

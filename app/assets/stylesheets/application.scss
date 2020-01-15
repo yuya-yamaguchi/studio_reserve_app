@@ -20,6 +20,8 @@
 @import "users/edit";
 @import "users/notice";
 @import "users/notice_list";
+@import "users/notice_list";
+@import "users/side_menu";
 
 @import "user_reserve/index";
 @import "user_reserve/user_reserves";
@@ -30,6 +32,7 @@
 @import "posts/new";
 @import "posts/post";
 @import "posts/search";
+@import "posts/delete_modal";
 
 @import "chatrooms/index";
 @import "chatrooms/show";

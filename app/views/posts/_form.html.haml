@@ -1,18 +1,21 @@
 .posts-new__form
   = form_with(model: post, data: { remote: false }) do |f|
-    .sub-title
-      記事の種類
-    = f.select :post_type, options_for_select(Post.post_types.keys, selected: post.post_type), {}, {class: 'select-box-default'}
-    .sub-title
-      タイトル
-    = f.text_field :title, value: post.title, class: "text-field-default"
-    - post.errors.full_messages_for(:title).each do |err_msg|
-      .error-messages
-        = err_msg
-    .sub-title
-      内容
-    = f.text_area :contents, value: post.contents, class: "text-area-default"
-    - post.errors.full_messages_for(:contents).each do |err_msg|
-      .error-messages
-        = err_msg
+    .posts-new__form__content
+      .sub-title
+        記事の種類
+      = f.select :post_type, options_for_select(Post.post_types.keys, selected: post.post_type), {}, {class: 'select-box-default'}
+    .posts-new__form__content
+      .sub-title
+        タイトル
+      = f.text_field :title, value: post.title, class: "text-field-default", placeholder: "40字以内"
+      - post.errors.full_messages_for(:title).each do |err_msg|
+        .error-messages
+          = err_msg
+    .posts-new__form__content
+      .sub-title
+        内容
+      = f.text_area :contents, value: post.contents, class: "text-area-default"
+      - post.errors.full_messages_for(:contents).each do |err_msg|
+        .error-messages
+          = err_msg
     = f.submit "登録する", class: "edit-btn-default posts-new__form__btn"

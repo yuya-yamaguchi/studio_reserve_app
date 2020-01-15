@@ -1,7 +1,7 @@
 .search-box
-  .sub-title
-    投稿検索
   .post-search-form
+    .sub-title
+      投稿検索
     = form_with(url: search_posts_path, local: true, method: :get, data: { remote: false }) do |f|
       .post-search-form__title
         記事の種類

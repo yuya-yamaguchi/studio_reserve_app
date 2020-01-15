@@ -4,7 +4,14 @@
       .studio__name.main-title
         = @studio.name
       .studio__info
-        = image_tag("/studio_img/top_image.png", class: "studio__info__img")
+        - if @studio.id == 1
+          = image_tag("/studio_img/studio1.jpg", class: "studio__info__img")
+        - if @studio.id == 2
+          = image_tag("/studio_img/studio2.jpg", class: "studio__info__img")
+        - if @studio.id == 3
+          = image_tag("/studio_img/studio3.jpg", class: "studio__info__img")
+        - if @studio.id == 4
+          = image_tag("/studio_img/studio7.jpg", class: "studio__info__img")
         .studio__info__explain
           .studio__info__explain__intro
             最新の設備を整えたスタジオです。

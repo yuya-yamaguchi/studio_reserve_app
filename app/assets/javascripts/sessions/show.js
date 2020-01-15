@@ -1,5 +1,9 @@
 $(function(){
   
+  var cancel_main_msg = '.session-cancel-modal__msg__main';
+  var cancel_sub_msg = '.session-cancel-modal__msg__sub';
+  var cancel_move_btn = '.session-cancel-modal__btn__move';
+
   /***********************/
   /* パートエントリー非同期 */
   /***********************/
@@ -83,9 +87,6 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();
 
-    var cancel_main_msg = '.session-cancel-modal__msg__main';
-    var cancel_sub_msg = '.session-cancel-modal__msg__sub';
-    var cancel_move_btn = '.session-cancel-modal__btn__move';
     var move_url = $(this).attr('href');
     var main_msg = 'セッションを中止します';
     var sub_msg = `中止した場合、現在ご登録したセッション内容は戻すことができません。<br>
@@ -97,6 +98,27 @@ $(function(){
     $(cancel_sub_msg).empty();
     $(cancel_move_btn).empty();
     // メッセージ、ボタンの設定
+    $(cancel_main_msg).append(main_msg);
+    $(cancel_sub_msg).append(sub_msg);
+    $(cancel_move_btn).append(move_html);
+
+    $('.js-session-modal').fadeIn();
+    return false;
+  });
+
+  /*******************************/
+  /* セッション参加中止確認モーダル   */
+  /*******************************/
+  $('.session-entry-cancel').on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    var main_msg = 'セッションの参加を取り消します';
+    var sub_msg = `現在エントリーしているパートは取り消されます<br>
+                   エントリーした曲の取り消しは行われません`;
+    var move_url = $(this).attr('href');
+    var move_html = `<a href="${move_url}" data-method="delete">参加をやめる</a>`;
+
     $(cancel_main_msg).append(main_msg);
     $(cancel_sub_msg).append(sub_msg);
     $(cancel_move_btn).append(move_html);
