@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def index
-    @sessions = Session.all
+    @sessions = Session.where("date >= ?", Date.today).order(date: "DESC")
   end
 
   def show

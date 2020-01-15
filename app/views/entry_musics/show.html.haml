@@ -1,7 +1,8 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .entry_musics-show
       = render partial: "sessions/title", locals: { session: @session, current_user_entry: @current_user_entry }
+      = link_to "「#{@session.title}」トップへ戻る", music_session_path(@session)
       .entry_musics-show__sub-title
         .entry_musics-show__sub-title__name.sub-title
           = @entry_music.music_name
@@ -49,3 +50,5 @@
               %iframe{frameborder: "0", height: "390", src: @entry_music.youtube_url_embed, type: "text/html", width: "640"}
             -else
               ー
+    .side-bar
+      = render partial: "sessions/search"

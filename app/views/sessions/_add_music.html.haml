@@ -4,121 +4,123 @@
     曲を追加する
   .add-music__form
     = form_with(model: [@session, @entry_music], url: music_session_entry_musics_path(@session), data: { remote: false }) do |f|
-      曲名
-      = f.text_field :music_name, class: "text-field-short"
-      .error-messages#music_name-error
-      アーティスト名
-      = f.text_field :artist_name, class: "text-field-short"
-      .error-messages#artist_name-error
-      参考音源（Youtube）
-      = f.text_field :youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
-      %table
-        %tr
-          %th
-          %th Vo
-          %th Cho
-          %th Gt1
-          %th Gt2
-          %th Ba
-          %th Dr
-          %th Key
-        %tr
-          %td
-            .part-select
-              必須
-            .part-select
-              任意
-            .part-select
-              不要
-          %td
-            = f.radio_button :vo, :need, checked: true
-            = f.label :vo_need do
-              .part-vo.part-select#vo-need.part-selected
-                ○
-            = f.radio_button :vo, :whichever
-            = f.label :vo_whichever do
-              .part-vo.part-select#vo-whichever
-                △
-            = f.radio_button :vo, :needless
-            = f.label :vo_needless do
-              .part-vo.part-select#vo-needless
-                ー
-          %td
-            = f.radio_button :cho, :need, checked: true
-            = f.label :cho_need do
-              .part-cho.part-select#cho-need.part-selected
-                ○
-            = f.radio_button :cho, :whichever
-            = f.label :cho_whichever do
-              .part-cho.part-select#cho-whichever
-                △
-            = f.radio_button :cho, :needless
-            = f.label :cho_needless do
-              .part-cho.part-select#cho-needless
-                ー
-          %td
-            = f.radio_button :gt1, :need, checked: true
-            = f.label :gt1_need do
-              .part-gt1.part-select#gt1-need.part-selected
-                ○
-            = f.radio_button :gt1, :whichever
-            = f.label :gt1_whichever do
-              .part-gt1.part-select#gt1-whichever
-                △
-            = f.radio_button :gt1, :needless
-            = f.label :gt1_needless do
-              .part-gt1.part-select#gt1-needless
-                ー
-          %td
-            = f.radio_button :gt2, :need, checked: true
-            = f.label :gt2_need do
-              .part-gt2.part-select#gt2-need.part-selected
-                ○
-            = f.radio_button :gt2, :whichever
-            = f.label :gt2_whichever do
-              .part-gt2.part-select#gt2-whichever
-                △
-            = f.radio_button :gt2, :needless
-            = f.label :gt2_needless do
-              .part-gt2.part-select#gt2-needless
-                ー
-          %td
-            = f.radio_button :ba, :need, checked: true
-            = f.label :ba_need do
-              .part-ba.part-select#ba-need.part-selected
-                ○
-            = f.radio_button :ba, :whichever
-            = f.label :ba_whichever do
-              .part-ba.part-select#ba-whichever
-                △
-            = f.radio_button :ba, :needless
-            = f.label :ba_needless do
-              .part-ba.part-select#ba-needless
-                ー
-          %td
-            = f.radio_button :dr, :need, checked: true
-            = f.label :dr_need do
-              .part-dr.part-select#dr-need.part-selected
-                ○
-            = f.radio_button :dr, :whichever
-            = f.label :dr_whichever do
-              .part-dr.part-select#dr-whichever
-                △
-            = f.radio_button :dr, :needless
-            = f.label :dr_needless do
-              .part-dr.part-select#dr-needless
-                ー
-          %td
-            = f.radio_button :key, :need, checked: true
-            = f.label :key_need do
-              .part-key.part-select#key-need.part-selected
-                ○
-            = f.radio_button :key, :whichever
-            = f.label :key_whichever do
-              .part-key.part-select#key-whichever
-                △
-            = f.radio_button :key, :needless
-            = f.label :key_needless do
-              .part-key.part-select#key-needless
-                ー
-      = f.submit "追加する", id: "add-music-btn"
+      .add-music__form__container
+        .add-music__form__container__left
+          曲名
+          = f.text_field :music_name, class: "text-field-short"
+          .error-messages#music_name-error
+          アーティスト名
+          = f.text_field :artist_name, class: "text-field-short"
+          .error-messages#artist_name-error
+          参考音源（Youtube）
+          = f.text_field :youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
+        %table.add-music__form__container__right
+          %tr
+            %th
+            %th Vo
+            %th Cho
+            %th Gt1
+            %th Gt2
+            %th Ba
+            %th Dr
+            %th Key
+          %tr
+            %td
+              .part-select
+                必須
+              .part-select
+                任意
+              .part-select
+                不要
+            %td
+              = f.radio_button :vo, :need, checked: true
+              = f.label :vo_need do
+                .part-vo.part-select#vo-need.part-selected
+                  ○
+              = f.radio_button :vo, :whichever
+              = f.label :vo_whichever do
+                .part-vo.part-select#vo-whichever
+                  △
+              = f.radio_button :vo, :needless
+              = f.label :vo_needless do
+                .part-vo.part-select#vo-needless
+                  ー
+            %td
+              = f.radio_button :cho, :need, checked: true
+              = f.label :cho_need do
+                .part-cho.part-select#cho-need.part-selected
+                  ○
+              = f.radio_button :cho, :whichever
+              = f.label :cho_whichever do
+                .part-cho.part-select#cho-whichever
+                  △
+              = f.radio_button :cho, :needless
+              = f.label :cho_needless do
+                .part-cho.part-select#cho-needless
+                  ー
+            %td
+              = f.radio_button :gt1, :need, checked: true
+              = f.label :gt1_need do
+                .part-gt1.part-select#gt1-need.part-selected
+                  ○
+              = f.radio_button :gt1, :whichever
+              = f.label :gt1_whichever do
+                .part-gt1.part-select#gt1-whichever
+                  △
+              = f.radio_button :gt1, :needless
+              = f.label :gt1_needless do
+                .part-gt1.part-select#gt1-needless
+                  ー
+            %td
+              = f.radio_button :gt2, :need, checked: true
+              = f.label :gt2_need do
+                .part-gt2.part-select#gt2-need.part-selected
+                  ○
+              = f.radio_button :gt2, :whichever
+              = f.label :gt2_whichever do
+                .part-gt2.part-select#gt2-whichever
+                  △
+              = f.radio_button :gt2, :needless
+              = f.label :gt2_needless do
+                .part-gt2.part-select#gt2-needless
+                  ー
+            %td
+              = f.radio_button :ba, :need, checked: true
+              = f.label :ba_need do
+                .part-ba.part-select#ba-need.part-selected
+                  ○
+              = f.radio_button :ba, :whichever
+              = f.label :ba_whichever do
+                .part-ba.part-select#ba-whichever
+                  △
+              = f.radio_button :ba, :needless
+              = f.label :ba_needless do
+                .part-ba.part-select#ba-needless
+                  ー
+            %td
+              = f.radio_button :dr, :need, checked: true
+              = f.label :dr_need do
+                .part-dr.part-select#dr-need.part-selected
+                  ○
+              = f.radio_button :dr, :whichever
+              = f.label :dr_whichever do
+                .part-dr.part-select#dr-whichever
+                  △
+              = f.radio_button :dr, :needless
+              = f.label :dr_needless do
+                .part-dr.part-select#dr-needless
+                  ー
+            %td
+              = f.radio_button :key, :need, checked: true
+              = f.label :key_need do
+                .part-key.part-select#key-need.part-selected
+                  ○
+              = f.radio_button :key, :whichever
+              = f.label :key_whichever do
+                .part-key.part-select#key-whichever
+                  △
+              = f.radio_button :key, :needless
+              = f.label :key_needless do
+                .part-key.part-select#key-needless
+                  ー
+      = f.submit "追加する", id: "add-music-btn", class: "oparate-btn-blue"

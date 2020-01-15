@@ -1,7 +1,7 @@
 .search-box
-  .sub-title
-    セッション検索
   .session-search-form
+    .sub-title
+      セッション検索
     = form_with(url: search_music_sessions_path, local: true, method: :get, data: { remote: false }) do |f|
       .session-search-form__title
         開催日

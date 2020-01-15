@@ -1,36 +1,40 @@
 .main-container
-  .inner-container
+  .inner-container-wide
     .sessions-show
       = render partial: "title", locals: { session: @session, current_user_entry: @current_user_entry }
       .sessions-show__info
         .sessions-show__info__left
-          .sessions-show__info__left__img
-            - if @session.img.present?
-              = image_tag(@session.img.url, class: "session-container__left__img")
-            - else
-              = image_tag("/session_img/session_no_image.jpg", class: "session-container__left__img")
+          - if @session.img.present?
+            = image_tag(@session.img.url, class: "sessions-show__info__left__img")
+          - else
+            = image_tag("/session_img/session_no_image.jpg", class: "sessions-show__info__left__img")
         %table.sessions-show__info__right
           %tr
             %th
-              開催日時：
+              開催日時
             %td
               = @session.hold_datetime
           %tr
             %th
-              曲数上限：
+              曲数上限
             %td
               = @session.max_music
           %tr
             %th
-              主催者：
+              参加費
+            %td
+              = @session.entry_fee
+          %tr
+            %th
+              主催者
             %td
               = link_to @session.user.nickname, user_path(@session.user_id)
           %tr
             %th
-              参加者：
+              参加者
             %td
               - @entry_sessions.each do |entry_session|
-                = link_to entry_session.user.nickname, user_path(entry_session.user_id)
+                = link_to entry_session.user.nickname, user_path(entry_session.user_id), class: "entry_user"
       .sessions-show__explain
         = @session.explain
       .sessions-show__music-list
@@ -38,42 +42,51 @@
           = "セッション曲一覧 (あと #{@session.another_music_cnt} 曲)"
         = render partial: "add_music"
         %table.session-musics
-          %tr.session-musics__header
-            %td 曲名
-            %td アーティスト名
-            %td 成立状況
-            %td Vo
-            %td Cho
-            %td Gt1
-            %td Gt2
-            %td Ba
-            %td Dr
-            %td key
-          - @entry_musics.each do |entry_music|
-            %tr.session-musics__value
-              %td
-                = link_to entry_music.music_name, music_session_entry_music_path(@session, entry_music)
-              %td
-                = entry_music.artist_name
-              %td
-                = entry_music.complete_status
-                - entry_music.entry_parts.order('part_no').each do |entry_part|
-                  - if entry_part.user_id.present?
-                    %td
-                      = link_to entry_part.user.nickname, user_path(entry_part.user_id)
-                      - if user_signed_in? && (current_user&.id == entry_part.user_id)
-                        = link_to cancel_music_session_entry_music_entry_part_path(@session, entry_music, entry_part) do
-                          = icon 'fas', 'times-circle', class: "part-entry-cansel"
-                  - else
-                    - if entry_part.apply_status == 1
+          - if @entry_musics.present?
+            %tr.session-musics__header
+              %td 曲名
+              %td アーティスト名
+              %td 成立状況
+              %td Vo
+              %td Cho
+              %td Gt1
+              %td Gt2
+              %td Ba
+              %td Dr
+              %td key
+            - @entry_musics.each do |entry_music|
+              %tr.session-musics__value
+                %td
+                  = link_to entry_music.music_name, music_session_entry_music_path(@session, entry_music)
+                %td
+                  = entry_music.artist_name
+                %td
+                  = entry_music.complete_status
+                  - entry_music.entry_parts.order('part_no').each do |entry_part|
+                    - if entry_part.user_id.present?
                       %td
-                        = link_to "エントリー", music_session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_need part-entry-link"
-                    - elsif entry_part.apply_status == 2
-                      %td
-                        = link_to "(エントリー)", music_session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_whichever part-entry-link"
-                    - elsif entry_part.apply_status == 3
-                      %td
-                        .entry_needless
-                          ー
+                        = link_to entry_part.user.nickname, user_path(entry_part.user_id)
+                        - if user_signed_in? && (current_user&.id == entry_part.user_id)
+                          = link_to cancel_music_session_entry_music_entry_part_path(@session, entry_music, entry_part) do
+                            = icon 'fas', 'times-circle', class: "part-entry-cansel"
+                    - else
+                      - if entry_part.apply_status == 1
+                        %td
+                          = link_to "エントリー", music_session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_need part-entry-link"
+                      - elsif entry_part.apply_status == 2
+                        %td
+                          = link_to "(エントリー)", music_session_entry_music_entry_part_path(@session, entry_music, entry_part), method: :patch, class: "entry_whichever part-entry-link"
+                      - elsif entry_part.apply_status == 3
+                        %td
+                          .entry_needless
+                            ー
+          - else
+            .session-musics__none
+              エントリー曲がありません
+              %br
+              曲を追加しましょう！
+
+    .side-bar
+      = render partial: "search"
 = render partial: "cancel_modal"
 = hidden_field_tag :current_user_entry, @current_user_entry
