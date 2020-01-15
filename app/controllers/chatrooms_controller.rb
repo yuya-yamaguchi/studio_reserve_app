@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
+    @user = current_user
     @chatrooms = current_user.chatrooms.order("updated_at DESC")
     
     @chatrooms.each do |chatroom|
@@ -17,6 +18,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @chatroom = Chatroom.find(params[:id])
     # 空のメッセージを作成
     @message = Message.new

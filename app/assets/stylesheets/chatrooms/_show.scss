@@ -1,76 +1,91 @@
 .chatroom-show{
-  padding-top: 70px;
-  width: 1020px;
-  margin: 0 auto;
+  width: 70%;
   &__title{
     border-bottom: 2px solid;
   }
   &__messages{
     overflow: scroll;
-    height: calc(100vh - 190px);
+    height: calc(100vh - 250px);
     padding: 20px;
     box-sizing: border-box;
-    background: #888888;
+    background: lightgray;
     .message{
       width: 100%;
-      height: 70px;
       margin-bottom: 20px;
       word-wrap: break-word;
       &__own{
-        width: 300px;
-        height: auto;
-        background-color: white;
-        border-radius: 5px;
-        padding: 10px;
-        float: right;
-      }
-      &__already-read{
-        color: gray;
-        float: right;
-        margin-right: 5px;
-        line-height: 40px;
+        &__top{
+          display: flex;
+          justify-content: flex-end;
+          &__already-read{
+            color: gray;
+            margin-right: 5px;
+            line-height: 40px;
+          }
+          &__text{
+            max-width: 45%;
+            min-width: 20%;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+          }
+        }
+        &__bottom{
+          display: flex;
+          justify-content: flex-end;
+          @include string_set(12px, normal, gray);
+        }
       }
       &__other{
-        width: 350px;
-        &__user-img{
-          width: 40px;
-          border-radius: 5px;
-          margin-right: 5px;
-          float: left;
+        &__top{
+          display: flex;
+          justify-content: flex-start;
+          &__user-img{
+            width: 40px;
+            border-radius: 5px;
+            margin-right: 5px;
+            object-fit: contain;
+          }
+          &__text{
+            max-width: 45%;
+            min-width: 20%;
+            word-break : break-all;
+            height: auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            padding-left: 5px;
+          }
         }
-        &__text{
-          width: 250px;
-          word-break : break-all;
-          height: auto;
-          padding: 10px;
-          background-color: white;
-          border-radius: 5px;
-          padding-left: 5px;
-          float: left;
+        &__bottom{
+          display: flex;
+          justify-content: flex-start;
+          @include string_set(12px, normal, gray);
         }
       }
     }
   }
   &__form{
-    position: fixed;
     bottom: 0;
     border-top: solid 1px  #333333;
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: #888888;
+    height: 100px;
+    width: 100%;
+    background: lightgray;
     box-sizing: border-box;
-    width: 1020px;
     &--message{
-      width: 900px;
-      input{
-        padding: 10px;
-        display: block;
-      }
+      width: 85%;
+      display: block;
+      padding: 5px;
     }
     &--send{
-      width: 60px;
-      height: 40px;
+      display: block;
+      width: 10%;
+      padding: 10px;
+      background: #333333;
+      color: #FFFFFF;
       margin-left: 10px;
     }
   }

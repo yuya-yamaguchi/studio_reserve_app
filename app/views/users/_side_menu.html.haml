@@ -1,13 +1,14 @@
-.search-box
-  .user-side-menu
-    - if user_signed_in?
-      - if current_user.id == @user.id
-        .user-side-menu__links__link
-          = link_to "ユーザ情報編集", edit_user_path(current_user)
-        .user-side-menu__links__link
-          = link_to "メッセージ一覧", user_chatrooms_path(current_user)
-        .user-side-menu__links__link
-          = link_to "お知らせ", notice_users_path
-      - else
-        .user-side-menu__links__link
-          = link_to "メッセージを送る", room_judge_user_chatrooms_path(@user)
+.user-side-menu
+  - if user_signed_in?
+    - if current_user.id == @user.id
+      .user-side-menu__links__link
+        = link_to "マイページトップ", user_path(current_user)
+      .user-side-menu__links__link
+        = link_to "ユーザ情報編集", edit_user_path(current_user)
+      .user-side-menu__links__link
+        = link_to "メッセージ一覧", user_chatrooms_path(current_user)
+      .user-side-menu__links__link
+        = link_to "お知らせ", notice_users_path
+    - else
+      .user-side-menu__links__link
+        = link_to "メッセージを送る", room_judge_user_chatrooms_path(@user)

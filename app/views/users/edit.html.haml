@@ -1,48 +1,49 @@
-.user-edit-page
-  .main-container
-    .inner-container
+.main-container
+  .inner-container-wide
+    .user-edit
       = form_with(model: @user, data: { remote: false }) do |f|
-        .user-edit
-          .user-edit__title.main-title
-            ユーザ情報編集
-          %table.user-edit__form
-            %tr
-              %th
-                プロフィール画像
-              %td.profile-img
-                - if @user.img.present?
-                  = image_tag(@user.img.url, class: "user-img-default")
-                - else
-                  = image_tag("default_user.png", class: "user-img-default")
-                = f.label :img, for: "set-image" do
-                  = f.file_field :img, id: "set-image", class: "set-image"
-                  .img-change-btn
-                    変更する
-            %tr
-              %th
-                アカウント名
-              %td
-                = f.text_field :nickname, value: @user.nickname, placeholder: '20字以内', class: "text-field-default"
-            %tr
-              %th
-                プロフィール
-              %td
-                = f.text_area :profile, value: @user.profile, placeholder: '1000字以内', class: "text-area-default"
-            %tr
-              %th
-                氏名
-              %td
-                = f.text_field :last_name, value: @user.last_name, placeholder: '性', class: "text-field-short"
-                = f.text_field :first_name, value: @user.first_name, placeholder: '名', class: "text-field-short"
-            %tr
-              %th
-                電話番号
-              %td
-                = f.text_field :tel_no, value: @user.tel_no, class: "text-field-short"
-            %tr
-              %th
-                Email
-              %td
-                = f.text_field :email, value: @user.email, class: "text-field-short"
-          .user-edit__button
-            = f.submit "変更する", class: "edit-btn-default"
+        .user-edit__title.main-title
+          ユーザ情報編集
+        %table.user-edit__form
+          %tr
+            %th
+              プロフィール画像
+            %td.profile-img
+              - if @user.img.present?
+                = image_tag(@user.img.url, class: "user-img-default")
+              - else
+                = image_tag("default_user.png", class: "user-img-default")
+              = f.label :img, for: "set-image" do
+                = f.file_field :img, id: "set-image", class: "set-image"
+                .img-change-btn
+                  変更する
+          %tr
+            %th
+              アカウント名
+            %td
+              = f.text_field :nickname, value: @user.nickname, placeholder: '20字以内', class: "text-field-default"
+          %tr
+            %th
+              プロフィール
+            %td
+              = f.text_area :profile, value: @user.profile, placeholder: '1000字以内', class: "text-area-default"
+          %tr
+            %th
+              氏名
+            %td
+              = f.text_field :last_name, value: @user.last_name, placeholder: '性', class: "text-field-short"
+              = f.text_field :first_name, value: @user.first_name, placeholder: '名', class: "text-field-short"
+          %tr
+            %th
+              電話番号
+            %td
+              = f.text_field :tel_no, value: @user.tel_no, class: "text-field-short"
+          %tr
+            %th
+              Email
+            %td
+              = f.text_field :email, value: @user.email, class: "text-field-short"
+        .user-edit__button
+          = f.submit "変更する", class: "edit-btn-default"
+    .side-bar
+      = render partial: "users/side_menu"
