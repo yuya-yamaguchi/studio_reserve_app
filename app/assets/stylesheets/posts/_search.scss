@@ -1,4 +1,6 @@
 .post-search-form{
+  box-shadow: 2px 2px 4px gray;
+  padding: 10px 10px 30px 10px;
   &__title{
     @include string_set(16px, bold, #333333);
     margin-top: 20px;

@@ -1,4 +1,5 @@
 .post-show{
+  width: 70%;
   &__title{
     border-bottom: 2px solid #333333;
     display: flex;
@@ -12,12 +13,31 @@
   }
   &__details{
     width: 90%;
-    margin: 0 auto;
+    margin: 20px auto;
     &__value{
       @include string_set(16px, normal, #333333);
       padding: 10px 40px;
       display: flex;
       justify-content: flex-start;
+      margin-bottom: 30px;
+      .post-type{
+        &--recruit{
+          @include post_type_icon(blue);
+        }
+        &--entry{
+          @include post_type_icon(red);
+        }
+        &--other{
+          @include post_type_icon(grey);
+        }
+        &__string{
+          line-height: 35px;
+          padding-left: 5px;
+        }
+      }
+      .send-message-btn{
+        margin-left: 20px;
+      }
     }
   }
 }

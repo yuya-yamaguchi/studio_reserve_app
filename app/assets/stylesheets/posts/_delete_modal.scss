@@ -1,0 +1,47 @@
+.post-del-modal{
+  background: #fff;
+  left: 50%;
+  padding: 30px 60px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 50%;
+  &__msg{
+    text-align: center;
+    padding: 10px;
+  }
+  &__btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    &__back{
+      width: 200px;
+      text-align: center;
+      background: #FFFFFF;
+      color: #333333;
+      padding: 5px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    &__move{
+      a{
+        display: block;
+        text-decoration: none;
+        color: #FFFFFF;
+        width: 200px;
+        text-align: center;
+        background: red;
+        padding: 5px 0;
+        border-radius: 5px;
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      }
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+}
