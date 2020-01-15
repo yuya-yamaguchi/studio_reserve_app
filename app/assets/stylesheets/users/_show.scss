@@ -2,6 +2,8 @@
   width: 70%;
   &__profile{
     margin: 0 auto;
+    box-shadow: 2px 2px 4px gray;
+    padding: 10px 10px 30px 10px;
     &__title{
       border-bottom: 2px solid;
     }
@@ -35,36 +37,9 @@
       margin: 0 60px;
       font-size: 12px;
     }
-    &__links{
-      position: absolute;
-      bottom: 30px;
-      right: 50px;
-      width: 140px;
-      height: 140px;
-      font-size: 14px;
-      &__link{
-        height: 30px;
-        width: 140px;
-        line-height: 30px;
-        text-align: center;
-        background-color: white;
-        border: 1px solid gray;
-        border-radius: 3px;
-        a{
-          display: block;
-          @include link_design_none;
-        }
-        :hover{
-          background-color: lightseagreen;
-          opacity: 0.8;
-          transition: 0.2s ;
-        }
-      }
-    }
   }
   &__tabs{
-    margin: 100px 0;
-    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+    margin: 10px 0 100px 0;
     &__header{
       display: flex;
       text-align: center;
@@ -76,6 +51,7 @@
         background-color: #dddcdc;
         @include string-set(16ox, bold, #333333);
         border-radius: 0 10px 0 0;
+        box-shadow: 2px 2px 4px gray;
         &:hover{
           opacity: 0.8;
         }

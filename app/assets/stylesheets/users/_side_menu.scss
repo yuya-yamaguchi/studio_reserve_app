@@ -1,0 +1,21 @@
+.user-side-menu{
+  &__links{
+    width: 100%;
+    &__link{
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: white;
+      border: 1px solid gray;
+      a{
+        display: block;
+        @include link_design_none;
+      }
+      :hover{
+        opacity: 0.8;
+        background: lightgray;
+        transition: 0.2s ;
+      }
+    }
+  }
+}
