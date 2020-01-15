@@ -8,6 +8,6 @@
     - else
       - if user_signed_in?
         - if @current_user_entry.present?
-          = link_to "参加をやめる", "#", class: "oparate-btn-red"
+          = link_to "参加をやめる", music_session_entry_session_path(session), method: :delete, class: "oparate-btn-red session-entry-cancel"
         - else
           = link_to "このセッションに参加", music_session_entry_sessions_path(session), method: :post, class: "oparate-btn-blue"
