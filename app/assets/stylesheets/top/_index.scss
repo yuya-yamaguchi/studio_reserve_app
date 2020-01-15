@@ -8,7 +8,7 @@
     }
     &__studio-name{
       position: absolute;
-      @include string_set(50px, bold, #ffffff);
+      @include string_set(50px, bold, $base_color);
       right: 50px;
       bottom: 20px;
     }

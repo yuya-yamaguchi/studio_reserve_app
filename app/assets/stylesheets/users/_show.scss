@@ -62,33 +62,44 @@
       }
     }
   }
-  &__reserves{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
-    }
-    &__more-reserves{
-      display: block;
-      width: 90%;
-      padding: 10px 0;
-      margin: 0 auto;
-      @include string_set(20px, bold, #888888);
+  &__tabs{
+    margin: 100px 0;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+    &__header{
+      display: flex;
       text-align: center;
-      &:hover{
-        opacity: 0.8;
+      cursor: pointer;
+      &__tab{
+        display: block;
+        width: 50%;
+        line-height: 72px;
+        background-color: #dddcdc;
+        @include string-set(16ox, bold, #333333);
+        border-radius: 0 10px 0 0;
+        &:hover{
+          opacity: 0.8;
+        }
       }
     }
-  }
-  &__sessions{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
+    &__contents{
+      display: none;
     }
   }
-  &__posts{
-    margin-top: 100px;
-    &__title{
-      border-bottom: 2px solid;
-    }
+}
+.more-reserves-link{
+  display: block;
+  width: 90%;
+  padding: 10px 0;
+  margin: 0 auto;
+  @include string_set(20px, bold, #888888);
+  text-align: center;
+  &:hover{
+    opacity: 0.8;
   }
+}
+.active{
+  background-color: $base-color;
+}
+.active-contents{
+  display: block;
 }

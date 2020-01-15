@@ -20,22 +20,25 @@
               draw_graph();
         .mypage__profile__self-introduction
           = simple_format(@user.profile)
-      - if current_user&.id == @user.id
-        .mypage__reserves
-          .mypage__reserves__title.main-title
-            スタジオ予約
-          = render partial: "user_reserves/user_reserves", locals: { user_reserves: @user_reserves }
-          = link_to  user_reserves_path, class: "mypage__reserves__more-reserves" do
-            すべての予約を見る
-            = icon 'fas', 'angle-right'
-      .mypage__sessions
-        .mypage__sessions__title.main-title
-          参加セッション
-        = render partial: "sessions/sessions", locals: { sessions: @sessions }
-      .mypage__posts
-        .mypage__posts__title.main-title
-          投稿した記事
-        = render partial: "posts/post", locals: { posts: @posts }
+      .mypage__tabs
+        %ul.mypage__tabs__header
+          %li.mypage__tabs__header__tab.active
+            %a 参加セッション
+          %li.mypage__tabs__header__tab
+            %a 投稿した記事
+          - if current_user&.id == @user.id
+            %li.mypage__tabs__header__tab
+              %a スタジオ予約
+        %ul.mypage__tabs__contents.active-contents
+          = render partial: "sessions/sessions", locals: { sessions: @sessions }
+        %ul.mypage__tabs__contents
+          = render partial: "posts/post", locals: { posts: @posts }
+        - if current_user&.id == @user.id
+          %ul.mypage__tabs__contents
+            = render partial: "user_reserves/user_reserves", locals: { user_reserves: @user_reserves }
+            = link_to  user_reserves_path, class: "more-reserves-link" do
+              すべての予約を見る
+              = icon 'fas', 'angle-right'
     .side-bar
       = render partial: "side_menu"
 = render partial: "user_reserves/cancel_modal"
