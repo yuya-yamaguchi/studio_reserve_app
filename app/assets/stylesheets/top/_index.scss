@@ -15,7 +15,7 @@
       vertical-align: bottom;
       filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
       background-color: rgba(0,0,0,0.6);
-      opacity: 0.7;
+      opacity: 0.6;
     }
     .top-image-scroll{
       position: absolute;
@@ -31,9 +31,8 @@
         border-radius: 30px;
         background-color: #333333;
         padding: 10px 20px;
-        opacity: 0.7;
         &:hover{
-          opacity: 1;
+          opacity: 0.7;
         }
       }
     }
