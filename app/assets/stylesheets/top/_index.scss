@@ -2,6 +2,11 @@
   .top-image-container{
     width: 100%;
     position: relative;
+    .image-slider{
+      .slick-next{
+        display: none !important;
+      }
+    }
     .top-studio-name{
       position: absolute;
       top: 50%;

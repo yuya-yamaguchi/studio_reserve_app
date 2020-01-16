@@ -1,24 +1,37 @@
-# README
+# アプリ説明
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ概要
+音楽スタジオ「Hummingbird」（京都府伏見区）の専用サイト<br>
+当スタジオの予約や会員同士でのセッション（演奏会）の開催などを行うことができる<br>
+（※個人所有のスタジオ、2020年4月より実運用予定）
 
-Things you may want to cover:
+## 作成背景
+所属してる音楽サークルで使用している個人所有スタジオがあり、<br>
+サークルメンバは自由にスタジオの利用が可能である。<br>
+現在はGoogleスプレッドシートで予約管理しており不便であること、<br>
+サークルメンバも多くなってきたことから（2020年1月現在、60名超）<br>
+専用ページを作成するに至った。
 
-* Ruby version
+## 機能紹介
+### スタジオ予約機能
+10:00-22:00間でスタジオの予約が可能
 
-* System dependencies
 
-* Configuration
+### セッション（演奏会）開催・参加機能
 
-* Database creation
 
-* Database initialization
+### 掲示板機能
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### メッセージ機能
 
-* Deployment instructions
 
-* ...
+### 管理者用機能
+
+
+### マイページ
+
+
+## 使用技術
+
+## ER図
