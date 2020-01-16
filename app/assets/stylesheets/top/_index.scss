@@ -2,18 +2,40 @@
   .top-image-container{
     width: 100%;
     position: relative;
+    .top-studio-name{
+      position: absolute;
+      @include string_set(80px, bold, $string_color);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
     .top-image{
       width: 100%;
-      height: 700px;
+      height: 800px;
       vertical-align: bottom;
       filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
-      opacity: 0.8;
+      background-color: rgba(0,0,0,0.6);
+      opacity: 0.7;
     }
-    &__studio-name{
+    .top-image-scroll{
       position: absolute;
-      @include string_set(50px, bold, $base_color);
-      right: 50px;
-      bottom: 20px;
+      @include string_set(20px, bold, $base_color);
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      display: flex;
+      justify-content: space-around;
+      li{
+        margin-left: 30px;
+        cursor: pointer;
+        border-radius: 30px;
+        background-color: #333333;
+        padding: 10px 20px;
+        opacity: 0.7;
+        &:hover{
+          opacity: 1;
+        }
+      }
     }
   }
   .main-container{
