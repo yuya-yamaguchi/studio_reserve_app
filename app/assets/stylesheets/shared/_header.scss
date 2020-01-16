@@ -6,12 +6,12 @@
   position: fixed;
   z-index: 99;
   &__title{
-    padding: 10px;
-    padding-left: 100px;
+    padding: 10px 10px 10px 50px;
     float: left;
     a{
       @include link_design_none;
       color: $base_color;
+      font-size: 30px;
     }
   }
   .header-menus{
