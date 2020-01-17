@@ -11,13 +11,13 @@
   - user_reserves.each do |user_reserve|
     %tr
       %td
-        = user_reserve.reserve_date.strftime("%m月%d日")
+        = user_reserve.reserve_date.strftime("%Y年%m月%d日")
         = user_reserve.start_hour.to_s + "時 〜"
         = user_reserve.end_hour.to_s + "時"
       %td
         = user_reserve.studio.name
       %td
-        = user_reserve.payment_fee.to_s + " 円"
+        = comma_to_jpy(user_reserve.payment_fee)
       %td
         - if Date.today < user_reserve.reserve_date
           .user-reserves__link
