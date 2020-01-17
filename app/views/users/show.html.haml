@@ -30,12 +30,19 @@
             %li.mypage__tabs__header__tab
               %a スタジオ予約
         %ul.mypage__tabs__contents.active-contents
+          .mypage-entry-sessions
+            主催したセッション
+          = render partial: "sessions/sessions", locals: { sessions: @organizer_sessions }
+          .mypage-entry-sessions
+            参加したセッション
           = render partial: "sessions/sessions", locals: { sessions: @sessions }
         %ul.mypage__tabs__contents
           = render partial: "posts/post", locals: { posts: @posts }
         - if current_user&.id == @user.id
           %ul.mypage__tabs__contents
             = render partial: "user_reserves/user_reserves", locals: { user_reserves: @user_reserves }
+            .mypage__tabs__contents__note
+              ※本日以降の予約を最大5件表示しています
             = link_to  user_reserves_path, class: "more-reserves-link" do
               すべての予約を見る
               = icon 'fas', 'angle-right'

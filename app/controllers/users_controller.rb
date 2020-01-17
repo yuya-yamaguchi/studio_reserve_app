@@ -5,10 +5,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # スタジオ予約状況の取得
     if @user.id == current_user&.id
-      @user_reserves = @user.user_reserves.where('reserve_date >= ?', Date.today).order('reserve_date').order('start_hour').limit(3)
+      @user_reserves = @user.user_reserves.where('reserve_date >= ?', Date.today).order('reserve_date').order('start_hour').limit(5)
     end
-    # 参加セッション一覧の取得
-    @sessions = @user.sessions
+    # 参加セッション一覧の取得(主催のセッションは除く)
+    @sessions = @user.only_entry_sessions.where.not(user_id: current_user.id)
+    # 主催セッション一覧の取得
+    @organizer_sessions = @user.sessions
     # 投稿一覧の取得
     @posts = @user.posts
     # エントリー数のグラフデータを取得
