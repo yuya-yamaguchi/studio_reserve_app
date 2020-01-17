@@ -4,37 +4,46 @@
       .studio__name.main-title
         = @studio.name
       .studio__info
-        - if @studio.id == 1
-          = image_tag("/studio_img/studio1.jpg", class: "studio__info__img")
-        - if @studio.id == 2
-          = image_tag("/studio_img/studio2.jpg", class: "studio__info__img")
-        - if @studio.id == 3
-          = image_tag("/studio_img/studio3.jpg", class: "studio__info__img")
-        - if @studio.id == 4
-          = image_tag("/studio_img/studio7.jpg", class: "studio__info__img")
-        .studio__info__explain
-          .studio__info__explain__intro
+        .studio__info__left
+          - if @studio.id == 1
+            = image_tag("/studio_img/studio1.jpg", class: "studio__info__left__img")
+          - if @studio.id == 2
+            = image_tag("/studio_img/studio2.jpg", class: "studio__info__left__img")
+          - if @studio.id == 3
+            = image_tag("/studio_img/studio3.jpg", class: "studio__info__left__img")
+          - if @studio.id == 4
+            = image_tag("/studio_img/studio7.jpg", class: "studio__info__left__img")
+        .studio__info__right
+          .studio__info__right__explain
             最新の設備を整えたスタジオです。
-            %br
             動画撮影、レコーディングも可能です。
-          .studio__info__explain__inst
-            %b GuitarAmp:
-            = @studio.guitar_amp
-            %br
-            %b BassAmp:
-            = @studio.bass_amp
-            %br
-            %b Drums:
-            = @studio.drums
-            %br
-            %b Keybords:
-            = @studio.keybords
-          .studio__info__explain__fee
-            料金（1時間）：
-            = @studio.fee
-            円
+          %table.studio__info__right__details
+            %tr
+              %th 料金（1時間）
+              %td
+                = comma_to_jpy(@studio.fee)
+            %tr
+              %th 広さ
+              %td
+                = "#{@studio.size}畳"
+            %tr
+              %th GuitarAmp
+              %td
+                = @studio.guitar_amp
+            %tr
+              %th BassAmp
+              %td
+                = @studio.bass_amp
+            %tr
+              %th Drums
+              %td
+                = @studio.drums
+            %tr
+              %th Keybords
+              %td
+                = @studio.keybords
     .reserve.inner-container
-      .reserve__title.sub-title
+      .reserve__title
         予約表
       %table.reserve__table
         %tr.reserve__table--date
