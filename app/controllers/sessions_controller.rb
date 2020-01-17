@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_action :sign_in_check, only: [:new, :edit, :create, :update]
+
   def index
     @sessions = Session.where("date >= ?", Date.today).order(date: "DESC")
   end
@@ -29,7 +31,7 @@ class SessionsController < ApplicationController
     # reserveのupdate(1 → 0)
     reserves_rm = Reserve.new
     reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
-    reserves_rm.update(reserve_flg: 0)
+    reserves_rm.update(reserve_flg: 0, user_id: nil)
     # user_reserveのdestroy
     user_reserve_rm.destroy
     
@@ -38,7 +40,7 @@ class SessionsController < ApplicationController
     # reserveのupdate(0 → 1)
     reserves_up = Reserve.new
     reserves_up = reserves_up.reserve_registar(session_params)
-    reserves_up.update(reserve_flg: 1)
+    reserves_up.update(reserve_flg: 1, user_id: current_user.id)
     # user_reserveのcreate
     user_reserve_up = UserReserve.new
     user_reserve_up.done_reserve(session_params)
@@ -69,7 +71,7 @@ class SessionsController < ApplicationController
     
     entry_sessions = session_m.entry_sessions.build(user_id: current_user.id)
 
-    if reserves.update(reserve_flg: 1) && session_m.save && entry_sessions.save
+    if reserves.update(reserve_flg: 1, user_id: current_user.id) && session_m.save && entry_sessions.save
       flash[:notice] = 'セッションの登録が完了しました'
       redirect_to music_session_path(session_m)
     end
@@ -82,7 +84,7 @@ class SessionsController < ApplicationController
     # reserveのupdate(1 → 0)
     reserves_rm = Reserve.new
     reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
-    reserves_rm.update(reserve_flg: 0)
+    reserves_rm.update(reserve_flg: 0, user_id: nil)
 
     # セッション参加者にお知らせを作成
     @session.users.each do |entry_user|
@@ -123,5 +125,12 @@ class SessionsController < ApplicationController
 
   def search_params
     params.permit(:date_select, :start_date, :end_date, :keyword)
+  end
+
+  def sign_in_check
+    unless user_signed_in?
+      flash[:notice] = 'ログイン（または会員登録）を行ってください'
+      redirect_to new_user_session_path
+    end
   end
 end

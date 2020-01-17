@@ -16,7 +16,7 @@ class ReservesController < ApplicationController
     user_reserve = UserReserve.new
     user_reserve.done_reserve(set_reserve_params)
     
-    if reserves.update(reserve_flg: 1) && user_reserve.save
+    if reserves.update(reserve_flg: 1, user_id: current_user.id) && user_reserve.save
       flash[:notice] = '予約が完了しました'
       redirect_to user_reserves_path
     else
@@ -26,7 +26,7 @@ class ReservesController < ApplicationController
 
   def duplicate
     reserves = Reserve.new
-    reserved_result = reserves.duplicate_chk(params)
+    reserved_result = reserves.duplicate_chk(params, current_user)
     respond_to do |format|
       format.json {render json: { reserved_result: reserved_result }}
     end
@@ -45,7 +45,7 @@ class ReservesController < ApplicationController
 
   def sign_in_check
     unless user_signed_in?
-      flash[:notice] = 'ログイン後（または会員登録）、予約してください'
+      flash[:notice] = 'ログイン（または会員登録）を行ってください'
       redirect_to new_user_session_path
     end
   end

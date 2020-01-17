@@ -12,11 +12,11 @@ $(function(){
     var select_month = Number(select_date.substr(5, 2));
     var select_day   = Number(select_date.substr(8, 2));
     var studio_fee   = $('#studio_fee').val();
-    console.log(studio_fee);
     
     var select_start_hour = $(this).children('#select_hour').val();
     var select_end_hour = Number(select_start_hour) + 1;
     
+    reservePossible();
     // デフォルト値設定
     $("#_date_1i").val(select_year);
     $("#_date_2i").val(select_month);

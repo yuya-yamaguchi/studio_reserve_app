@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_064603) do
+ActiveRecord::Schema.define(version: 2020_01_17_021942) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -116,7 +116,9 @@ ActiveRecord::Schema.define(version: 2020_01_14_064603) do
     t.integer "reserve_flg", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["studio_id"], name: "index_reserves_on_studio_id"
+    t.index ["user_id"], name: "index_reserves_on_user_id"
   end
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -184,4 +186,5 @@ ActiveRecord::Schema.define(version: 2020_01_14_064603) do
   end
 
   add_foreign_key "entry_parts", "sessions"
+  add_foreign_key "reserves", "users"
 end

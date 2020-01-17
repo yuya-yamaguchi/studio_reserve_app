@@ -1,5 +1,7 @@
 class ChatroomsController < ApplicationController
 
+  before_action :sign_in_check
+
   def index
     @user = current_user
     @chatrooms = current_user.chatrooms.order("updated_at DESC")
@@ -41,5 +43,13 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.find(chatroom_id)
     end
     redirect_to chatroom_path(@chatroom)
+  end
+
+  private
+  def sign_in_check
+    unless user_signed_in?
+      flash[:notice] = 'ログイン後（または会員登録後）を行ってください'
+      redirect_to new_user_session_path
+    end
   end
 end
