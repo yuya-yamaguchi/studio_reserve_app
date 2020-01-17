@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_action :sign_in_check, only: [:new, :edit, :create, :update]
+
   def index
     @sessions = Session.where("date >= ?", Date.today).order(date: "DESC")
   end
@@ -123,5 +125,12 @@ class SessionsController < ApplicationController
 
   def search_params
     params.permit(:date_select, :start_date, :end_date, :keyword)
+  end
+
+  def sign_in_check
+    unless user_signed_in?
+      flash[:notice] = 'ログイン（または会員登録）を行ってください'
+      redirect_to new_user_session_path
+    end
   end
 end

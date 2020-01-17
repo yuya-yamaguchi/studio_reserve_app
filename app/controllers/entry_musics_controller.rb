@@ -1,5 +1,7 @@
 class EntryMusicsController < ApplicationController
 
+  before_action :sign_in_check, only: [:create, :edit, :update, :destroy]
+
   def show
     @session = Session.find(params[:music_session_id])
     @current_user_entry = @session.current_user_entry_judge(current_user)
@@ -60,5 +62,12 @@ class EntryMusicsController < ApplicationController
   def entry_part_params
     params.require(:entry_music)
           .permit(:vo, :cho, :gt1, :gt2, :ba, :dr, :key)
+  end
+
+  def sign_in_check
+    unless user_signed_in?
+      flash[:notice] = 'ログイン後（または会員登録後）を行ってください'
+      redirect_to new_user_session_path
+    end
   end
 end

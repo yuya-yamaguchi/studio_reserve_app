@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :sign_in_check, only: [:new, :edit, :create, :update]
 
   def index
     @posts = Post.all.order("updated_at DESC")
@@ -64,5 +65,12 @@ class PostsController < ApplicationController
 
   def search_params
     params.permit(:post_type, :keyword)
+  end
+
+  def sign_in_check
+    unless user_signed_in?
+      flash[:notice] = 'ログイン（または会員登録）を行ってください'
+      redirect_to new_user_session_path
+    end
   end
 end

@@ -45,7 +45,7 @@ class ReservesController < ApplicationController
 
   def sign_in_check
     unless user_signed_in?
-      flash[:notice] = 'ログイン後（または会員登録）、予約してください'
+      flash[:notice] = 'ログイン（または会員登録）を行ってください'
       redirect_to new_user_session_path
     end
   end
