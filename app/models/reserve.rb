@@ -60,7 +60,7 @@ class Reserve < ApplicationRecord
     end
   end
 
-  def duplicate_chk(params)
+  def duplicate_chk(params, current_user)
     date = Date.new(
       params[:date_y].to_i,
       params[:date_m].to_i,
@@ -70,6 +70,7 @@ class Reserve < ApplicationRecord
                           .where(date: date)
                           .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
                           .where(reserve_flg: 1)
+                          .where.not(user_id: current_user.id)
                           .count
     if (reserved_cnt > 0)
       return true
