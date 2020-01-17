@@ -35,7 +35,6 @@
     }
     &__right{
       margin: 10px 20px 0 0;
-      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
       &--recruit{
         @include post_type_icon(blue);
       }

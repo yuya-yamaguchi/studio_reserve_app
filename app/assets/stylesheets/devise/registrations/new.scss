@@ -3,6 +3,10 @@
     margin-bottom: 15px;
   }
   .actions{
-    margin: 10px 0;
+    margin: 10px auto;
+    input{
+      display: block;
+      margin: 0 auto;
+    }
   }
 }
