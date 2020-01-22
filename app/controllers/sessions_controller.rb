@@ -31,9 +31,9 @@ class SessionsController < ApplicationController
     # reserveのupdate(1 → 0)
     reserves_rm = Reserve.new
     reserves_rm = reserves_rm.reserve_cancel(user_reserve_rm)
-    reserves_rm.update(reserve_flg: 0, user_id: nil)
     # user_reserveのdestroy
-    user_reserve_rm.destroy
+    user_reserve_rm.destroy!
+    reserves_rm.update!(reserve_flg: 0, user_id: nil)
     
     # スタジオ再予約
     session_params = set_session_params

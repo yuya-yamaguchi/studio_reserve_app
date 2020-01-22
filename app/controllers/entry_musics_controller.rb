@@ -10,20 +10,28 @@ class EntryMusicsController < ApplicationController
   end
 
   def create
-    @entry_music = EntryMusic.new(entry_music_params)
-    @entry_music.edit_youtube_url
-    if @entry_music.save
-    
-      entry_part_params_array = entry_part_params.to_h.to_a
-      entry_part_params_array.each_with_index do |param, cnt|
-        entry_part = EntryPart.new
-        entry_part.set_default_part(params[:music_session_id], @entry_music.id, param, cnt)
-        entry_part.save
+    begin
+      ActiveRecord::Base.transaction do
+        
+        @entry_music = EntryMusic.new(entry_music_params)
+        @entry_music.edit_youtube_url
+      
+        if @entry_music.save!
+          entry_part_params_array = entry_part_params.to_h.to_a
+          entry_part_params_array.each_with_index do |param, cnt|
+            entry_part = EntryPart.new
+            entry_part.set_default_part(params[:music_session_id], @entry_music.id, param, cnt)
+            entry_part.save!
+          end
+        end
       end
-
       redirect_to music_session_path(params[:music_session_id])
-    else
-      render "sessions/show"
+    rescue => e
+      @session = Session.find(params[:music_session_id])
+      @current_user_entry = @session.current_user_entry_judge(current_user)
+      @entry_sessions = @session.entry_sessions
+      # redirect_to music_session_path(params[:music_session_id])
+      render template: "sessions/show"
     end
   end
 
