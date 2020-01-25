@@ -27,11 +27,9 @@ class EntryMusicsController < ApplicationController
       end
       redirect_to music_session_path(params[:music_session_id])
     rescue => e
-      @session = Session.find(params[:music_session_id])
-      @current_user_entry = @session.current_user_entry_judge(current_user)
-      @entry_sessions = @session.entry_sessions
-      # redirect_to music_session_path(params[:music_session_id])
-      render template: "sessions/show"
+      error_log = ErrorLog.new
+      error_log.create_log(params, e, request.remote_ip)
+      render template: "common/error1"
     end
   end
 

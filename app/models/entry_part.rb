@@ -3,6 +3,8 @@ class EntryPart < ApplicationRecord
   belongs_to :entry_music
   belongs_to :user, optional: true
 
+  validates :user_id, presence: true
+
   def set_default_part(session_id, entry_music_id, param, cnt)
     
     self.session_id     = session_id
