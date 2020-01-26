@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def index
     begin
-      @sessions = Session.where("date >= ?", Date.today).order(date: "DESC")
+      @sessions = Session.where("date >= ?", Date.today).order(:date)
     rescue => e
       error_log = ErrorLog.new
       error_log.create_log(params, e, request.remote_ip)

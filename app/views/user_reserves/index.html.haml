@@ -1,8 +1,9 @@
-.user_reserve-index-page
-  .main-container
-    .inner-container
-      .user-reserve
-        .user-reserve__title.main-title
-          スタジオ予約状況
-        = render partial: "user_reserves", locals: { user_reserves: @user_reserves }
+.main-container
+  .inner-container-wide
+    .user-reserve
+      .user-reserve__title.main-title
+        スタジオ予約状況
+      = render partial: "user_reserves", locals: { user_reserves: @user_reserves }
+    .side-bar
+      = render partial: "users/side_menu"
 = render partial: "cancel_modal"

@@ -21,7 +21,6 @@
           margin-left: 20px;
           font-size: 24px;
         }
-    
       }
       &__right{
         position: relative;
@@ -58,6 +57,15 @@
     }
     &__contents{
       display: none;
+      &__note{
+        width: 90%;
+        margin: 0 auto;
+        @include string_set(14px, normal, #888888);
+      }
+      .mypage-entry-sessions{
+        @include string_set(20px, bold, #333333);
+        margin: 10px 0;
+      }
     }
   }
 }

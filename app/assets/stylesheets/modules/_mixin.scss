@@ -17,4 +17,5 @@
   line-height: 15px;
   @include string_set(14px, bold, #FFFFFF);
   background: $background_color;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
 }

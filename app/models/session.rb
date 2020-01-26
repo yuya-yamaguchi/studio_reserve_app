@@ -43,4 +43,9 @@ class Session < ApplicationRecord
     results
   end
 
+
+  def calc_remaining_days
+    (date - Date.today).to_i
+  end
+
 end

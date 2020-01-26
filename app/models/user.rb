@@ -15,7 +15,8 @@ class User < ApplicationRecord
   has_many :entry_rooms
   has_many :chatrooms, through: :entry_rooms
   has_many :entry_sessions
-  has_many :sessions, through: :entry_sessions
+  has_many :sessions
+  has_many :only_entry_sessions, through: :entry_sessions, source: :session
   has_many :entry_parts
   has_many :notices
 

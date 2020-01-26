@@ -23,8 +23,8 @@ $(function(){
     $("#_date_3i").val(select_day);
     $("#start_hour").val(select_start_hour);
     $("#end_hour").val(select_end_hour);
-    $("#payment_fee").text(`${studio_fee} 円`);
-
+    $("#payment_fee").text("¥" + studio_fee.replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+    
     $('.js-reserve-modal').fadeIn();
     return false;
   });
@@ -190,7 +190,7 @@ $(function(){
     use_time = end_hour - start_hour
     // 支払料金算出
     chaged_fee = base_fee * use_time
-
-    $("#payment_fee").text(chaged_fee + " 円");
+    
+    $("#payment_fee").text("¥" + String(chaged_fee).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
   });
 });
