@@ -40,6 +40,13 @@ class SessionsController < ApplicationController
   def edit
     begin
       @session = Session.find(params[:id])
+      # セッション情報変更チェック
+      chk_result = @session.info_change_chk(current_user)
+      if chk_result == false
+        flash[:alert] = @session.error_message
+        redirect_to music_session_path(params[:id])
+        return
+      end
       @session_url = "/sessions/#{@session.id}"
     rescue => e
       error_log = ErrorLog.new
@@ -123,10 +130,18 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    error_message = nil
     begin
       ActiveRecord::Base.transaction do
         @session = Session.find(params[:id])
         user_reserve_rm = @session.user_reserve
+        # セッション中止可否チェック
+        chk_result = @session.cancel_chk(current_user)
+        if chk_result == false
+          flash[:alert] = @session.error_message
+          redirect_to music_session_path(params[:id])
+          return
+        end
         # スタジオ予約取消
         # reserveのupdate(1:予約済 → 0:予約未済)
         reserves_rm = Reserve.new

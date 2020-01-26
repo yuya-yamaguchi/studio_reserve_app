@@ -22,6 +22,8 @@ class Session < ApplicationRecord
   validates :max_music, presence: true
   validates :entry_fee, presence: true
 
+  attr_accessor :error_message
+
   def another_music_cnt
     cnt = self.entry_musics.where(status: 1).count
     self.max_music - cnt
@@ -43,9 +45,37 @@ class Session < ApplicationRecord
     results
   end
 
-
   def calc_remaining_days
     (date - Date.today).to_i
+  end
+
+  def cancel_chk(current_user)
+    # 主催者チェック
+    if current_user.id != self.user_id
+      self.error_message = "主催者以外は中止できません"
+      return false
+    end
+    # 日付チェック
+    if date < Date.today
+      self.error_message = "開催日を過ぎたセッションは中止できません"
+      return false
+    elsif date == Date.today
+      self.error_message = "当日のセッションは中止できません"
+      return false
+    end
+  end
+
+  def info_change_chk(current_user)
+    # 主催者チェック
+    if current_user.id != self.user_id
+      self.error_message = "主催者以外は変更できません"
+      return false
+    end
+    # 日付チェック
+    if date < Date.today
+      self.error_message = "開催日を過ぎたセッションは変更できません"
+      return false
+    end
   end
 
 end
