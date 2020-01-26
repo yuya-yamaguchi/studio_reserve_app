@@ -1,7 +1,7 @@
 .main-container
   .inner-container-wide
     .sessions-show
-      = render partial: "title", locals: { session: @session, current_user_entry: @current_user_entry }
+      = render partial: "sessions/title", locals: { session: @session, current_user_entry: @current_user_entry }
       .sessions-show__info
         .sessions-show__info__left
           - if @session.img.present?
@@ -40,7 +40,7 @@
       .sessions-show__music-list
         .sessions-show__music-list__title.sub-title
           = "セッション曲一覧 (あと #{@session.another_music_cnt} 曲)"
-        = render partial: "add_music"
+        = render partial: "sessions/add_music"
         %table.session-musics
           - if @entry_musics.present?
             %tr.session-musics__header
@@ -87,6 +87,6 @@
               曲を追加しましょう！
 
     .side-bar
-      = render partial: "search"
-= render partial: "cancel_modal"
+      = render partial: "sessions/search"
+= render partial: "sessions/cancel_modal"
 = hidden_field_tag :current_user_entry, @current_user_entry

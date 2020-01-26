@@ -60,6 +60,7 @@ class Reserve < ApplicationRecord
     end
   end
 
+  # スタジオ予約重複チェック（自分が行なった予約は除いてチェック）予約変更用
   def duplicate_chk(params, current_user)
     date = Date.new(
       params[:date_y].to_i,
@@ -70,7 +71,25 @@ class Reserve < ApplicationRecord
                           .where(date: date)
                           .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
                           .where(reserve_flg: 1)
-                          .where.not(user_id: current_user.id)
+                          .count
+    if (reserved_cnt > 0)
+      return true
+    else
+      return false
+    end
+  end
+
+  # スタジオ予約重複チェック（自分が行なった予約は除いてチェック）新規予約用
+  def duplicate_chk2(params, current_user)
+    date = Date.new(
+      params["date(1i)"].to_i,
+      params["date(2i)"].to_i,
+      params["date(3i)"].to_i
+    )
+    reserved_cnt = Reserve.where(studio_id: params[:studio_id])
+                          .where(date: date)
+                          .where('? <= hour and hour < ?', params[:start_hour], params[:end_hour])
+                          .where(reserve_flg: 1)
                           .count
     if (reserved_cnt > 0)
       return true
