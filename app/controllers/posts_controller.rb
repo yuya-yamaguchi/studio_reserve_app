@@ -4,11 +4,23 @@ class PostsController < ApplicationController
   before_action :sign_in_check, only: [:new, :edit, :create, :update]
 
   def index
-    @posts = Post.all.order("updated_at DESC")
+    begin
+      @posts = Post.all.order("updated_at DESC")
+    rescue => e
+      error_log = ErrorLog.new
+      error_log.create_log(params, e, request.remote_ip)
+      render template: "common/error1"
+    end
   end
 
   def new
-    @post = Post.new
+    begin
+      @post = Post.new
+    rescue => e
+      error_log = ErrorLog.new
+      error_log.create_log(params, e, request.remote_ip)
+      render template: "common/error1"
+    end
   end
 
   def show

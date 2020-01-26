@@ -4,8 +4,14 @@ class EntryMusicsController < ApplicationController
   before_action :set_session_entry_music, only: [:show, :edit, :update]
 
   def show
-    @current_user_entry = @session.current_user_entry_judge(current_user)
-    @entry_parts = @entry_music.entry_parts
+    begin
+      @current_user_entry = @session.current_user_entry_judge(current_user)
+      @entry_parts = @entry_music.entry_parts
+    rescue => e
+      error_log = ErrorLog.new
+      error_log.create_log(params, e, request.remote_ip)
+      render template: "common/error1"
+    end
   end
 
   def create
@@ -35,7 +41,13 @@ class EntryMusicsController < ApplicationController
   end
 
   def edit
-    @entry_parts = @entry_music.entry_parts
+    begin
+      @entry_parts = @entry_music.entry_parts
+    rescue => e
+      error_log = ErrorLog.new
+      error_log.create_log(params, e, request.remote_ip)
+      render template: "common/error1"
+    end
   end
 
   def update

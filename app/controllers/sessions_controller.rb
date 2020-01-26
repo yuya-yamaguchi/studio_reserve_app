@@ -103,16 +103,16 @@ class SessionsController < ApplicationController
         @user_reserve.save
         # sessionの設定
         session_params = session_params.merge(user_reserve_id: @user_reserve.id)
-        session_m = Session.new(session_params)
+        @session_m = Session.new(session_params)
 
-        entry_sessions = session_m.entry_sessions.build(user_id: current_user.id)
+        entry_sessions = @session_m.entry_sessions.build(user_id: current_user.id)
 
         reserves.update(reserve_flg: 1, user_id: current_user.id)
-        session_m.save!
+        @session_m.save!
         entry_sessions.save!
       end
       flash[:notice] = 'セッションの登録が完了しました'
-      redirect_to music_session_path(session_m)
+      redirect_to music_session_path(@session_m)
     rescue ActiveRecord::RecordInvalid => e
       render :new
     rescue => e
