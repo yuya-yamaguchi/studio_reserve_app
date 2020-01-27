@@ -8,6 +8,8 @@ class Session < ApplicationRecord
   has_many   :entry_musics, dependent: :destroy
   has_many   :entry_parts, dependent: :destroy
   has_many   :users, through: :entry_sessions
+  has_many   :session_music_genres
+  has_many   :music_genres, through: :session_music_genres
 
   validates :title, presence: true
   validates :title, length: { maximum: 40, message: "40 文字以下で入力してください" }, allow_blank: true

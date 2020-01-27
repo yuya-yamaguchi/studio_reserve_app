@@ -33,3 +33,22 @@ if Rails.env == "development"
     date_cnt = 0
   end
 end
+
+# music_genres初期データ
+MusicGenre.create!(name: "J-POP")
+MusicGenre.create!(name: "ロック")
+MusicGenre.create!(name: "ハードロック")
+MusicGenre.create!(name: "メタル")
+MusicGenre.create!(name: "パンク")
+MusicGenre.create!(name: "ヒップホップ")
+MusicGenre.create!(name: "アニソン")
+MusicGenre.create!(name: "ブルース")
+MusicGenre.create!(name: "ジャズ")
+MusicGenre.create!(name: "クラシック")
+MusicGenre.create!(name: "フュージョン")
+MusicGenre.create!(name: "R&B")
+MusicGenre.create!(name: "レゲエ")
+MusicGenre.create!(name: "エレクトロニカ")
+MusicGenre.create!(name: "K-POP")
+MusicGenre.create!(name: "演歌")
+MusicGenre.create!(name: "その他")

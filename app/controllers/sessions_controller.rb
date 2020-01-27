@@ -192,7 +192,8 @@ class SessionsController < ApplicationController
                   :end_hour,
                   :max_music,
                   :entry_fee,
-                  :img)
+                  :img,
+                  { :music_genre_ids => [] })
            .merge(user_id: current_user.id)
   end
 

@@ -1,5 +1,8 @@
 $(function(){
 
+  /****************************************/
+  /* パラメータチェック関数                   */
+  /****************************************/
   function paramsCheck(title, exlpain, studio, year, month, day, start_h, end_h, max_music, entry_fee){
     var check_result = true;
 
@@ -58,6 +61,9 @@ $(function(){
     return check_result;
   }
 
+  /****************************************/
+  /* 予約重複チェック関数                    */
+  /****************************************/
   function reserveDuplicateChk(year, month, day, start_h, end_h){
     var studio_id = $('#session_studio_id option:selected').val();
     
@@ -146,6 +152,151 @@ $(function(){
       }
       reader.readAsDataURL(file);
       $('.session-img__value').prepend(img);
+    }
+  });
+
+  /****************************************/
+  /* 音楽ジャンル選択処理                    */
+  /****************************************/
+  var music_genre_colors =
+    ["rgb(243, 31, 31)",  // J-POP
+     "rgb(243, 116, 31)", // ロック
+     "rgb(243, 158, 31)", // ハードロック
+     "rgb(200, 212, 20)", // メタル
+     "rgb(162, 243, 31)", // パンク
+     "rgb(98, 243, 31)",  // ヒッピホップ
+     "rgb(31, 243, 31)",  // アニソン
+     "rgb(31, 243, 155)", // ブルース
+     "rgb(31, 201, 243)", // ジャズ
+     "rgb(31, 116, 243)", // クラシック
+     "rgb(35, 31, 243)",  // フュージョン
+     "rgb(95, 31, 243)",  // R&B
+     "rgb(176, 31, 243)", // レゲエ
+     "rgb(208, 31, 243)", // エレクトロニカ
+     "rgb(243, 31, 162)", // K-POP
+     "rgb(243, 31, 84)",  // 演歌
+     "rgb(87, 85, 86)"    // その他
+  ];
+
+  function musicGenreSelect(select_music_genre, check_value, music_color){
+    if (check_value == undefined){
+      $(`label[for="${select_music_genre}"]`).css('background', 'lightgray');
+      $(`label[for="${select_music_genre}"]`).css('color', 'black');
+    }
+    else{
+      $(`label[for="${select_music_genre}"]`).css('background', music_color);
+      $(`label[for="${select_music_genre}"]`).css('color', '#FFFFFF');
+    }
+  }
+  
+  /* J-POP選択 */
+  $(document).on('click', '#session_music_genre_ids_1', function(){
+    var select_music_genre = "session_music_genre_ids_1";
+    var check_value = $('#session_music_genre_ids_1:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[0]);
+  });
+  /* ロック選択 */
+  $(document).on('click', '#session_music_genre_ids_2', function(){
+    var select_music_genre = "session_music_genre_ids_2";
+    var check_value = $('#session_music_genre_ids_2:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[1]);
+  });
+  /* ロック選択 */
+  $(document).on('click', '#session_music_genre_ids_3', function(){
+    var select_music_genre = "session_music_genre_ids_3";
+    var check_value = $('#session_music_genre_ids_3:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[2]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_4', function(){
+    var select_music_genre = "session_music_genre_ids_4";
+    var check_value = $('#session_music_genre_ids_4:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[3]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_5', function(){
+    var select_music_genre = "session_music_genre_ids_5";
+    var check_value = $('#session_music_genre_ids_5:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[4]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_6', function(){
+    var select_music_genre = "session_music_genre_ids_6";
+    var check_value = $('#session_music_genre_ids_6:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[5]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_7', function(){
+    var select_music_genre = "session_music_genre_ids_7";
+    var check_value = $('#session_music_genre_ids_7:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[6]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_8', function(){
+    var select_music_genre = "session_music_genre_ids_8";
+    var check_value = $('#session_music_genre_ids_8:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[7]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_9', function(){
+    var select_music_genre = "session_music_genre_ids_9";
+    var check_value = $('#session_music_genre_ids_9:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[8]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_10', function(){
+    var select_music_genre = "session_music_genre_ids_10";
+    var check_value = $('#session_music_genre_ids_10:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[9]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_11', function(){
+    var select_music_genre = "session_music_genre_ids_11";
+    var check_value = $('#session_music_genre_ids_11:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[10]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_12', function(){
+    var select_music_genre = "session_music_genre_ids_12";
+    var check_value = $('#session_music_genre_ids_12:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[11]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_13', function(){
+    var select_music_genre = "session_music_genre_ids_13";
+    var check_value = $('#session_music_genre_ids_13:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[12]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_14', function(){
+    var select_music_genre = "session_music_genre_ids_14";
+    var check_value = $('#session_music_genre_ids_14:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[13]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_15', function(){
+    var select_music_genre = "session_music_genre_ids_15";
+    var check_value = $('#session_music_genre_ids_15:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[14]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_16', function(){
+    var select_music_genre = "session_music_genre_ids_16";
+    var check_value = $('#session_music_genre_ids_16:checked').val();
+    musicGenreSelect(select_music_genre, check_value,music_genre_colors[15]);
+  });
+
+  $(document).on('click', '#session_music_genre_ids_17', function(){
+    var select_music_genre = "session_music_genre_ids_17";
+    var check_value = $('#session_music_genre_ids_17:checked').val();
+    musicGenreSelect(select_music_genre, check_value, music_genre_colors[16]);
+  });
+
+  $(document).ready( function(){
+    for(var i = 1; i <= 18; i++){
+      var select_music_genre = `session_music_genre_ids_${i}`;
+      var check_value = $(`#session_music_genre_ids_${i}:checked`).val();
+      musicGenreSelect(select_music_genre, check_value, music_genre_colors[i-1]);
     }
   });
 });
