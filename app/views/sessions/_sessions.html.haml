@@ -15,7 +15,7 @@
                 主催者：
                 = session.user.nickname
               .session-container__left__main-info__music-genre
-                = render partial: "music_genres", locals: { music_genres: session.music_genres }
+                = render partial: "sessions/music_genres", locals: { music_genres: session.music_genres }
           .session-container__right
             .session-container__right__hold-date
               = session.hold_datetime
