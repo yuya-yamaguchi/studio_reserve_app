@@ -8,6 +8,8 @@ class Session < ApplicationRecord
   has_many   :entry_musics, dependent: :destroy
   has_many   :entry_parts, dependent: :destroy
   has_many   :users, through: :entry_sessions
+  has_many   :session_music_genres
+  has_many   :music_genres, through: :session_music_genres
 
   validates :title, presence: true
   validates :title, length: { maximum: 40, message: "40 文字以下で入力してください" }, allow_blank: true
@@ -21,6 +23,8 @@ class Session < ApplicationRecord
   validates :end_hour, presence: true
   validates :max_music, presence: true
   validates :entry_fee, presence: true
+
+  attr_accessor :error_message
 
   def another_music_cnt
     cnt = self.entry_musics.where(status: 1).count
@@ -43,9 +47,37 @@ class Session < ApplicationRecord
     results
   end
 
-
   def calc_remaining_days
     (date - Date.today).to_i
+  end
+
+  def cancel_chk(current_user)
+    # 主催者チェック
+    if current_user.id != self.user_id
+      self.error_message = "主催者以外は中止できません"
+      return false
+    end
+    # 日付チェック
+    if date < Date.today
+      self.error_message = "開催日を過ぎたセッションは中止できません"
+      return false
+    elsif date == Date.today
+      self.error_message = "当日のセッションは中止できません"
+      return false
+    end
+  end
+
+  def info_change_chk(current_user)
+    # 主催者チェック
+    if current_user.id != self.user_id
+      self.error_message = "主催者以外は変更できません"
+      return false
+    end
+    # 日付チェック
+    if date < Date.today
+      self.error_message = "開催日を過ぎたセッションは変更できません"
+      return false
+    end
   end
 
 end

@@ -1,0 +1,53 @@
+.music-genres{
+  &--j-pop{
+    @include music_genre(rgb(243, 31, 31));
+  }
+  &--rock{
+    @include music_genre(rgb(243, 116, 31));
+  }
+  &--hardrock{
+    @include music_genre(rgb(243, 158, 31));
+  }
+  &--metal{
+    @include music_genre(rgb(200, 212, 20));
+  }
+  &--punk{
+    @include music_genre(rgb(162, 243, 31));
+  }
+  &--hiphop{
+    @include music_genre(rgb(98, 243, 31));
+  }
+  &--blues{
+    @include music_genre(rgb(31, 243, 31));
+  }
+  &--r-and-b{
+    @include music_genre(rgb(31, 243, 155));
+  }
+  &--reggae{
+    @include music_genre(rgb(31, 201, 243));
+  }
+  &--electronica{
+    @include music_genre(rgb(31, 116, 243));
+  }
+  &--k-pop{
+    @include music_genre(rgb(35, 31, 243));
+  }
+  &--jazz{
+    @include music_genre(rgb(95, 31, 243));
+  }
+  &--classic{
+    @include music_genre(rgb(176, 31, 243));
+  }
+  &--fusion{
+    @include music_genre(rgb(208, 31, 243));
+  }
+  &--anime{
+    @include music_genre(rgb(243, 31, 162));
+  }
+  &--enka{
+    @include music_genre(rgb(243, 31, 84));
+  }
+  &--other{
+    @include music_genre(rgb(87, 85, 86));
+  }
+}

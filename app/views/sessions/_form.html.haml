@@ -1,18 +1,23 @@
 .sessions-new__form
   = form_with(model: @session, url: @session_url, data: { remote: false }) do |f|
-    .session-name
+    .session-name.session-sub-title
       .session-name__title
         セッション名
       .session-name__value
         = f.text_field :title, value: @session.title, class: "text-field-default"
       .error-messages#title-error
-    .session-explain
+    .session-genre.session-sub-title
+      .session-genre__title
+        ジャンル（複数選択可）
+      .session-genre__value
+        = f.collection_check_boxes :music_genre_ids, MusicGenre.all, :id, :name
+    .session-explain.session-sub-title
       .session-explain__title
         説明
       .session-explain__value
         = f.text_area :explain, value: @session.explain, class: "text-area-default"
       .error-messages#explain-error
-    .session-img
+    .session-img.session-sub-title
       .session-img__title
         イメージ画像
       .session-img__value
@@ -22,13 +27,13 @@
           = f.file_field :img, id: "session-image", class: "session-image"
           .img-select-btn
             画像を選択する
-    .session-studio
+    .session-studio.session-sub-title
       .session-studio__title
         利用スタジオ
       .session-studio__value
         = f.collection_select(:studio_id, Studio.all, :id, :name, {prompt:"--"}, { class: "select-box-default" })
       .error-messages#studio-error
-    .session-hold-date
+    .session-hold-date.session-sub-title
       .session-hold-date__title
         開催日時
       .session-hold-date__value
@@ -38,17 +43,17 @@
         = f.select :end_hour, [*11..22].map{|h| [h]}, {prompt:"--"}, { class: "select-box-short" }
         時
       .error-messages#hold-date-error
-    .session-max-music
+    .session-max-music.session-sub-title
       .session-max-music__title
         最大曲数
       .session-max-music__value
         = f.number_field :max_music, value: @session.max_music, class: "number-field-short"
         曲
       .error-messages#max-music-error
-    .session-entry-fee
+    .session-entry-fee.session-sub-title
       .session-entry-fee__title
         参加費
       .session-entry-fee__value
         = f.text_field :entry_fee, value: @session.entry_fee, class: "text-field-short"
       .error-messages#entry-fee-error
-    = f.submit "確認する", id: "session_submit"
+    = f.submit "確認する", id: "session_submit", class: "edit-btn-default"

@@ -11,8 +11,9 @@
   &__main{
     margin: 0 auto;
     line-height: 60px;
-    background: rgb(247, 247, 172);
+    background:  #333333;
     text-align: center;
+    color: #FFFFFF;
   }
   &__title{
     margin: 20px 0 5px 0;
@@ -23,31 +24,33 @@
   }
   &__operate{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
-    line-height: 60px;
-    border-top: 1px solid #888888;
     margin-top: 20px;
     .session-correct{
-      width: 50%;
-      background: rgb(79, 180, 243);
+      width: 200px;
       text-align: center;
-      color: #FFFFFF;
+      background: #FFFFFF;
+      color: #333333;
+      padding: 5px 0;
+      border-radius: 5px;
       cursor: pointer;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
       &:hover{
-        opacity: 0.7;
+        opacity: 0.8;
       }
     }
     #session-done{
-      width: 50%;
-      background: rgb(240, 60, 60);
-      text-align: center;
+      display: block;
+      text-decoration: none;
       color: #FFFFFF;
-      border-left: 1px solid #888888;
+      width: 200px;
+      text-align: center;
+      background: red;
+      padding: 5px 0;
+      border-radius: 5px;
       cursor: pointer;
-      &:hover{
-        opacity: 0.7;
-      }
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
     }
   }
 }

@@ -35,12 +35,18 @@
             %td
               - @entry_sessions.each do |entry_session|
                 = link_to entry_session.user.nickname, user_path(entry_session.user_id), class: "entry_user"
+          %tr
+            %th
+              ジャンル
+            %td
+              = render partial: "music_genres", locals: { music_genres: @session.music_genres }
       .sessions-show__explain
         = @session.explain
       .sessions-show__music-list
         .sessions-show__music-list__title.sub-title
           = "セッション曲一覧 (あと #{@session.another_music_cnt} 曲)"
-        = render partial: "sessions/add_music"
+        - if @session.date >= Date.today
+          = render partial: "sessions/add_music"
         %table.session-musics
           - if @entry_musics.present?
             %tr.session-musics__header

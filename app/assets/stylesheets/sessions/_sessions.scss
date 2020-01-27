@@ -3,7 +3,7 @@
   margin: 0 auto;
   .session-container{
     width: 100%;
-    padding: 10px 10px 30px 10px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -15,14 +15,20 @@
       display: flex;
       justify-content: flex-start;
       &__img{
-        width: 100px;
+        height: 100px;
+        object-fit: cover;
       }
       &__main-info{
         padding-left: 20px;
+        max-width: 400px;
+        &__music-genre{
+          padding: 10px;
+        }
       }
     }
     &__right{
       font-size: 14px;
+      min-width: 100px;
       &__remaining-days{
         text-align: right;
       }

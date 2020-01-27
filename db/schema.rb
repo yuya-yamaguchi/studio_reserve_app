@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_110806) do
+ActiveRecord::Schema.define(version: 2020_01_26_125818) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -98,6 +98,12 @@ ActiveRecord::Schema.define(version: 2020_01_24_110806) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "music_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -129,6 +135,15 @@ ActiveRecord::Schema.define(version: 2020_01_24_110806) do
     t.bigint "user_id"
     t.index ["studio_id"], name: "index_reserves_on_studio_id"
     t.index ["user_id"], name: "index_reserves_on_user_id"
+  end
+
+  create_table "session_music_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "session_id", null: false
+    t.bigint "music_genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_genre_id"], name: "index_session_music_genres_on_music_genre_id"
+    t.index ["session_id"], name: "index_session_music_genres_on_session_id"
   end
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
