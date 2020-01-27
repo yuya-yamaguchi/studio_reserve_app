@@ -176,7 +176,7 @@ $(function(){
      "rgb(243, 31, 162)", // K-POP
      "rgb(243, 31, 84)",  // 演歌
      "rgb(87, 85, 86)"    // その他
-  ];
+    ];
 
   function musicGenreSelect(select_music_genre, check_value, music_color){
     if (check_value == undefined){

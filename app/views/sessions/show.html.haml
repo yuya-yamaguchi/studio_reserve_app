@@ -35,6 +35,11 @@
             %td
               - @entry_sessions.each do |entry_session|
                 = link_to entry_session.user.nickname, user_path(entry_session.user_id), class: "entry_user"
+          %tr
+            %th
+              ジャンル
+            %td
+              = render partial: "music_genres", locals: { music_genres: @session.music_genres }
       .sessions-show__explain
         = @session.explain
       .sessions-show__music-list
