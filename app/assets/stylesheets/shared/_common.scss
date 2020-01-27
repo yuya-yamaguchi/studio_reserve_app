@@ -150,6 +150,7 @@
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
     filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
     @include string_set(18px, normal, #FFFFFF);
     &:hover{
@@ -165,6 +166,7 @@
   text-decoration: none;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
   @include string_set(18px, normal, #FFFFFF);
   &:hover{

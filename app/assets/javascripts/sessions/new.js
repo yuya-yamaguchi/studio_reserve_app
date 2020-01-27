@@ -113,7 +113,11 @@ $(function(){
       return false;
     }
     // 予約重複チェック
-    reserveDuplicateChk(year, month, day, start_h, end_h);
+    var url = location.href.split("/");
+    var last_url = url[url.length - 1];
+    if (last_url != "edit"){
+      reserveDuplicateChk(year, month, day, start_h, end_h);
+    }
     
     $(".session-confirm-modal__value").empty();
 
