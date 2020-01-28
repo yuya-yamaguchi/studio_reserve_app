@@ -75,8 +75,7 @@ https://studio-hummingbird.com/<br>
 * 他ユーザのマイページからそのユーザに対するメッセージ送信が可能
 * メッセージの未読・既読機能を実装(LINEのような形式で表示される)
 * メッセージ一覧から各ユーザとのやり取りの確認が可能
-<img width="1085" alt="readme_post" src="https://
-user-images.githubusercontent.com/56626222/72523301-d5243a00-38a2-11ea-9cbc-c9d8e7a14117.png">
+<img width="1085" alt="readme_post" src="https://user-images.githubusercontent.com/56626222/72523301-d5243a00-38a2-11ea-9cbc-c9d8e7a14117.png">
 
 ### マイページ
 <img width="1074" alt="readme_mypage" src="https://user-images.githubusercontent.com/56626222/72523300-d5243a00-38a2-11ea-9d4f-753fc608be0d.png">
