@@ -11,6 +11,8 @@ services:
       - log-data:/app/log
     depends_on:
       - db
+    tty: true
+    stdin_open: true
   web:
     build:
       context: containers/nginx
