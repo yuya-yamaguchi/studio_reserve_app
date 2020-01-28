@@ -11,7 +11,7 @@
 @import "shared/footer";
 @import "shared/flash";
 
-@import "common/error1";
+@import "errors/error1";
 
 @import "top/index";
 
@@ -54,3 +54,4 @@
 @import "entry_musics/show";
 
 @import "devise/registrations/new";
+@import "devise/sessions/new";

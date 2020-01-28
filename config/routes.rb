@@ -53,4 +53,5 @@ Rails.application.routes.draw do
       get  :search
     end
   end
+  get '*anything', to: 'errors#routing_error'
 end

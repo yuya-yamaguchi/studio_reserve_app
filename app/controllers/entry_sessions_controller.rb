@@ -1,16 +1,10 @@
 class EntrySessionsController < ApplicationController
 
   def create
-    begin
-      entry_session = EntrySession.new(session_id: params[:music_session_id],
-                                       user_id: current_user.id)
-      entry_session.save!
-      redirect_to music_session_path(params[:music_session_id])
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    entry_session = EntrySession.new(session_id: params[:music_session_id],
+                                     user_id: current_user.id)
+    entry_session.save!
+    redirect_to music_session_path(params[:music_session_id])
   end
 
   def destroy

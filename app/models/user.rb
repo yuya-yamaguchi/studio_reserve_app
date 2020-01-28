@@ -6,9 +6,12 @@ class User < ApplicationRecord
   mount_uploader :img, ImageUploader
 
   validates :nickname, presence: true
+  validates :nickname, length: { maximum: 20, message: "は20文字以下で入力してください" }, allow_blank: true
   validates :last_name, presence: true
+  validates :last_name, length: { maximum: 20, message: "は20文字以下で入力してください" }, allow_blank: true
   validates :first_name, presence: true
-  validates :tel_no, presence: true
+  validates :first_name, length: { maximum: 20, message: "は20文字以下で入力してください" }, allow_blank: true
+  validates :tel_no, format: {with:/\A\d{9,11}\z/}, allow_blank: true
   
   has_many :user_reserves
   has_many :posts

@@ -3,15 +3,9 @@ class ReservesController < ApplicationController
   before_action :sign_in_check, only: [:update]
 
   def show
-    begin
-      @studio = Studio.find(params[:studio_id])
-      @reserve = Reserve.find(params[:id])
-      @one_week = @reserve.calc_one_week
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @studio = Studio.find(params[:studio_id])
+    @reserve = Reserve.find(params[:id])
+    @one_week = @reserve.calc_one_week
   end
 
   def update

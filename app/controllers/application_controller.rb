@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ErrorHandlers
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :header_info
 

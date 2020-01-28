@@ -1,14 +1,8 @@
 class UserReservesController < ApplicationController
 
   def index
-    begin
-      @user = User.find(current_user.id)
-      @user_reserves = @user.user_reserves.order('reserve_date DESC').order('start_hour DESC')
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @user = User.find(current_user.id)
+    @user_reserves = @user.user_reserves.order('reserve_date DESC').order('start_hour DESC')
   end
 
   def destroy
