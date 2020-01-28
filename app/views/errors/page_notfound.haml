@@ -1,0 +1,14 @@
+.main-container
+  .inner-container
+    .error-container
+      .error-container__main-message
+        = icon 'fas', 'exclamation-triangle'
+        お探しのページは見つかりませんでした
+      .error-container__sub-message
+        入力したアドレスが間違っているか、ページが移動した可能性があります。
+        %br
+        お問い合わせ先：nsy1023n@gmail.com
+      .error-container__buttons
+        %button{ type: "button", onclick: "history.back()", class: "back-btn" }
+          前画面に戻る
+        = link_to "トップへ戻る", root_path, class: "top-btn"

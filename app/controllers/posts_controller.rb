@@ -4,23 +4,11 @@ class PostsController < ApplicationController
   before_action :sign_in_check, only: [:new, :edit, :create, :update]
 
   def index
-    begin
-      @posts = Post.all.order("updated_at DESC")
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @posts = Post.all.order("updated_at DESC")
   end
 
   def new
-    begin
-      @post = Post.new
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @post = Post.new
   end
 
   def show
@@ -61,15 +49,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    begin
-      @post.destroy!
-      flash[:notice] = '投稿を削除しました'
-      redirect_to user_path(current_user)
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @post.destroy!
+    flash[:notice] = '投稿を削除しました'
+    redirect_to user_path(current_user)
   end
 
   def search

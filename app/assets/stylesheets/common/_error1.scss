@@ -1,14 +1,47 @@
-.error1{
-  background-color: rgb(245, 132, 132);
+.error-container{
+  background-color: rgb(241, 165, 165);
+  box-shadow: 2px 2px 4px gray;
   padding: 20px;
-  &__message{
-    @include string_set(20px, bold,  #333333);
+  &__main-message{
+    @include string_set(30px, bold,  #888888);
+    margin: 30px;
     text-align: center;
   }
-  &__contact-info{
-    
+  &__sub-message{
+    @include string_set(16px, normal,  #333333);
+    text-align: center;
   }
-  button{
-    text-align: right;
+  &__buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 0 100px;
+    .back-btn{
+      width: 200px;
+      text-align: center;
+      background: #FFFFFF;
+      @include string_set(16px, normal, #333333);
+      padding: 5px 0;
+      border-radius: 30px;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      &:hover{
+        filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.6));
+      }
+    }
+    .top-btn{
+      width: 200px;
+      text-align: center;
+      background: #333333;
+      @include string_set(16px, normal, #FFFFFF);
+      text-decoration: none;
+      padding: 5px 0;
+      border-radius: 30px;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      &:hover{
+        filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.6));
+      }
+    }
   }
 }

@@ -3,56 +3,32 @@ class SessionsController < ApplicationController
   before_action :sign_in_check, only: [:new, :edit, :create, :update]
 
   def index
-    begin
-      @sessions = Session.where("date >= ?", Date.today).order(:date)
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @sessions = Session.where("date >= ?", Date.today).order(:date)
   end
 
   def show
-    begin
-      @session = Session.find(params[:id])
-      @entry_music = EntryMusic.new
-      @entry_musics = @session.entry_musics
-      @entry_sessions = @session.entry_sessions
-      @current_user_entry = @session.current_user_entry_judge(current_user)
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @session = Session.find(params[:id])
+    @entry_music = EntryMusic.new
+    @entry_musics = @session.entry_musics
+    @entry_sessions = @session.entry_sessions
+    @current_user_entry = @session.current_user_entry_judge(current_user)
   end
 
   def new
-    begin
-      @session = Session.new
-      @session_url = "/sessions"
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
-    end
+    @session = Session.new
+    @session_url = "/sessions"
   end
 
   def edit
-    begin
-      @session = Session.find(params[:id])
-      # セッション情報変更チェック
-      chk_result = @session.info_change_chk(current_user)
-      if chk_result == false
-        flash[:alert] = @session.error_message
-        redirect_to music_session_path(params[:id])
-        return
-      end
-      @session_url = "/sessions/#{@session.id}"
-    rescue => e
-      error_log = ErrorLog.new
-      error_log.create_log(params, e, request.remote_ip)
-      render template: "common/error1"
+    @session = Session.find(params[:id])
+    # セッション情報変更チェック
+    chk_result = @session.info_change_chk(current_user)
+    if chk_result == false
+      flash[:alert] = @session.error_message
+      redirect_to music_session_path(params[:id])
+      return
     end
+    @session_url = "/sessions/#{@session.id}"
   end
 
   def update
