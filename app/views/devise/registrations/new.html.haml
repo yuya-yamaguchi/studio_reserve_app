@@ -1,41 +1,63 @@
 .main-container
   .short-inner-container
     .devise-registrations-new
-      %h2.main-title 新規会員登録
+      .devise-registrations-new__title
+        %h2.main-title
+          = icon 'fas', 'user'
+          新規会員登録
+        = render "devise/shared/links"
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         .field
-          アカウント名
-          = f.text_field :nickname, autofocus: true, class: "text-field-default"
+          .input-need
+            必須
+          %span.field__name
+            アカウント名
+          = f.text_field :nickname, autofocus: true, class: "text-field-default", placeholder: "20文字以内"
           - resource.errors.full_messages_for(:nickname).each do |err_msg|
             .error-messages
               = err_msg
         .field
-          名前（姓）
-          = f.text_field :last_name, autofocus: true, class: "text-field-default"
+          .input-need
+            必須
+          %span.field__name
+            氏名（姓）
+          = f.text_field :last_name, autofocus: true, class: "text-field-default", placeholder: "20文字以内"
           - resource.errors.full_messages_for(:last_name).each do |err_msg|
             .error-messages
               = err_msg
         .field
-          名前（名）
-          = f.text_field :first_name, autofocus: true, class: "text-field-default"
+          .input-need
+            必須
+          %span.field__name
+            氏名（名）
+          = f.text_field :first_name, autofocus: true, class: "text-field-default", placeholder: "20文字以内"
           - resource.errors.full_messages_for(:first_name).each do |err_msg|
             .error-messages
               = err_msg
         .field
-          電話番号
-          = f.text_field :tel_no, autofocus: true, class: "text-field-default"
+          .input-whichever
+            任意
+          %span.field__name
+            電話番号
+          = f.text_field :tel_no, autofocus: true, class: "text-field-default", placeholder: "ハイフンなし"
           - resource.errors.full_messages_for(:tel_no).each do |err_msg|
             .error-messages
               = err_msg
         = f.hidden_field :img, value: "images.jpeg"
         .field
-          Email
+          .input-need
+            必須
+          %span.field__name
+            Email
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field-default"
           - resource.errors.full_messages_for(:email).each do |err_msg|
             .error-messages
               = err_msg
         .field
-          パスワード
+          .input-need
+            必須
+          %span.field__name
+            パスワード
           - if @minimum_password_length
             %em
               (#{@minimum_password_length}文字以上)
@@ -45,11 +67,14 @@
             .error-messages
               = err_msg
         .field
-          パスワード(確認)
+          .input-need
+            必須
+          %span.field__name
+            パスワード(確認)
           = f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field-short"
           - resource.errors.full_messages_for(:password_confirmation).each do |err_msg|
             .error-messages
               = err_msg
         .actions
-          = f.submit "会員登録する", class: "edit-btn-default"
-      = render "devise/shared/links"
+          = f.submit "会員登録する", class: "oparate-btn-gray"
+      

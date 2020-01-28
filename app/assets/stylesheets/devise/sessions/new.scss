@@ -1,0 +1,15 @@
+.devise-sessions-new{
+  box-shadow: 2px 2px 4px gray;
+  padding: 50px;
+  &__title{
+    display: flex;
+    justify-content: space-between;
+  }
+  .field{
+    padding: 10px 50px;
+  }
+  .actions{
+    display: flex;
+    justify-content: space-around;
+  }
+}
