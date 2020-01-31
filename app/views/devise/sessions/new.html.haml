@@ -5,7 +5,12 @@
         %h2.main-title
           = icon 'fas', 'door-open'
           ログイン
-        = render "devise/shared/links"
+        .devise-sessions-new__title__right
+          = render "devise/shared/links"
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "google-login" do
+            = icon 'fab', 'google'
+            Googleアカウントでログイン
+            = icon 'fas', 'angle-right'
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           = f.label :email

@@ -4,6 +4,7 @@ ActiveAdmin.register User do
   
   index do
     column :id
+    column :nickname
     column :last_name
     column :first_name
     column :tel_no
