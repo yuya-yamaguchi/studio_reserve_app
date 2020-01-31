@@ -28,7 +28,7 @@ class Post < ApplicationRecord
       return 1
     when "バンド参加希望"
       return 2
-    when " その他"
+    when "その他"
       return 99
     else
       return 0
