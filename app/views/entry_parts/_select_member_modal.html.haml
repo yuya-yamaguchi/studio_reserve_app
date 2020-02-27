@@ -1,0 +1,14 @@
+.modal.js-select-member-modal
+  .modal-back.select-member-back
+  = form_with( url: music_session_entry_musics_path(@session), data: { remote: false }, id: "add-player-url", method: "put") do |f|
+    .select-member-modal
+      .select-member-modal__msg
+        演奏者の名前を入力してください
+      .select-member-modal__search-box#member-search
+        = f.text_field :member_name, class: "text-field-default"
+      .select-member-modal__search-result
+      .select-member-modal__select-now
+      .select-member-modal__btn
+        .select-member-modal__btn__back.select-member-back
+          戻る
+        = f.submit "登録する", class: "select-member-modal__btn__move"

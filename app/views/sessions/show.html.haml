@@ -45,8 +45,7 @@
       .sessions-show__music-list
         .sessions-show__music-list__title.sub-title
           = "セッション曲一覧 (あと #{@session.another_music_cnt} 曲)"
-        - if @session.date >= Date.today
-          = render partial: "sessions/add_music"
+        = render partial: "sessions/add_music"
         %table.session-musics
           - if @entry_musics.present?
             %tr.session-musics__header
@@ -72,7 +71,7 @@
                     - if entry_part.user_id.present?
                       %td
                         = link_to entry_part.user.nickname, user_path(entry_part.user_id)
-                        - if user_signed_in? && (current_user&.id == entry_part.user_id)
+                        - if current_user&.id == entry_part.user_id || current_user&.id == @session.user_id || current_user.admin_flg == true
                           = link_to cancel_music_session_entry_music_entry_part_path(@session, entry_music, entry_part) do
                             = icon 'fas', 'times-circle', class: "part-entry-cansel"
                     - else
@@ -95,4 +94,8 @@
     .side-bar
       = render partial: "sessions/search"
 = render partial: "sessions/cancel_modal"
+= render partial: "entry_parts/select_member_modal"
 = hidden_field_tag :current_user_entry, @current_user_entry
+= hidden_field_tag :current_user_admin, current_user&.admin_flg
+= hidden_field_tag :session_user_id, @session.user_id
+= hidden_field_tag :current_user_id, current_user&.id
