@@ -75,7 +75,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: $short_responsive_width) {
   .header{
     .header-menus{
       display: none;

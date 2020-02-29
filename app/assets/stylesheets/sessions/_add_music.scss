@@ -42,7 +42,7 @@
   }
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: $short_responsive_width) {
   .add-music{
     &__add{
     }
