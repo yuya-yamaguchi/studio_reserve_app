@@ -89,7 +89,7 @@
             background-color: rgba(0,0,0,0.6);
             &__name{
               position: absolute;
-              bottom: 30px;
+              bottom: 40px;
               right: 10px;
               color: #FFFFFF;
             }
@@ -103,6 +103,22 @@
           &__bg:hover{
             background-color: rgba(0,0,0,0.0);
             transition: 0.2s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $short_responsive_width) {
+  .top-page{
+    .main-container{
+      .app-explain{
+        &__contents{
+          li{
+            .function-explain{
+              font-size: 24px;
+            }
           }
         }
       }
