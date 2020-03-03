@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     collection do
       get :reserve
       get :notice
+      get :search
     end
   end
 

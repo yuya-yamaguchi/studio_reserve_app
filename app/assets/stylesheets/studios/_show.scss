@@ -48,7 +48,6 @@
       background-color: #333333;
       border-radius: 30px;
     }
-  
     &__table{
       margin: 20px auto;
       width: 80%;
@@ -99,4 +98,41 @@
       height: 30px;
     }
   }
+}
+
+@media screen and (max-width: $short_responsive_width) {
+  .studio-show-page{
+    .studio{
+      &__info{
+        display: block;
+        &__left{
+          &__img{
+            width: 100%;
+            height: auto;
+            margin: 30px 0 0 0;
+          }
+        }
+        &__right{
+          &__explain{
+            font-size: 28px;
+          }
+          &__details{
+            font-size: 28px;
+          }
+        }
+      }
+    }
+    .reserve{
+      &__table{
+        font-size: 28px;
+      }
+      table{
+        width: 100%;
+      }
+      td{
+        height: 50px;
+      }
+    }
+  }
+  
 }

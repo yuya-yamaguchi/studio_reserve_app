@@ -7,13 +7,13 @@
       .add-music__form__container
         .add-music__form__container__left
           曲名
-          = f.text_field :music_name, class: "text-field-short"
+          = f.text_field :music_name, class: "text-field-default"
           .error-messages#music_name-error
           アーティスト名
-          = f.text_field :artist_name, class: "text-field-short"
+          = f.text_field :artist_name, class: "text-field-default"
           .error-messages#artist_name-error
           参考音源（Youtube）
-          = f.text_field :youtube_url, class: "text-field-short", placeholder: "YoutubeのURLを入力"
+          = f.text_field :youtube_url, class: "text-field-default", placeholder: "YoutubeのURLを入力"
         %table.add-music__form__container__right
           %tr
             %th

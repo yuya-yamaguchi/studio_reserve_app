@@ -1,0 +1,90 @@
+.select-member-modal{
+  background: #fff;
+  left: 50%;
+  padding: 30px 60px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 50%;
+  margin: 0 auto;
+  &__msg{
+    margin: 0 auto;
+    text-align: center;
+    @include string_set(18px, bold, #333333);
+    padding: 10px;
+  }
+  &__search-box{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__search-result{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    .play-select-user{
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 20px;
+      margin: 5px 0;
+      cursor: pointer;
+      &:hover{
+        background-color: #333333;
+        color: #FFFFFF;
+        border-radius: 5px;
+      }
+    }
+    .no-result{
+      color: #888888;
+    }
+  }
+  &__select-now{
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    margin: 0 auto;
+    .select-now-icon{
+      padding: 5px 10px;
+      @include string_set(14px, bold, red);
+    }
+    .select-player{
+      text-align: center;
+      @include string_set(18px, bold, #333333);
+      margin-left: 10px;
+    }
+  }
+  &__btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    &__back{
+      width: 200px;
+      text-align: center;
+      background: #FFFFFF;
+      color: #333333;
+      padding: 5px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    &__move{
+      display: block;
+      text-decoration: none;
+      color: #FFFFFF;
+      width: 200px;
+      text-align: center;
+      background: red;
+      padding: 5px 0;
+      border-radius: 5px;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+      cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+}

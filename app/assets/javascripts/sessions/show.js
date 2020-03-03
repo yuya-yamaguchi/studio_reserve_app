@@ -12,37 +12,115 @@ $(function(){
     e.stopPropagation();
     var selected = this;
     var this_parent = $(selected).parent();
+    var current_user_entry = $('#current_user_entry').val(); // true or false
+    var current_user_admin = $('#current_user_admin').val(); // true or false
+    var session_user_id = $('#session_user_id').val();
+    var current_user_id = $('#current_user_id').val();
 
-    // セッションエントリー有無チェック
-    var current_user_entry = $('#current_user_entry').val();
-    if (current_user_entry == false){
-      alert('ログイン後（または会員登録後）、エントリーしてください');
-      return
+    if (current_user_admin == "true" ||
+        session_user_id == current_user_id){
+        $("#member_name").val("");
+        var path = $(this).attr('href');
+        $('#add-player-url').attr('action', path);
+      $('.js-select-member-modal').fadeIn();
+      return false;
     }
-    path = $(selected).attr('href');
+    else {
+      // セッションエントリー有無チェック
+      if (current_user_entry == "false"){
+        alert('当セッションに参加後、エントリーしてください');
+        return
+      }
+      path = $(selected).attr('href');
+      console.log(path);
+      $.ajax({
+        url: path,
+        type: "PATCH",
+        data: {},
+        dataType: 'json'
+      })
+      // 非同期通信成功時
+      .done(function(data){
+        selected.remove();
+        html = `<a href="/users/${data.user_id}">${data.user_name}</a>
+                <a href="/sessions/${data.session_id}/entry_musics/${data.entry_music_id}/entry_parts/${data.id}/cancel">
+                  <i class="fas fa-times-circle part-entry-cansel">
+                  </i>
+                </a>
+                `
+        $(this_parent).append(html);
+      })
+      // 非同期通信失敗時
+      .fail(function(){
+        alert('通信に失敗しました');
+      })
+    }
+  });
+
+  $('.select-member-back').on('click',function(){
+    $('.js-select-member-modal').fadeOut();
+    return false;
+  });
+
+  /***********************/
+  /* メンバー検索          */
+  /***********************/
+  function addUser(user) {
+    let html = `
+      <div class="play-select-user" data-user-id="${user.id}">
+        <p class="play-select-user__name">${user.nickname}</p>
+        <div class="play-select-user__add" >選択</div>
+      </div>
+    `;
+    $(".select-member-modal__search-result").append(html);
+  }
+
+  function addPlayer(userId, userName) {
+    let html = `<div class="select-now-icon">選択中</div>
+                <div class="select-player">${userName}</div>
+                <input value="${userId}" name="user_id" type="hidden" id="user_id_${userId}" />`;
+    $(".select-member-modal__select-now").append(html);
+  }
+
+  $("#member_name").on("keyup", function(){
+    var search_name = $("#member_name").val();
     $.ajax({
-      url: path,
-      type: "PATCH",
-      data: {},
-      dataType: 'json'
+      type: 'GET',
+      url: '/users/search',
+      dataType: 'json',
+      data: { search_name: search_name }
     })
-    // 非同期通信成功時
-    .done(function(data){
-      selected.remove();
-      html = `<a href="/users/${data.user_id}">${data.user_name}</a>
-              <a href="/sessions/${data.session_id}/entry_musics/${data.entry_music_id}/entry_parts/${data.id}/cancel">
-                <i class="fas fa-times-circle part-entry-cansel">
-                </i>
-              </a>
-              `
-      $(this_parent).append(html);
+    // 非同期通信_成功
+    .done(function(users) {
+      $(".play-select-user").remove();
+      $(".no-result").remove();
+      // 入力がない場合
+      if (search_name.length == 0) {
+        return false;
+      }
+      if (users.length !== 0){
+        users.forEach(function(user) {
+          addUser(user);
+        })
+      // ユーザの検索結果がヒットしなかった場合
+      } else {
+        $(".select-member-modal__search-result").append(`<div class="no-result">該当のユーザは存在しません</div>`);
+      }
     })
-    // 非同期通信失敗時
-    .fail(function(){
-      alert('通信に失敗しました');
+    .fail(function() {
+      alert("通信エラーです。ユーザーが表示できません。");
     })
   });
 
+  $(document).on("click", ".play-select-user", function() {
+    const userName = $(this).find('.play-select-user__name').text();
+    const userId = $(this).attr("data-user-id");
+    $(".play-select-user").remove();
+    $(".select-player").remove();
+    $(".select-now-icon").remove();
+    
+    addPlayer(userId, userName);
+  });
   /*******************************/
   /* パートエントリーキャンセル非同期 */
   /*******************************/
@@ -118,6 +196,11 @@ $(function(){
                    エントリーした曲の取り消しは行われません`;
     var move_url = $(this).attr('href');
     var move_html = `<a href="${move_url}" data-method="delete">参加をやめる</a>`;
+
+    // 前回設定内容のリセット
+    $(cancel_main_msg).empty();
+    $(cancel_sub_msg).empty();
+    $(cancel_move_btn).empty();
 
     $(cancel_main_msg).append(main_msg);
     $(cancel_sub_msg).append(sub_msg);

@@ -1,6 +1,8 @@
 %header.header
   .header__title.main-title
     = link_to "STUDIO Hummingbird", root_path
+  .menues-bar-icon
+    = icon 'fas', 'bars'
   %ul.header-menus
     %li.header-menus__menu
       = link_to "スタジオ", root_path
@@ -51,4 +53,55 @@
         = link_to "新規会員登録", new_user_registration_path
       %li.header-menus__menu
         = link_to "ログイン", new_user_session_path
-    
+
+.sumaho-header
+  %ul.s-header-menus
+    %li.s-header-menus__menu
+      スタジオ
+      %ul.s-sub-menus
+        - @studio_lists.each do |studio_list|
+          %li.s-sub-menus__menu
+            = link_to studio_list.name, studio_path(studio_list.id)
+    %li.s-header-menus__menu
+      掲示板
+      %ul.s-sub-menus
+        %li.s-sub-menus__menu
+          = link_to "投稿一覧", posts_path
+        %li.s-sub-menus__menu
+          = link_to "投稿する", new_post_path
+    %li.s-header-menus__menu
+      セッション
+      %ul.s-sub-menus
+        %li.s-sub-menus__menu
+          = link_to "セッション一覧", music_sessions_path
+        %li.s-sub-menus__menu
+          = link_to "セッションを開く", new_music_session_path
+    - if user_signed_in?
+      %li.s-header-menus__menu.unread-mark
+        マイページ
+        - if @unread_message_cnt + @unread_notice_cnt > 0
+          .s-unread-mark__cnt
+            = @unread_message_cnt + @unread_notice_cnt
+        %ul.s-sub-menus
+          %li.s-sub-menus__menu
+            = link_to "スタジオ予約状況", user_reserves_path
+          %li.s-sub-menus__menu.unread-mark
+            = link_to "メッセージ", user_chatrooms_path(current_user)
+            - if @unread_message_cnt > 0
+              .s-unread-mark__cnt
+                = @unread_message_cnt
+          %li.s-sub-menus__menu.unread-mark
+            = link_to "お知らせ", notice_users_path
+            - if @unread_notice_cnt > 0
+              .s-unread-mark__cnt
+                = @unread_notice_cnt
+          %li.s-sub-menus__menu
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - if current_user.admin_flg == true
+        %li.s-header-menus__menu
+          = link_to "管理者用", admin_root_path
+    - else
+      %li.s-header-menus__menu
+        = link_to "新規会員登録", new_user_registration_path
+      %li.s-header-menus__menu
+        = link_to "ログイン", new_user_session_path

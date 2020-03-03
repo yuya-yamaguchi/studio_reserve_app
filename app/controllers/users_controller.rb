@@ -43,6 +43,14 @@ class UsersController < ApplicationController
     update_notices.update(read_flg: 1)
   end
 
+  def search
+    @users = User.where("nickname LIKE ?", "%#{params[:search_name]}%").order("nickname")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname, :first_name, :last_name, :tel_no, :email, :profile, :img)
