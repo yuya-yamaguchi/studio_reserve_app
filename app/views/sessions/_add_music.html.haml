@@ -3,7 +3,7 @@
     = icon 'fas', 'plus-circle'
     曲を追加する
   .add-music__form
-    = form_with(model: [@session, @entry_music], url: music_session_entry_musics_path(@session), data: { remote: false }) do |f|
+    = form_with(model: [@session, @entry_music], url: music_session_entry_musics_path(@session), method: :post, data: { remote: false }) do |f|
       .add-music__form__container
         .add-music__form__container__left
           曲名
